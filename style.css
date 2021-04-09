@@ -59,6 +59,7 @@ main div{
   color: black;
   font-size: 15px;
   font-family: 'Montserrat', sans-serif;
+  border-bottom: #f5cb42 solid 1px;
 }
 
 #add-event-button{
@@ -72,7 +73,7 @@ main div{
 
 h1{
     font-size: 70px;
-  justify-text: center;
+   justify-content: center;
   font-family: 'Montserrat', sans-serif;
   color: black;
   
@@ -92,4 +93,10 @@ h4{
   font-size:70px;
   margin: 4px;
   font-family: 'Montserrat', sans-serif;
+}
+
+#add-event-button{
+    border: 6px solid;
+    border-radius: 20px;
+  color: #f5cb42;
 }
