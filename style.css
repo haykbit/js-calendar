@@ -2,6 +2,8 @@
     /* outline: 1px black solid; */
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 body{
     display: flex;
     flex-direction: column;
@@ -16,11 +18,15 @@ header{
 }
 
 #year-display{
+    border: 6px solid;
+    border-radius: 20px;
+    margin: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2%;
-    width: 35%;
+  color: #f5cb42;
+    width: 25%;
 }
 
 #month-display{
@@ -37,10 +43,22 @@ main{
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: 0.3fr repeat(6, 1fr);
     margin: 4% 10% 4% 10%;
+    border: 6px solid;
+    border-radius: 20px;
+  color: #f5cb42;
+  margin-left: 35px;
+  margin-top: 25px;
+  padding: 5px;
 }
 
 main div{
-    border: 1px solid black;
+  padding: 10px;
+}
+
+.week-day{
+  color: black;
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 #add-event-button{
@@ -53,13 +71,25 @@ main div{
 }
 
 h1{
-    font-size: 80px;
+    font-size: 70px;
+  justify-text: center;
+  font-family: 'Montserrat', sans-serif;
+  color: black;
+  
 }
 
 h2{
-    font-size: 60px;
+    font-size: 40px;
+  
 }
 
 h3{
     font-size: 40px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h4{
+  font-size:70px;
+  margin: 4px;
+  font-family: 'Montserrat', sans-serif;
 }
