@@ -92,16 +92,23 @@
   }
   
   h3{
+      filter: blur(1px);
       font-size: 30px;
     font-weight: 300;
     color: dark-grey;
     opacity: 70%;
     font-family: 'Montserrat', sans-serif;
+    /* transition-timing-function: ease-in;
+    transition-delay: 0.1s; */
   }
 
   h3:hover{
+      filter:none;
+      transition: filter 0.4s, ease;
       transform: scale(1.4);
+      transition: transform 1s, 0.1s, ease-in;
       padding: 4%;
+      /* transition: font-size 300ms linear 0s; */
   }
   
   h4{
@@ -118,4 +125,8 @@
     height: 65%;
       margin: 30px;
     flex-grow: 1;
+  }
+
+  #event-screen{
+
   }
