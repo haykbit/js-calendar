@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,60 @@
     <title>JS Calendar</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <template class="newEvent">
+        <div id="eventContent">
+            <button id="close-button">x</button> 
+            <h1 class="formName">New event</h1>
+            <form class="eventForm" action="">
+                <p>
+                    <label for="event-tittle">Tittle</label>
+                    <input type="text" name="eventTittle" id="event-tittle">
+                </p>
+                <p>
+                    <label for="initial-date">Initial date</label>
+                    <input type="text" name="initialDate" id="initial-date">
+                </p>
+                <p>
+                    <input type="checkbox" name="finalDateOption" id="final-date-option"><label
+                        for="final-date-option">Final date ?</label>
+                </p>
+                <p>
+                    <label for="final-date">Final date</label>
+                    <input type="text" name="finalDate" id="final-date">
+                </p>
+                <p>
+                    <input type="checkbox" name="remindOption" id="remind-option"><label for="remind-option">Remind
+                        ?</label>
+                </p>
+
+                <label for="time-remind">Went we remind you?</label>
+                <select name="timeRemind" id="time-remind">
+                    <option value="">5 minutes before</option>
+                    <option value="">10 minutes before</option>
+                    <option value="">15 minutes before</option>
+                    <option value="">30 minutes before</option>
+                    <option value="">1 hour before</option>
+                </select>
+                <p>
+                    <textarea name="textarea" rows="10" cols="50">What you need to remind?</textarea>
+                </p>
+                <label for="event-type">Event-type</label>
+                <select name="eventType" id="event-type">
+                    <option value="">Meeting</option>
+                    <option value="">Personal</option>
+                    <option value="">Studing</option>
+                </select>
+                <input id="canel-button" type="reset" value="Cancel"/>
+                <input id="create-button" type="submit" value="Create"/>
+            </form>
+        </div>
+    </template>
     <header>
-        <div id="year-display"><h1>2021</h1></div>
+        <div id="year-display">
+            <h1>2021</h1>
+        </div>
         <div id="month-display">
             <h3>December</h3>
             <h1>January</h1>
@@ -21,4 +73,6 @@
     <button id="add-event-button">+</button>
 </body>
 <script src="calendar-generate.js"></script>
+<script src="formulario.js"></script>
+
 </html>
