@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
   }
-  
+
   @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
   
   body{
@@ -65,8 +65,24 @@
     color: black;
     font-size: 15px;
     font-family: 'Montserrat', sans-serif;
-    border-bottom: #f5cb42 solid 1px;
+    border-bottom: #f2ecbd solid 1px;
   }
+
+  
+.grid-day{
+  border: 1px grey solid;
+opacity: 35%;
+border-bottom: 1px;
+border-top: 1px;
+}
+
+.grid-day:hover{
+  border: 1px grey solid;
+ background-color: #f0eccc;
+border-bottom: 1px;
+border-top: 1px;
+}
+
   
   #add-event-button{
       border-radius: 50%;
@@ -97,6 +113,8 @@
     font-weight: 300;
     color: dark-grey;
     opacity: 70%;
+    transition: transform 1s, 0.1s, ease-in;
+          transition: filter 0.4s, ease;
     font-family: 'Montserrat', sans-serif;
     /* transition-timing-function: ease-in;
     transition-delay: 0.1s; */
@@ -104,9 +122,9 @@
 
   h3:hover{
       filter:none;
-      transition: filter 0.4s, ease;
+
       transform: scale(1.4);
-      transition: transform 1s, 0.1s, ease-in;
+
       padding: 4%;
       /* transition: font-size 300ms linear 0s; */
   }
@@ -127,6 +145,17 @@
     flex-grow: 1;
   }
 
-  #event-screen{
+  #add-event-button:hover{
 
   }
+
+  #event-screen{
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+
+  .form
