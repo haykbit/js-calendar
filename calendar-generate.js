@@ -5,6 +5,11 @@ generateCalendar(month);
 
 function generateCalendar(month){
     generateGridEmpty();
+    
+    for(i=0 ; i<weekDays.length ; i++){
+        document.getElementsByClassName("week-day")[i].innerHTML = weekDays[i];
+    }
+    
 }
 
 function generateGridEmpty(){
