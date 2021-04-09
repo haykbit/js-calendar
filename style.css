@@ -71,9 +71,8 @@ template.newEvent{
 }
 div#eventContent{
     position:fixed;
-   
     padding:  5% 33%;
-    margin: 2% 5%;
+    margin: 0% 5%;
     backdrop-filter: blur(10px);
 
 }
