@@ -32,12 +32,12 @@
                     <input type="date" name="finalDate" id="final-date">
                 </p>
                 <p>
-                    <input type="checkbox" name="remindOption" id="remind-option"><label for="remind-option">Remind
+                    <input type="checkbox" name="remindOption" id="remind-option" onchange="habilitar(this)"><label for="remind-option">Remind
                         ?</label>
                 </p>
 
                 <label for="time-remind">Went we remind you?</label>
-                <select name="timeRemind" id="time-remind">
+                <select name="timeRemind" id="time-remind" class="habitiation" disabled >
                     <option value="">5 minutes before</option>
                     <option value="">10 minutes before</option>
                     <option value="">15 minutes before</option>
@@ -45,15 +45,15 @@
                     <option value="">1 hour before</option>
                 </select>
                 <p>
-                    <textarea name="textarea" rows="10" cols="50">What you need to remind?</textarea>
+                    <textarea id="remindText"name="textarea" rows="10" cols="50" class="habitiation" disabled >What you need to remind?</textarea>
                 </p>
                 <label for="event-type">Event-type</label>
-                <select name="eventType" id="event-type">
+                <select name="eventType" id="event-type" class="habitiation" disabled >
                     <option value="">Meeting</option>
                     <option value="">Personal</option>
                     <option value="">Studing</option>
                 </select>
-                <input id="canel-button" type="reset" value="Cancel"/>
+                <input id="cancel-button" type="reset" value="Cancel"/>
                 <input id="create-button" type="submit" value="Create"/>
             </form>
         </div>
