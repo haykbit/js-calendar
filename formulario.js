@@ -5,6 +5,7 @@ x=0;//_______________________contador para que no se llame al formulario dos vec
 function callTemplate(){
 
     if(x==0){
+        //___________________________________________________________llamar template
         let newEvent=document.querySelector("template.newEvent");
 
         const importNewEvent=document.importNode(newEvent.content,true);
@@ -12,7 +13,6 @@ function callTemplate(){
 
         let eventContent=document.getElementById("eventContent");
         eventContent.style.border='1px black solid';
-    //___________________________________________________recoger datos del formulario
 
     //_____________________________________________________________cerrar formulario
             document.getElementById('close-button').addEventListener('click', closeEvent);
@@ -23,10 +23,7 @@ function callTemplate(){
                 document.querySelector("body").removeChild(eventContent);
                 x=0;
             };
-            function sendAndCloseEvent(){
-                document.querySelector("body").removeChild(eventContent);
-                x=0;
-            }
+           
     }else{
     //________________cambio la funcion del boton "add-event-button" par que envez de 
     //__________________ abrir otro formulario cierre el que ya esta abierto
@@ -36,6 +33,7 @@ function callTemplate(){
 
 }
 //____________________________________________________ habilitar los recordatorios
+
 function habilitar(remind){
     let renindImputs=document.querySelectorAll(".habitiation");
     if(remind.checked==true){
@@ -48,3 +46,21 @@ function habilitar(remind){
          });
     }
 }
+
+//_________________________________________________________________ recoger datos
+
+
+function sendAndCloseEvent(){
+    let remindTime=document.getElementById("time-remind").value;
+    let eventType=document.getElementById( "event-type").value;
+    let textRemind=document.getElementById("remindText").value;
+
+    localStorage.setItem('tiempo de recordatorio',remindTime);
+    localStorage.setItem('tipo de event',eventType);
+    localStorage.setItem('¿Que quiere recordar?, pues acuerdate panolis',textRemind)
+
+    
+    document.querySelector("body").removeChild(eventContent);
+    x=0;
+}
+localStorage.clear()

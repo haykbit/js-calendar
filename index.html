@@ -38,20 +38,20 @@
 
                 <label for="time-remind">Went we remind you?</label>
                 <select name="timeRemind" id="time-remind" class="habitiation" disabled >
-                    <option value="">5 minutes before</option>
-                    <option value="">10 minutes before</option>
-                    <option value="">15 minutes before</option>
-                    <option value="">30 minutes before</option>
-                    <option value="">1 hour before</option>
+                    <option value="5">5 minutes before</option>
+                    <option value="10">10 minutes before</option>
+                    <option value="15">15 minutes before</option>
+                    <option value="30">30 minutes before</option>
+                    <option value="1">1 hour before</option>
                 </select>
                 <p>
-                    <textarea id="remindText"name="textarea" rows="10" cols="50" class="habitiation" disabled >What you need to remind?</textarea>
+                    <textarea id="remindText"name="textarea" rows="10" cols="50" class="habitiation" disabled ></textarea>
                 </p>
                 <label for="event-type">Event-type</label>
                 <select name="eventType" id="event-type" class="habitiation" disabled >
-                    <option value="">Meeting</option>
-                    <option value="">Personal</option>
-                    <option value="">Studing</option>
+                    <option value="Meeting">Meeting</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Studing">Studing</option>
                 </select>
                 <input id="cancel-button" type="reset" value="Cancel"/>
                 <input id="create-button" type="submit" value="Create"/>
@@ -71,6 +71,7 @@
     <main>
     </main>
     <button id="add-event-button">+</button>
+    
 </body>
 <script src="calendar-generate.js"></script>
 <script src="formulario.js"></script>
