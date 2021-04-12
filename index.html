@@ -18,29 +18,34 @@
                     <span class="closeButton-shape"></span>
                 </label>
             </div>
-            <h1 class="formName">New event</h1>
             <form class="eventForm" action="">
-                 <div class='buttonStyles'>
+                <h1 class="formName">Add an event</h1>
+                <div class='buttonStyles'>
                     <label for="event-tittle" class="label-name"><span class="eventTittle-name">Tittle</span></label>
                     <input type="text" name="eventTittle" id="event-tittle">
 
-                </div><div class='buttonStyles'>
+                </div>
+                <div class='buttonStyles'>
                     <label for="initial-date">Initial date</label>
                     <input type="date" name="initialDate" id="initial-date">
 
-                </div><div class='checkoxStyles'>
+                </div>
+                <div class='checkoxStyles'>
                     <input type="checkbox" name="finalDateOption" id="final-date-option" onchange="habilitarDate(this)">
                     <label for="final-date-option">Final date ?</label>
 
-                </div><div class='buttonStyles'>
+                </div>
+                <div class='buttonStyles'>
                     <label for="final-date">Final date</label>
                     <input type="date" name="finalDate" id="final-date" disabled>
 
-                </div><div class='checkoxStyles'>
+                </div>
+                <div class='checkoxStyles'>
                     <input type="checkbox" name="remindOption" id="remind-option"
                         onchange="habilitarReminder(this)"><label for="remind-option">Remind?</label>
 
-                </div><div class='selctStyles'>
+                </div>
+                <div class='selctStyles'>
 
                     <label for="time-remind">Went we remind you?</label>
                     <select name="timeRemind" id="time-remind" class="habitiation" disabled>
@@ -50,27 +55,33 @@
                         <option value="30">30 minutes before</option>
                         <option value="1">1 hour before</option>
                     </select>
-                </div><div class='buttonStyles'>
+                </div>
+                <div class='buttonStyles'>
                     <textarea id="remindText" name="textarea" rows="10" cols="50" class="habitiation"
                         disabled></textarea>
-                </div><div class='selctStyles'>
-                <label for="event-type">Event-type</label>
-                <select name="eventType" id="event-type">
-                    <option value="Meeting">Meeting</option>
-                    <option value="Personal">Personal</option>
-                    <option value="Studing">Studing</option>
-                </select>
-            </div><div class="final-buttons">
-                <input id="cancel-button" type="reset" value="Cancel" />
-                <input id="create-button" type="submit" value="Create" />
-            </div>
+                </div>
+                <div class='selctStyles'>
+                    <label for="event-type">Event-type</label>
+                    <select name="eventType" id="event-type">
+                        <option value="Meeting">Meeting</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Studing">Studing</option>
+                    </select>
+                </div>
+                <div class="final-buttons">
+                    <input id="cancel-button" type="reset" value="Cancel" />
+                    <input id="create-button" type="submit" value="Create" />
+                </div>
             </form>
 
         </div>
     </template>
     <header>
         <div id="year-display">
+            <img id="larrow" src="img/larrow.png" />
             <h1>2021</h1>
+            <img id="rarrow" src="img/rarrow.png" />
+            <p id="barra">|</p>
         </div>
         <div id="month-display">
             <h3>December</h3>
