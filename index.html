@@ -32,11 +32,12 @@
                     <input type="date" name="finalDate" id="final-date" disabled>
                 </p>
                 <p>
-                    <input type="checkbox" name="remindOption" id="remind-option" onchange="habilitarReminder(this)"><label for="remind-option">Remind?</label>
+                    <input type="checkbox" name="remindOption" id="remind-option"
+                        onchange="habilitarReminder(this)"><label for="remind-option">Remind?</label>
                 </p>
 
                 <label for="time-remind">Went we remind you?</label>
-                <select name="timeRemind" id="time-remind" class="habitiation" disabled >
+                <select name="timeRemind" id="time-remind" class="habitiation" disabled>
                     <option value="5">5 minutes before</option>
                     <option value="10">10 minutes before</option>
                     <option value="15">15 minutes before</option>
@@ -44,7 +45,8 @@
                     <option value="1">1 hour before</option>
                 </select>
                 <p>
-                    <textarea id="remindText"name="textarea" rows="10" cols="50" class="habitiation" disabled ></textarea>
+                    <textarea id="remindText" name="textarea" rows="10" cols="50" class="habitiation"
+                        disabled></textarea>
                 </p>
                 <label for="event-type">Event-type</label>
                 <select name="eventType" id="event-type">
@@ -52,8 +54,8 @@
                     <option value="Personal">Personal</option>
                     <option value="Studing">Studing</option>
                 </select>
-                <input id="cancel-button" type="reset" value="Cancel"/>
-                <input id="create-button" type="submit" value="Create"/>
+                <input id="cancel-button" type="reset" value="Cancel" />
+                <input id="create-button" type="submit" value="Create" />
             </form>
         </div>
     </template>
@@ -69,9 +71,17 @@
     </header>
     <main>
     </main>
-    <button id="add-event-button">+</button>
-    
+    <button id="add-event-button" onclick="unfoldpopup()">+</button>
+    <div class="form-popup">
+        <div class="popup-inside">
+        </div>
+    </div>
 </body>
+<script> function unfoldpopup() {
+
+    }
+
+</script>
 <script src="calendar-generate.js"></script>
 <script src="formulario.js"></script>
 
