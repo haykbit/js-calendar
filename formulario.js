@@ -12,19 +12,21 @@ function callTemplate() {
         document.querySelector("body").appendChild(importNewEvent);
 
         let eventContent = document.getElementById("eventContent");
+        
        
         
         
 
         //_____________________________________________________________cerrar formulario
        // document.getElementById('eventContent').addEventListener('click', closeEvent);
-       
+        eventContent.addEventListener('click', closeEvent);
         document.getElementById('close-button').addEventListener('click', closeEvent);
         document.getElementById('cancel-button').addEventListener('click', closeEvent);
         document.getElementById('create-button').addEventListener('click', sendAndCloseEvent);
         x += 1;
         function closeEvent() {
             document.querySelector("body").removeChild(eventContent);
+            document.querySelector(".eventForm").style.display="none";
             
             x = 0;
         };
@@ -33,6 +35,7 @@ function callTemplate() {
         //________________cambio la funcion del boton "add-event-button" par que envez de 
         //__________________ abrir otro formulario cierre el que ya esta abierto
         document.querySelector("body").removeChild(eventContent);
+        document.querySelector(".eventForm").style.display="none";
         x = 0;
     }
 

@@ -1,5 +1,5 @@
 var year = 2021;
-var month = 3;  // Month in number format: January -> 0 and December -> 11
+var month = 6;  // Month in number format: January -> 0 and December -> 11
 
 const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
