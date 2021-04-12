@@ -1,14 +1,23 @@
-var year = 2021;
-var month = 3;  // Month in number format: January -> 0 and December -> 11
+// This variable saves the date shown in the calendar
+var dateSelected = new Date();
 
+// Defined constants to display the correct text
+const monthsYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-generateCalendar(year, month);
+// Added listeners to switch the month in the calendar
+document.getElementById("previous-month").addEventListener("click", switchMonth, true);
+document.getElementById("next-month").addEventListener("click", switchMonth, true);
 
+// First, calendar is generated in the current year and month
+generateCalendar(dateSelected.getFullYear(), dateSelected.getMonth());
+
+// This function generates the new calendar in the month and year selected
 function generateCalendar(p_year, p_month) {
     var daysMonth = new Date(p_year, p_month + 1, 0).getDate();
     var firstDayMonth = new Date(p_year, p_month, 1).getDay();
 
+    eliminatePreviousGrid();
     generateGridEmpty();
 
     // The next lines insert the week days in the grid and the id's in the first line in the grid
@@ -25,9 +34,29 @@ function generateCalendar(p_year, p_month) {
             document.getElementsByClassName("grid-day")[i + firstDayMonth - 1].innerHTML = i + 1;
         }
     }
+
+    // The text in the month display is updated
+    if(p_month == 0){
+        document.getElementById("previous-month").innerHTML = monthsYear[11];
+        document.getElementById("actual-month").innerHTML = monthsYear[p_month];
+        document.getElementById("next-month").innerHTML = monthsYear[p_month+1];
+    }
+    else if(p_month == 11){
+        document.getElementById("previous-month").innerHTML = monthsYear[p_month-1];
+        document.getElementById("actual-month").innerHTML = monthsYear[p_month];
+        document.getElementById("next-month").innerHTML = monthsYear[0];
+    }
+    else{
+        document.getElementById("previous-month").innerHTML = monthsYear[p_month-1];
+        document.getElementById("actual-month").innerHTML = monthsYear[p_month];
+        document.getElementById("next-month").innerHTML = monthsYear[p_month+1];
+    }
+    
+    // The text in the year display is updated
+    document.getElementById("year-text").innerHTML = p_year;
 }
 
-// This function generates the grid in main
+// This function generates the empty grid in main
 function generateGridEmpty() {
     for (var i = 0; i < 49; i++) {
         if (i < 7) {
@@ -36,5 +65,26 @@ function generateGridEmpty() {
         else {
             document.querySelector("main").insertAdjacentHTML("beforeend", "<div class='grid-day'></div>");
         }
+    }
+}
+
+// This function switches the month according to the month selected
+function switchMonth(event){
+    if(event.target.id == "previous-month"){
+        dateSelected.setMonth(dateSelected.getMonth()-1);
+    }
+    else{
+        dateSelected.setMonth(dateSelected.getMonth()+1);
+    }
+
+    generateCalendar(dateSelected.getFullYear(), dateSelected.getMonth());
+}
+
+// This function eliminates the entire grid
+function eliminatePreviousGrid(){
+    var mainGrid = document.querySelector("main");
+
+    while(mainGrid.firstChild) {
+        mainGrid.removeChild(mainGrid.firstChild);
     }
 }
