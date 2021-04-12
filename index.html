@@ -12,7 +12,7 @@
 <body>
     <template class="newEvent">
         <div id="eventContent">
-            <button id="close-button">x</button> 
+            <button id="close-button">x</button>
             <h1 class="formName">New event</h1>
             <form class="eventForm" action="">
                 <p>
@@ -24,36 +24,35 @@
                     <input type="date" name="initialDate" id="initial-date">
                 </p>
                 <p>
-                    <input type="checkbox" name="finalDateOption" id="final-date-option"><label
-                        for="final-date-option">Final date ?</label>
+                    <input type="checkbox" name="finalDateOption" id="final-date-option" onchange="habilitarDate(this)">
+                    <label for="final-date-option">Final date ?</label>
                 </p>
                 <p>
                     <label for="final-date">Final date</label>
-                    <input type="date" name="finalDate" id="final-date">
+                    <input type="date" name="finalDate" id="final-date" disabled>
                 </p>
                 <p>
-                    <input type="checkbox" name="remindOption" id="remind-option"><label for="remind-option">Remind
-                        ?</label>
+                    <input type="checkbox" name="remindOption" id="remind-option" onchange="habilitarReminder(this)"><label for="remind-option">Remind?</label>
                 </p>
 
                 <label for="time-remind">Went we remind you?</label>
-                <select name="timeRemind" id="time-remind">
-                    <option value="">5 minutes before</option>
-                    <option value="">10 minutes before</option>
-                    <option value="">15 minutes before</option>
-                    <option value="">30 minutes before</option>
-                    <option value="">1 hour before</option>
+                <select name="timeRemind" id="time-remind" class="habitiation" disabled >
+                    <option value="5">5 minutes before</option>
+                    <option value="10">10 minutes before</option>
+                    <option value="15">15 minutes before</option>
+                    <option value="30">30 minutes before</option>
+                    <option value="1">1 hour before</option>
                 </select>
                 <p>
-                    <textarea name="textarea" rows="10" cols="50">What you need to remind?</textarea>
+                    <textarea id="remindText"name="textarea" rows="10" cols="50" class="habitiation" disabled ></textarea>
                 </p>
                 <label for="event-type">Event-type</label>
                 <select name="eventType" id="event-type">
-                    <option value="">Meeting</option>
-                    <option value="">Personal</option>
-                    <option value="">Studing</option>
+                    <option value="Meeting">Meeting</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Studing">Studing</option>
                 </select>
-                <input id="canel-button" type="reset" value="Cancel"/>
+                <input id="cancel-button" type="reset" value="Cancel"/>
                 <input id="create-button" type="submit" value="Create"/>
             </form>
         </div>
@@ -71,6 +70,7 @@
     <main>
     </main>
     <button id="add-event-button">+</button>
+    
 </body>
 <script src="calendar-generate.js"></script>
 <script src="formulario.js"></script>
