@@ -21,25 +21,29 @@
             <h1 class="formName">New event</h1>
             <form class="eventForm" action="">
                  <div class='buttonStyles'>
+                    
+                    <input type="text" name="eventTittle" id="event-tittle" required>
                     <label for="event-tittle" class="label-name"><span class="eventTittle-name">Tittle</span></label>
-                    <input type="text" name="eventTittle" id="event-tittle">
 
                 </div><div class='buttonStyles'>
-                    <label for="initial-date">Initial date</label>
+                    
                     <input type="date" name="initialDate" id="initial-date">
+                    <label for="initial-date">Initial date</label>
 
                 </div><div class='checkoxStyles'>
-                    <input type="checkbox" name="finalDateOption" id="final-date-option" onchange="habilitarDate(this)">
+                    
                     <label for="final-date-option">Final date ?</label>
-
+                    <input type="checkbox" name="finalDateOption" id="final-date-option" onchange="habilitarDate(this)">
+                    
                 </div><div class='buttonStyles'>
+                    
+                    
                     <label for="final-date">Final date</label>
                     <input type="date" name="finalDate" id="final-date" disabled>
 
                 </div><div class='checkoxStyles'>
                     <input type="checkbox" name="remindOption" id="remind-option"
                         onchange="habilitarReminder(this)"><label for="remind-option">Remind?</label>
-
                 </div><div class='selctStyles'>
 
                     <label for="time-remind">Went we remind you?</label>

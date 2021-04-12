@@ -12,15 +12,20 @@ function callTemplate() {
         document.querySelector("body").appendChild(importNewEvent);
 
         let eventContent = document.getElementById("eventContent");
-        eventContent.style.border = '1px black solid';
+       
+        
+        
 
         //_____________________________________________________________cerrar formulario
+       // document.getElementById('eventContent').addEventListener('click', closeEvent);
+       
         document.getElementById('close-button').addEventListener('click', closeEvent);
         document.getElementById('cancel-button').addEventListener('click', closeEvent);
         document.getElementById('create-button').addEventListener('click', sendAndCloseEvent);
         x += 1;
         function closeEvent() {
             document.querySelector("body").removeChild(eventContent);
+            
             x = 0;
         };
 
