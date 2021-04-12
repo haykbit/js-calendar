@@ -24,16 +24,15 @@
                     <input type="date" name="initialDate" id="initial-date">
                 </p>
                 <p>
-                    <input type="checkbox" name="finalDateOption" id="final-date-option"><label
-                        for="final-date-option">Final date ?</label>
+                    <input type="checkbox" name="finalDateOption" id="final-date-option" onchange="habilitarDate(this)">
+                    <label for="final-date-option">Final date ?</label>
                 </p>
                 <p>
                     <label for="final-date">Final date</label>
-                    <input type="date" name="finalDate" id="final-date">
+                    <input type="date" name="finalDate" id="final-date" disabled>
                 </p>
                 <p>
-                    <input type="checkbox" name="remindOption" id="remind-option" onchange="habilitar(this)"><label for="remind-option">Remind
-                        ?</label>
+                    <input type="checkbox" name="remindOption" id="remind-option" onchange="habilitarReminder(this)"><label for="remind-option">Remind?</label>
                 </p>
 
                 <label for="time-remind">Went we remind you?</label>
@@ -48,7 +47,7 @@
                     <textarea id="remindText"name="textarea" rows="10" cols="50" class="habitiation" disabled ></textarea>
                 </p>
                 <label for="event-type">Event-type</label>
-                <select name="eventType" id="event-type" class="habitiation" disabled >
+                <select name="eventType" id="event-type">
                     <option value="Meeting">Meeting</option>
                     <option value="Personal">Personal</option>
                     <option value="Studing">Studing</option>
