@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,61 @@
     <title>JS Calendar</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <template class="newEvent">
+        <div id="eventContent">
+            <button id="close-button">x</button>
+            <h1 class="formName">New event</h1>
+            <form class="eventForm" action="">
+                <p>
+                    <label for="event-tittle">Tittle</label>
+                    <input type="text" name="eventTittle" id="event-tittle">
+                </p>
+                <p>
+                    <label for="initial-date">Initial date</label>
+                    <input type="date" name="initialDate" id="initial-date">
+                </p>
+                <p>
+                    <input type="checkbox" name="finalDateOption" id="final-date-option" onchange="habilitarDate(this)">
+                    <label for="final-date-option">Final date ?</label>
+                </p>
+                <p>
+                    <label for="final-date">Final date</label>
+                    <input type="date" name="finalDate" id="final-date" disabled>
+                </p>
+                <p>
+                    <input type="checkbox" name="remindOption" id="remind-option"
+                        onchange="habilitarReminder(this)"><label for="remind-option">Remind?</label>
+                </p>
+
+                <label for="time-remind">Went we remind you?</label>
+                <select name="timeRemind" id="time-remind" class="habitiation" disabled>
+                    <option value="5">5 minutes before</option>
+                    <option value="10">10 minutes before</option>
+                    <option value="15">15 minutes before</option>
+                    <option value="30">30 minutes before</option>
+                    <option value="1">1 hour before</option>
+                </select>
+                <p>
+                    <textarea id="remindText" name="textarea" rows="10" cols="50" class="habitiation"
+                        disabled></textarea>
+                </p>
+                <label for="event-type">Event-type</label>
+                <select name="eventType" id="event-type">
+                    <option value="Meeting">Meeting</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Studing">Studing</option>
+                </select>
+                <input id="cancel-button" type="reset" value="Cancel" />
+                <input id="create-button" type="submit" value="Create" />
+            </form>
+        </div>
+    </template>
     <header>
-        <div id="year-display"><h1>2021</h1></div>
+        <div id="year-display">
+            <h1>2021</h1>
+        </div>
         <div id="month-display">
             <h3>December</h3>
             <h1>January</h1>
@@ -17,65 +70,19 @@
         </div>
     </header>
     <main>
-        <div class="week-day">Monday</div>
-        <div class="week-day">Tuesday</div>
-        <div class="week-day">Wednesday</div>
-        <div class="week-day">Thursday</div>
-        <div class="week-day">Friday</div>
-        <div class="week-day">Saturday</div>
-        <div class="week-day">Sunday</div>
-     <!-- Here start the real days grid -->
-        <div class="grid-day">  </div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
-        <div class="grid-day"></div>
     </main>
     <button id="add-event-button" onclick="unfoldpopup()">+</button>
     <div class="form-popup">
-<div class="popup-inside"></div>
-
+        <div class="popup-inside">
+        </div>
     </div>
 </body>
-<script> function unfoldpopup()
-{}
+<script> function unfoldpopup() {
+
+    }
 
 </script>
+<script src="calendar-generate.js"></script>
+<script src="formulario.js"></script>
+
 </html>
