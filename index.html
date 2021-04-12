@@ -12,51 +12,60 @@
 <body>
     <template class="newEvent">
         <div id="eventContent">
-            <button id="close-button">x</button>
+            <div class="closeButton-box">
+                <label class='closeButton-label'>
+                    <button id="close-button">x</button>
+                    <span class="closeButton-shape"></span>
+                </label>
+            </div>
             <h1 class="formName">New event</h1>
             <form class="eventForm" action="">
-                <p>
-                    <label for="event-tittle">Tittle</label>
+                 <div class='buttonStyles'>
+                    <label for="event-tittle" class="label-name"><span class="eventTittle-name">Tittle</span></label>
                     <input type="text" name="eventTittle" id="event-tittle">
-                </p>
-                <p>
+
+                </div><div class='buttonStyles'>
                     <label for="initial-date">Initial date</label>
                     <input type="date" name="initialDate" id="initial-date">
-                </p>
-                <p>
+
+                </div><div class='checkoxStyles'>
                     <input type="checkbox" name="finalDateOption" id="final-date-option" onchange="habilitarDate(this)">
                     <label for="final-date-option">Final date ?</label>
-                </p>
-                <p>
+
+                </div><div class='buttonStyles'>
                     <label for="final-date">Final date</label>
                     <input type="date" name="finalDate" id="final-date" disabled>
-                </p>
-                <p>
+
+                </div><div class='checkoxStyles'>
                     <input type="checkbox" name="remindOption" id="remind-option"
                         onchange="habilitarReminder(this)"><label for="remind-option">Remind?</label>
-                </p>
 
-                <label for="time-remind">Went we remind you?</label>
-                <select name="timeRemind" id="time-remind" class="habitiation" disabled>
-                    <option value="5">5 minutes before</option>
-                    <option value="10">10 minutes before</option>
-                    <option value="15">15 minutes before</option>
-                    <option value="30">30 minutes before</option>
-                    <option value="1">1 hour before</option>
-                </select>
-                <p>
+                </div><div class='selctStyles'>
+
+                    <label for="time-remind">Went we remind you?</label>
+                    <select name="timeRemind" id="time-remind" class="habitiation" disabled>
+                        <option value="5">5 minutes before</option>
+                        <option value="10">10 minutes before</option>
+                        <option value="15">15 minutes before</option>
+                        <option value="30">30 minutes before</option>
+                        <option value="1">1 hour before</option>
+                    </select>
+                </div><div class='buttonStyles'>
                     <textarea id="remindText" name="textarea" rows="10" cols="50" class="habitiation"
                         disabled></textarea>
-                </p>
+                </div><div class='selctStyles'>
                 <label for="event-type">Event-type</label>
                 <select name="eventType" id="event-type">
                     <option value="Meeting">Meeting</option>
                     <option value="Personal">Personal</option>
                     <option value="Studing">Studing</option>
                 </select>
+            </div><div class="final-buttons">
                 <input id="cancel-button" type="reset" value="Cancel" />
                 <input id="create-button" type="submit" value="Create" />
+            </div>
             </form>
+
         </div>
     </template>
     <header>
