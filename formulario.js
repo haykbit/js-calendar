@@ -86,8 +86,7 @@ function sendAndCloseEvent() {
 
     let json = JSON.stringify(event);
     console.log(json);
-    console.log(event);
-    localStorage.setItem("event", json);
+    localStorage.setItem(event.title, json);
 
     document.querySelector("body").removeChild(eventContent);
     x = 0;
