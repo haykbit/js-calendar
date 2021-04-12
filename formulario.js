@@ -1,33 +1,27 @@
 document.getElementById("add-event-button").addEventListener("click", callTemplate);
 x = 0;//_______________________contador para que no se llame al formulario dos veces
 
-
 function callTemplate() {
 
     if (x == 0) {
         //___________________________________________________________llamar template
         let newEvent = document.querySelector("template.newEvent");
-
         const importNewEvent = document.importNode(newEvent.content, true);
         document.querySelector("body").appendChild(importNewEvent);
 
         let eventContent = document.getElementById("eventContent");
-        
-       
-        
-        
-
+        let eventForm = document.getElementById("formEvent");
         //_____________________________________________________________cerrar formulario
-       // document.getElementById('eventContent').addEventListener('click', closeEvent);
+        // document.getElementById('eventContent').addEventListener('click', closeEvent);
         eventContent.addEventListener('click', closeEvent);
-        document.getElementById('close-button').addEventListener('click', closeEvent);
+        document.getElementById('closeButton-shape').addEventListener('click', closeEvent);
         document.getElementById('cancel-button').addEventListener('click', closeEvent);
         document.getElementById('create-button').addEventListener('click', sendAndCloseEvent);
+
         x += 1;
         function closeEvent() {
             document.querySelector("body").removeChild(eventContent);
-            document.querySelector(".eventForm").style.display="none";
-            
+            document.querySelector("body").removeChild(eventForm);
             x = 0;
         };
 
@@ -35,13 +29,13 @@ function callTemplate() {
         //________________cambio la funcion del boton "add-event-button" par que envez de 
         //__________________ abrir otro formulario cierre el que ya esta abierto
         document.querySelector("body").removeChild(eventContent);
-        document.querySelector(".eventForm").style.display="none";
+        document.querySelector(".eventForm").style.display = "none";
         x = 0;
     }
 
 }
-//____________________________________________________ habilitar los recordatorios
 
+//____________________________________________________ habilitar los recordatorios
 function habilitarReminder(remind) {
     let renindImputs = document.querySelectorAll(".habitiation");
     if (remind.checked == true) {
@@ -65,8 +59,6 @@ function habilitarDate(date) {
 };
 
 //_________________________________________________________________ recoger datos
-
-
 function sendAndCloseEvent() {
     let eventTitle = document.getElementById("event-tittle").value;
     let initialDate = document.getElementById("initial-date").value;

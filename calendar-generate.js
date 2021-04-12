@@ -1,5 +1,7 @@
 // This variable saves the date shown in the calendar
 var dateSelected = new Date();
+var currentDay = dateSelected.getFullYear();
+var currentMonth = dateSelected.getMonth();
 
 // Defined constants to display the correct text
 const monthsYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -11,6 +13,24 @@ document.getElementById("next-month").addEventListener("click", switchMonth, tru
 
 // First, calendar is generated in the current year and month
 generateCalendar(dateSelected.getFullYear(), dateSelected.getMonth());
+
+var backYear = document.getElementById("larrow");
+var forwardYear = document.getElementById("rarrow");
+
+var currentYear = dateSelected.getFullYear();
+backYear.addEventListener("click", function() {
+    var newYear = currentYear-1;
+    currentYear = newYear;
+    currentDay = newYear;
+    generateCalendar(newYear, dateSelected.getMonth());
+});
+
+forwardYear.addEventListener("click", function() {
+    var newYear = currentYear+1;
+    currentYear = newYear;
+    currentDay = newYear;
+    generateCalendar(newYear, dateSelected.getMonth());
+});
 
 // This function generates the new calendar in the month and year selected
 function generateCalendar(p_year, p_month) {
@@ -29,32 +49,46 @@ function generateCalendar(p_year, p_month) {
     for (var i = 0; i < daysMonth; i++) {
         if (firstDayMonth == 0) {
             document.getElementsByClassName("grid-day")[i + 6].innerHTML = i + 1;
+            if (i + 1 == dateSelected.getDate() && currentDay == dateSelected.getFullYear() && currentMonth == dateSelected.getMonth()){
+                var day = document.getElementsByClassName("grid-day")[i + 6];
+                day.style.backgroundColor = "#695eff";
+                day.classList.remove('hover-class');
+                day.style.borderRadius = "3px";
+                day.style.color = "white";
+            }
         }
         else {
             document.getElementsByClassName("grid-day")[i + firstDayMonth - 1].innerHTML = i + 1;
+            if (i + 1 == dateSelected.getDate() && currentDay == dateSelected.getFullYear() && currentMonth == dateSelected.getMonth()){
+                var day = document.getElementsByClassName("grid-day")[i + firstDayMonth - 1];
+                day.style.backgroundColor = "#695eff";
+                day.classList.remove('hover-class');
+                day.style.borderRadius = "3px";
+                day.style.color = "white";
+            }
         }
     }
 
     // The text in the month display is updated
-    if(p_month == 0){
+    if (p_month == 0) {
         document.getElementById("previous-month").innerHTML = monthsYear[11];
         document.getElementById("actual-month").innerHTML = monthsYear[p_month];
-        document.getElementById("next-month").innerHTML = monthsYear[p_month+1];
+        document.getElementById("next-month").innerHTML = monthsYear[p_month + 1];
     }
-    else if(p_month == 11){
-        document.getElementById("previous-month").innerHTML = monthsYear[p_month-1];
+    else if (p_month == 11) {
+        document.getElementById("previous-month").innerHTML = monthsYear[p_month - 1];
         document.getElementById("actual-month").innerHTML = monthsYear[p_month];
         document.getElementById("next-month").innerHTML = monthsYear[0];
     }
-    else{
-        document.getElementById("previous-month").innerHTML = monthsYear[p_month-1];
+    else {
+        document.getElementById("previous-month").innerHTML = monthsYear[p_month - 1];
         document.getElementById("actual-month").innerHTML = monthsYear[p_month];
-        document.getElementById("next-month").innerHTML = monthsYear[p_month+1];
+        document.getElementById("next-month").innerHTML = monthsYear[p_month + 1];
     }
-    
+
     // The text in the year display is updated
     document.getElementById("year-text").innerHTML = p_year;
-}
+};
 
 // This function generates the empty grid in main
 function generateGridEmpty() {
@@ -63,28 +97,28 @@ function generateGridEmpty() {
             document.querySelector("main").insertAdjacentHTML("beforeend", "<div class='week-day'></div>");
         }
         else {
-            document.querySelector("main").insertAdjacentHTML("beforeend", "<div class='grid-day'></div>");
+            document.querySelector("main").insertAdjacentHTML("beforeend", "<div class='grid-day hover-class'></div>");
         }
     }
-}
+};
 
 // This function switches the month according to the month selected
-function switchMonth(event){
-    if(event.target.id == "previous-month"){
-        dateSelected.setMonth(dateSelected.getMonth()-1);
+function switchMonth(event) {
+    if (event.target.id == "previous-month") {
+        dateSelected.setMonth(dateSelected.getMonth() - 1);
     }
-    else{
-        dateSelected.setMonth(dateSelected.getMonth()+1);
+    else {
+        dateSelected.setMonth(dateSelected.getMonth() + 1);
     }
 
     generateCalendar(dateSelected.getFullYear(), dateSelected.getMonth());
-}
+};
 
 // This function eliminates the entire grid
-function eliminatePreviousGrid(){
+function eliminatePreviousGrid() {
     var mainGrid = document.querySelector("main");
 
-    while(mainGrid.firstChild) {
+    while (mainGrid.firstChild) {
         mainGrid.removeChild(mainGrid.firstChild);
     }
-}
+};

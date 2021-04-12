@@ -63,7 +63,6 @@ main{
   margin: 0% 10% 4% 10%;
   border: 6px solid;
   border-radius: 5px;
-  color: #000000;
   margin-left: 35px;
   box-sizing: content-box;
   border: 1px ;
@@ -72,19 +71,27 @@ main{
 .week-day{
   text-align: center;
   color: #695eff;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: bold;
   font-family: 'Montserrat', sans-serif;
   border-bottom: 1px solid rgb(241, 241, 241);
-  padding: 3%;
+  padding: 5%;
 }
 
 .grid-day{
   border: 1px solid rgb(245, 245, 245);
   border-bottom: 1px;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px 10px;
 }
 
 .grid-day:hover{
+  color: black;
+}
+
+.hover-class:hover {
   border: 3px solid #695eff;
   border-radius: 4px;
 }
@@ -164,20 +171,12 @@ div#eventContent{
   position: absolute;
 }
 
-.closeButton-shape{
+#closeButton-shape{
   position:absolute;
-  width: 50px;
-  height: 50px;
-  background-image: linear-gradient(140deg, rgb(255, 153, 0) ,  rgb(239, 241, 205) );
-  border-radius: 25px;
-  border: 0.5px solid rgb(223, 212, 212);
-  box-shadow: 1px 1px 6px 1px inset rgb(255, 153, 0);
-}
-
-.closeButton-label{
-  position: relative;
-  width: 30px;
-  height: 30px;
+  margin-left: 350px;
+  color: #695eff;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 #close-button{
@@ -192,15 +191,25 @@ h1.formName{
 }
 
 form{
-    margin: 2%;
-    /*border: 1px black solid;*/
-    padding: 2%;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    position: absolute;
-    z-index: 100;
-    margin:  5% 33%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  margin:  5% 33%;
+  padding: 2%;
+  height: 600px;
+  background-color: white;
+  border-radius: 1.5%;
+  box-shadow: 0px 0px 17px 6px rgb(235, 235, 235);
+}
+
+#cancel-button {
+  padding: 3%;
+  margin-top: 20px;
+}
+
+#create-button {
+  padding: 3%;
 }
 
 div.buttonStyles{
