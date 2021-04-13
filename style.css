@@ -231,15 +231,7 @@ div.buttonStyles  label{
   pointer-events: none;
 }
 
-div.buttonStyles  label::after{
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(-5deg, rgba(255, 153, 0,100),  rgba(243, 245, 201,0.2) ,  rgba(243, 245, 201,0) );
-  border-bottom: 1px solid rgb(255, 153, 0);
-  left: 0%;
-}
+
 
 div.buttonStyles input{
   cursor: pointer;
