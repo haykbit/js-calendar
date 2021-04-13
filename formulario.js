@@ -16,7 +16,31 @@ function callTemplate() {
         eventContent.addEventListener('click', closeEvent);
         document.getElementById('closeButton-shape').addEventListener('click', closeEvent);
         document.getElementById('cancel-button').addEventListener('click', closeEvent);
-        document.getElementById('create-button').addEventListener('click', sendAndCloseEvent);
+        document.getElementById('create-button').addEventListener('click', function() {
+            let eventTitle = document.getElementById("event-tittle").value;
+            let initialDate = document.getElementById("initial-date").value;
+            let finalDateOption = document.getElementById("final-date-option").value;
+            let remindTime = document.getElementById("time-remind").value;
+            let remindText = document.getElementById("remindText").value;
+            let eventType = document.getElementById("event-type").value;
+        
+            let event = {
+                title: eventTitle,
+                idate: initialDate,
+                fdate: finalDateOption,
+                remindTime: remindTime,
+                eventText: remindText,
+                eventType: eventType,
+            };
+        
+            let json = JSON.stringify(event);
+            console.log(json);
+            localStorage.setItem(event.title, json);
+        
+            document.querySelector("body").removeChild(eventContent);
+            document.querySelector("body").removeChild(eventForm);
+            x = 0;
+        });
 
         x += 1;
         function closeEvent() {
@@ -56,31 +80,4 @@ function habilitarDate(date) {
     } else {
         imput.setAttribute("disabled", "")
     }
-};
-
-//_________________________________________________________________ recoger datos
-function sendAndCloseEvent() {
-    let eventTitle = document.getElementById("event-tittle").value;
-    let initialDate = document.getElementById("initial-date").value;
-    let finalDateOption = document.getElementById("final-date-option").value;
-    let remindTime = document.getElementById("time-remind").value;
-    let remindText = document.getElementById("remindText").value;
-    let eventType = document.getElementById("event-type").value;
-
-    let event = {
-        title: eventTitle,
-        idate: initialDate,
-        fdate: finalDateOption,
-        remindTime: remindTime,
-        eventText: remindText,
-        eventType: eventType,
-    };
-
-    let json = JSON.stringify(event);
-    console.log(json);
-    localStorage.setItem(event.title, json);
-
-    document.querySelector("body").removeChild(eventContent);
-    document.querySelector("body").removeChild(eventForm);
-    x = 0;
 };
