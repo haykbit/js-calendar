@@ -61,7 +61,7 @@ function habilitarReminder(remind) {
     let renindImputs = document.querySelectorAll(".habitiation");
     if (remind.checked == true) {
         renindImputs.forEach(element => {
-            element.removeAttribute("disabled")
+            element.removeAttribute("disabled");
         });
     } else {
         renindImputs.forEach(element => {
