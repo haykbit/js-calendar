@@ -16,7 +16,7 @@
             <div class="closeButton-box">
                 <span id="closeButton-shape">X</span>
             </div>
-            <h1 class="formName">Add an event</h1>
+            <h1 id="formName">Add an event</h1>
             <div class='buttonStyles'>
                 <input type="text" name="eventTittle" id="event-tittle" required>
                 <label for="event-tittle" class="label-name"><span class="eventTittle-name">Tittle</span></label>
@@ -25,12 +25,11 @@
             <div class='buttonStyles'>
                 <label for="initial-date">Initial date</label>
                 <input type="date" name="initialDate" id="initial-date">
-                <label for="initial-date">Initial date</label>
 
             </div>
             <div class='checkoxStyles'>
                 <input type="checkbox" name="finalDateOption" id="final-date-option" onchange="habilitarDate(this)">
-                <label for="final-date-option">Final date ?</label>
+                <label for="final-date-option">Add end date</label>
 
             </div>
             <div class='buttonStyles'>
@@ -39,8 +38,8 @@
 
             </div>
             <div class='checkoxStyles'>
-                <input type="checkbox" name="remindOption" id="remind-option" onchange="habilitarReminder(this)"><label
-                    for="remind-option">Remind?</label>
+                <input type="checkbox" name="remindOption" id="remind-option" onchange="habilitarReminder(this)">
+                <label for="remind-option">Add Reminder</label>
 
             </div>
             <div class='selctStyles'>
@@ -57,7 +56,7 @@
             
                 <textarea id="remindText" name="textarea" rows="10" cols="50" class="habitiation" disabled></textarea>
             
-            <div class='selctStyles'>
+            <div id='selctStyles'>
                 <label for="event-type">Event-type</label>
                 <select name="eventType" id="event-type">
                     <option value="Meeting">Meeting</option>
@@ -66,8 +65,8 @@
                 </select>
             </div>
             <div class="final-buttons">
-                <input id="cancel-button" type="reset" value="Cancel" />
                 <input id="create-button" type="submit" value="Create" />
+                <input id="cancel-button" type="reset" value="Cancel" />
             </div>
         </form>
 

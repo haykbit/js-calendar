@@ -33,6 +33,7 @@ header{
 }
 
 #year-display{
+  font-size: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,6 +47,7 @@ header{
 }
 
 #month-display{
+  font-size: 30px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -97,7 +99,6 @@ main{
 }
 
 h1{
-  font-size: 50px;
   justify-content: center;
   font-family: 'Montserrat', sans-serif;
   color: black;
@@ -187,7 +188,7 @@ div#eventContent{
 /*_____________________Inside form*/
 h1.formName{
     text-align: left;
-    font-size: 20px;
+    font-size: 10px;
 }
 
 form{
@@ -197,19 +198,35 @@ form{
   z-index: 100;
   margin:  5% 33%;
   padding: 2%;
-  height: 600px;
+  height: 700px;
   background-color: white;
   border-radius: 1.5%;
   box-shadow: 0px 0px 17px 6px rgb(235, 235, 235);
 }
 
 #cancel-button {
-  padding: 3%;
+  float: right;
+  padding: 4% 6% 4% 6%;
   margin-top: 20px;
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: 17px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(255, 70, 70);
 }
 
 #create-button {
-  padding: 3%;
+  float: right;
+  padding: 4% 6% 4% 6%;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 17px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background-color: #695eff;
 }
 
 div.buttonStyles{
@@ -276,7 +293,13 @@ form select{
 form textarea{
   cursor: pointer;
   max-width: 600px;
+  resize: none;
 }
+
+#selctStyles {
+margin-top: 20px;
+}
+
 /*__________________Inputs animations*/
 
 div.buttonStyles input:focus + .label-name .eventTittle-name,
