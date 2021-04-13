@@ -29,7 +29,7 @@ function callTemplate() {
         //________________cambio la funcion del boton "add-event-button" par que envez de 
         //__________________ abrir otro formulario cierre el que ya esta abierto
         document.querySelector("body").removeChild(eventContent);
-        document.querySelector(".eventForm").style.display = "none";
+        document.querySelector("body").removeChild(eventForm);
         x = 0;
     }
 
@@ -81,5 +81,6 @@ function sendAndCloseEvent() {
     localStorage.setItem(event.title, json);
 
     document.querySelector("body").removeChild(eventContent);
+    document.querySelector("body").removeChild(eventForm);
     x = 0;
 };
