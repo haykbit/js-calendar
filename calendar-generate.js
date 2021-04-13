@@ -1,6 +1,8 @@
 // This variable saves the date shown in the calendar
 var dateSelected = new Date();
-var currentDay = dateSelected.getFullYear();
+
+// These variables save the current year and month
+var currentYear = dateSelected.getFullYear();
 var currentMonth = dateSelected.getMonth();
 
 // Defined constants to display the correct text
@@ -11,26 +13,19 @@ const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Satur
 document.getElementById("previous-month").addEventListener("click", switchMonth, true);
 document.getElementById("next-month").addEventListener("click", switchMonth, true);
 
+// Added listeners to switch the year in the calendar
+document.getElementById("larrow").addEventListener("click", function() {
+    dateSelected.setFullYear(dateSelected.getFullYear() - 1);
+    generateCalendar(dateSelected.getFullYear(), dateSelected.getMonth());
+});
+
+var forwardYear = document.getElementById("rarrow").addEventListener("click", function() {
+    dateSelected.setFullYear(dateSelected.getFullYear() + 1);
+    generateCalendar(dateSelected.getFullYear(), dateSelected.getMonth());
+});
+
 // First, calendar is generated in the current year and month
 generateCalendar(dateSelected.getFullYear(), dateSelected.getMonth());
-
-var backYear = document.getElementById("larrow");
-var forwardYear = document.getElementById("rarrow");
-
-var currentYear = dateSelected.getFullYear();
-backYear.addEventListener("click", function() {
-    var newYear = currentYear-1;
-    currentYear = newYear;
-    currentDay = newYear;
-    generateCalendar(newYear, dateSelected.getMonth());
-});
-
-forwardYear.addEventListener("click", function() {
-    var newYear = currentYear+1;
-    currentYear = newYear;
-    currentDay = newYear;
-    generateCalendar(newYear, dateSelected.getMonth());
-});
 
 // This function generates the new calendar in the month and year selected
 function generateCalendar(p_year, p_month) {
@@ -49,7 +44,7 @@ function generateCalendar(p_year, p_month) {
     for (var i = 0; i < daysMonth; i++) {
         if (firstDayMonth == 0) {
             document.getElementsByClassName("grid-day")[i + 6].innerHTML = i + 1;
-            if (i + 1 == dateSelected.getDate() && currentDay == dateSelected.getFullYear() && currentMonth == dateSelected.getMonth()){
+            if (i + 1 == dateSelected.getDate() && currentYear == dateSelected.getFullYear() && currentMonth == dateSelected.getMonth()){
                 var day = document.getElementsByClassName("grid-day")[i + 6];
                 day.style.backgroundColor = "#695eff";
                 day.classList.remove('hover-class');
@@ -59,7 +54,7 @@ function generateCalendar(p_year, p_month) {
         }
         else {
             document.getElementsByClassName("grid-day")[i + firstDayMonth - 1].innerHTML = i + 1;
-            if (i + 1 == dateSelected.getDate() && currentDay == dateSelected.getFullYear() && currentMonth == dateSelected.getMonth()){
+            if (i + 1 == dateSelected.getDate() && currentYear == dateSelected.getFullYear() && currentMonth == dateSelected.getMonth()){
                 var day = document.getElementsByClassName("grid-day")[i + firstDayMonth - 1];
                 day.style.backgroundColor = "#695eff";
                 day.classList.remove('hover-class');
