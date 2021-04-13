@@ -34,11 +34,8 @@ function callTemplate() {
             };
         
             let json = JSON.stringify(event);
-            console.log(json);
             localStorage.setItem(event.title, json);
         
-            document.querySelector("body").removeChild(eventContent);
-            document.querySelector("body").removeChild(eventForm);
             x = 0;
         });
 
