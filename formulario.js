@@ -62,6 +62,21 @@ function closeEvent(){
     document.querySelector("body").removeChild(document.getElementById("formEvent"));
 }
 
+//____________________________________________________ esta función añade el evento a guardar en el calendario
+function addEventInCalendar(event){
+    var firstDayMonth = new Date(dateSelected.getFullYear(), dateSelected.getMonth(), 1).getDay();
+    var dateTemp = new Date(event.idate);
+    
+    if(dateTemp.getMonth() == dateSelected.getMonth()){
+        if(firstDayMonth == 0){
+            document.getElementsByClassName("grid-day")[5 + dateTemp.getDate()].insertAdjacentHTML("beforeend", "<div class='event-box'>" + event.title + "</div>");
+        }
+        else{
+            document.getElementsByClassName("grid-day")[firstDayMonth + dateTemp.getDate() - 2].insertAdjacentHTML("beforeend", "<div class='event-box'>" + event.title + "</div>");
+        }
+    }
+}
+
 //____________________________________________________ esta función guarda los datos en localStorage y cierra el formulario
 function saveDataAndCloseEvent(evt){
     evt.preventDefault();
@@ -82,6 +97,7 @@ function saveDataAndCloseEvent(evt){
     localStorage.setItem(keyJson, jsonString);
 
     updateEventsArrayFromLocalStorage();
+    addEventInCalendar(event);
 
     closeEvent();
 }
