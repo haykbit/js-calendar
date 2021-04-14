@@ -127,6 +127,7 @@ function DataToCalendar() {
     for (var i = 0; i < arrayEvents.length; i++) {
         var objectTemp = arrayEvents[i];
         var dateTemp = new Date(objectTemp.idate);
+        
         if (dateTemp.getMonth() == dateSelected.getMonth()) {
             let father;
             if (firstDayMonth == 0) {

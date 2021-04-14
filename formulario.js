@@ -16,9 +16,38 @@ function updateEventsArrayFromLocalStorage(){
         let eventSelected = "event" + i;
         let objectTemp = JSON.parse(localStorage.getItem(eventSelected));
         arrayEvents.push(objectTemp);
+        console.log(arrayEvents[i].idate)
+    }
+    
+}
+function remind() {
+    
+  if(arrayEvents.length==0){console.log('empty data')
+    }else{
+    for(i=0;arrayEvents.length;i++){
+        
+        let fechaFinal=arrayEvents[i].fdate;
+        let remindTime=arrayEvents[i].remindTime*60000;
+
+        //let secInitial= new Date(fechaInicial).getTime();
+        let secFinal=new Date(fechaFinal).getTime();
+        
+        let remindNaw=secFinal-remindTime;
+        let timeToEvent=(secFinal-new Date().getTime());
+        if (timeToEvent<=remindTime && timeToEvent>0){
+            console.log('entra')
+            document.querySelector('body').insertAdjacentHTML("beforeend","<div class='reminders'>Remind</div>")
+        }
+        console.log(arrayEvents[i]);
+
+        console.log('tiempoque falta para el evento ',timeToEvent)
+        //console.log('remind time en miligec',remindTime);
+        //let duracionEvento=secFinal-secInitial;
+        //console.log('Duracion del evento', duracionEvento);
+        }
     }
 }
-
+setInterval(remind,10000)
 //_________________________esta función muestra el formulario de nuevo evento
 function callTemplate() {
     //___________________________________________________________copiar y añadir hijo desde el template
@@ -121,6 +150,9 @@ function saveDataAndCloseEvent(evt){
 
     updateEventsArrayFromLocalStorage();
     addEventInCalendar(event);
+    
 
     closeEvent();
+    
 }
+console.log(event);
