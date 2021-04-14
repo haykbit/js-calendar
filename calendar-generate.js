@@ -83,6 +83,8 @@ function generateCalendar(p_year, p_month) {
 
     // The text in the year display is updated
     document.getElementById("year-text").innerHTML = p_year;
+
+    DataToCalendar();
 };
 
 // This function generates the empty grid in main
@@ -117,3 +119,21 @@ function eliminatePreviousGrid() {
         mainGrid.removeChild(mainGrid.firstChild);
     }
 };
+
+// This function generates the events in the corresponding event date
+function DataToCalendar(){
+    var firstDayMonth = new Date(dateSelected.getFullYear(), dateSelected.getMonth(), 1).getDay();
+
+    for (var i = 0; i < arrayEvents.length; i++) {
+        var objectTemp = arrayEvents[i];
+        var dateTemp = new Date(objectTemp.idate);
+        if(dateTemp.getMonth() == dateSelected.getMonth()){
+            if(firstDayMonth == 0){
+                document.getElementsByClassName("grid-day")[5 + dateTemp.getDate()].insertAdjacentHTML("beforeend", "<div class='event-box'>" + objectTemp.title + "</div>");
+            }
+            else{
+                document.getElementsByClassName("grid-day")[firstDayMonth + dateTemp.getDate() - 2].insertAdjacentHTML("beforeend", "<div class='event-box'>" + objectTemp.title + "</div>");
+            }
+        }
+    }
+}
