@@ -87,7 +87,6 @@ main{
   font-weight: bold;
   font-size: 20px;
   padding: 10px 10px;
-  max-height: 100px;
   overflow: auto;
   animation-name: showDay;
   animation-duration: 1s;
@@ -221,10 +220,22 @@ form{
   margin-right: 5px;
   font-weight: bold;
   font-size: 17px;
-  color: white;
-  border: none;
+  color: black;
+  border: 4px solid rgb(255, 70, 70);
   border-radius: 5px;
-  background-color: rgb(255, 70, 70);
+  background-color: white;
+}
+#cancel-button:hover {
+background-color: rgb(255, 70, 70);
+color: white;
+}
+
+label {
+  font-weight: 500;
+}
+
+input {
+  border: 1px solid lightgrey;
 }
 
 #create-button {
@@ -233,10 +244,15 @@ form{
   margin-top: 20px;
   font-weight: bold;
   font-size: 17px;
-  color: white;
-  border: none;
+  color: black;
+  border: 4px solid rgb(105, 94, 255);
   border-radius: 5px;
-  background-color: #695eff;
+  background-color: white;
+}
+
+#create-button:hover {
+  background-color: rgb(105, 94, 255);
+  color: white;
 }
 
 div.buttonStyles{
@@ -253,7 +269,7 @@ div.buttonStyles  label{
   height: 100%;
   left: 0%;
   bottom: 0%;
-  border-bottom: 1px solid rgb(12, 10, 10);
+  border-bottom: 2px solid rgb(235, 235, 235);
   transition: 2s;
   pointer-events: none;
 }
@@ -339,11 +355,11 @@ transform: translateX(0%);
   display: flex;
   align-items: center;
   padding-left: 5px;
-  margin: 3px;
-  height: 25px;
-  font-size: 15px;
-  background:linear-gradient(10deg, #5eb1ff, rgba(0,0,0,0));
-  /* border: white solid 1px; */
+  margin: 7px 0px 0px 0px;
+  height: 17px;
+  max-width: 100%;
+  font-size: 12px;
+  background-color: black;
   border-radius: 5px;
   color: white;
 }
