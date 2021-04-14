@@ -9,7 +9,7 @@ document.getElementById("add-event-button").addEventListener("click", callTempla
 updateEventsArrayFromLocalStorage();
 
 //___________________________________________en esta función actualizamos el array desde los datos del localStorage
-function updateEventsArrayFromLocalStorage(){
+function updateEventsArrayFromLocalStorage() {
     arrayEvents = [];
 
     for (let i = 0; i < localStorage.length; i++) {
@@ -27,8 +27,8 @@ function callTemplate() {
     document.body.appendChild(importNewEvent);
 
     //______________________________________________________________________________añade los EventListeners para los botones
-   
-    
+
+
     document.getElementById('closeButton-shape').addEventListener('click', closeEvent);
     document.getElementById('cancel-button').addEventListener('click', closeEvent);
     document.getElementById('formEvent').addEventListener('submit', saveDataAndCloseEvent, true);
@@ -59,29 +59,29 @@ function habilitarDate(date) {
 };
 function callTemplate2() {
     let newEvent = document.querySelector("template.Event");
-        const importNewEvent = document.importNode(newEvent.content, true);
-        document.querySelector("body").appendChild(importNewEvent);
-        
+    const importNewEvent = document.importNode(newEvent.content, true);
+    document.querySelector("body").appendChild(importNewEvent);
+
 }
 
 //____________________________________________________ esta función cierra el formulario de nuevo evento
-function closeEvent2(){
+function closeEvent2() {
     document.querySelector("body").removeChild(document.getElementById("EventDate"));
     document.querySelector("body").removeChild(document.getElementById("fondo"));
 }
-function closeEvent(){
+function closeEvent() {
     document.querySelector("body").removeChild(document.getElementById("eventContent"));
     document.querySelector("body").removeChild(document.getElementById("formEvent"));
-    
+
 
 }
 
 //____________________________________________________ esta función añade el evento a guardar en el calendario
-function addEventInCalendar(event){
+function addEventInCalendar(event) {
     var firstDayMonth = new Date(dateSelected.getFullYear(), dateSelected.getMonth(), 1).getDay();
     var dateTemp = new Date(event.idate);
-    
-    if(dateTemp.getMonth() == dateSelected.getMonth()){
+
+    if (dateTemp.getMonth() == dateSelected.getMonth()) {
         let father;
         if (firstDayMonth == 0) {
             father = document.getElementsByClassName("grid-day")[5 + dateTemp.getDate()];
@@ -91,17 +91,17 @@ function addEventInCalendar(event){
         }
         let eventsInDay = father.getElementsByClassName("event-box").length;
         let eventMax = father.getElementsByClassName("more-event-box")[0];
-        if(eventsInDay < 1){
+        if (eventsInDay < 1) {
             father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2()'>" + event.title + "</div>");
         }
-        else if((eventsInDay == 1)&&(!eventMax)){
+        else if ((eventsInDay == 1) && (!eventMax)) {
             father.insertAdjacentHTML("beforeend", "<div class='more-event-box'>...</div>");
         }
     }
 }
 
 //____________________________________________________ esta función guarda los datos en localStorage y cierra el formulario
-function saveDataAndCloseEvent(evt){
+function saveDataAndCloseEvent(evt) {
     evt.preventDefault();
 
     let event = {
@@ -123,4 +123,14 @@ function saveDataAndCloseEvent(evt){
     addEventInCalendar(event);
 
     closeEvent();
+}
+
+function crearReminder() {
+    let remindTime = document.getElementById("time-remind").value;
+    let isReminded = document.getElementById("remind-option").checked;
+
+    if (isReminded == true){
+        
+    }
+
 }

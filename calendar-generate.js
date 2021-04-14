@@ -137,17 +137,17 @@ function DataToCalendar() {
             }
             let eventsInDay = father.getElementsByClassName("event-box").length;
             let eventMax = father.getElementsByClassName("more-event-box")[0];
-            if(eventsInDay < 1){
+            if (eventsInDay < 1) {
                 father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2()'>" + objectTemp.title + "</div>");
             }
-            else if((eventsInDay == 1)&&(!eventMax)){
+            else if ((eventsInDay == 1) && (!eventMax)) {
                 father.insertAdjacentHTML("beforeend", "<div class='more-event-box'>...</div>");
             }
         }
     }
-   
 
-}
+};
+
 function generateGridButton(event) {
     let buttonSpecific = document.getElementById("new-event-specific");
     if (buttonSpecific) {

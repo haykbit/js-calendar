@@ -69,14 +69,13 @@
 
         </div>
         <div class='selctStyles'>
-
             <label for="time-remind">Went we remind you?</label>
-            <select name="timeRemind" id="time-remind" class="habitiation" disabled>
-                <option value="5">5 minutes before</option>
-                <option value="10">10 minutes before</option>
-                <option value="15">15 minutes before</option>
-                <option value="30">30 minutes before</option>
-                <option value="60">1 hour before</option>
+            <select name="timeRemind" id="time-remind" class="habitiation" disabled onchange="crearReminder()">
+                <option id="five-minutes" value="5">5 minutes before</option>
+                <option id="ten-minutes" value="10">10 minutes before</option>
+                <option id="fifteen-minutes" value="15">15 minutes before</option>
+                <option id="thirty-minutes" value="30">30 minutes before</option>
+                <option id="sixty-minutes" value="60">1 hour before</option>
             </select>
         </div>
         
