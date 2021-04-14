@@ -13,7 +13,7 @@
     
    
     <header>
-        <button id="prueva"></button>
+        
         <div id="year-display">
             <img id="larrow" src="img/larrow.png" />
             <h1 id="year-text"></h1>
@@ -45,7 +45,7 @@
         <h1 id="formName">Add an event</h1>
         <div class='buttonStyles'>
             <input type="text" name="eventTittle" id="event-tittle" required>
-            <label for="event-tittle" class="label-name"><span class="eventTittle-name">Tittle</span></label>
+            <label for="event-tittle" class="label-name"><span class="eventTittle-name"><h2>Tittle</h2></span></label>
 
         </div>
         <div class='buttonStyles'>
@@ -101,7 +101,6 @@
     </div>
 </template>
 <template class="Event">
-        
     <div id="EventDate">
         <div class=enventTittle><h1>titulo</h1></div>
         <div class=inDate><h5>El evento empieza</h5></div>
@@ -109,7 +108,7 @@
         <div class=typeText><h5>tipo:</h5></div>
         <div class=description><h5>consiste en:</h5></div>
     </div>
-    <div id='fondo'></div>
+    <div id='fondo' onclick="closeEvent2()"></div>
 
 
 </template>
