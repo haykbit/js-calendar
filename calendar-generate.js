@@ -13,6 +13,7 @@ const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Satur
 document.getElementById("previous-month").addEventListener("click", switchMonth, true);
 document.getElementById("next-month").addEventListener("click", switchMonth, true);
 
+
 // Added listeners to switch the year in the calendar
 document.getElementById("larrow").addEventListener("click", function () {
     dateSelected.setFullYear(dateSelected.getFullYear() - 1);
@@ -132,10 +133,13 @@ function DataToCalendar(){
                 document.getElementsByClassName("grid-day")[5 + dateTemp.getDate()].insertAdjacentHTML("beforeend", "<div class='event-box'>" + objectTemp.title + "</div>");
             }
             else{
-                document.getElementsByClassName("grid-day")[firstDayMonth + dateTemp.getDate() - 2].insertAdjacentHTML("beforeend", "<div class='event-box'>" + objectTemp.title + "</div>");
+                document.getElementsByClassName("grid-day")[firstDayMonth + dateTemp.getDate() - 2].insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2()'>" + objectTemp.title + "</div>");
+                
             }
         }
     }
+   
+
 }
 function generateGridButton(event) {
     let buttonSpecific = document.getElementById("new-event-specific");

@@ -173,6 +173,9 @@ div#EventDate{
   align-items: center;
   box-shadow:10px 10px 20px 0px #c2bdf0;
   border-radius: 20px;
+  animation-name:ancho;
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
 }
 div#EventDate div{
   width: 80%;
@@ -190,10 +193,23 @@ div#EventDate div.enventTittle{
 div#fondo{
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(3px);
   z-index: 80;
   position: absolute;
   align-content: center;
+  animation-name:bluratuion;
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+}
+@keyframes bluratuion {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+@keyframes ancho {
+  0% {width:  2%;
+      height: 2%;}
+  50%{height: 50%;}
+  100% {width: 50%;}
 }
 
 /*______________________Formulario template*/

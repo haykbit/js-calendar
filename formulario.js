@@ -26,7 +26,8 @@ function callTemplate() {
     document.body.appendChild(importNewEvent);
 
     //______________________________________________________________________________añade los EventListeners para los botones
-    document.getElementById('eventContent').addEventListener('click', closeEvent);
+   
+    
     document.getElementById('closeButton-shape').addEventListener('click', closeEvent);
     document.getElementById('cancel-button').addEventListener('click', closeEvent);
     document.getElementById('formEvent').addEventListener('submit', saveDataAndCloseEvent, true);
@@ -55,7 +56,6 @@ function habilitarDate(date) {
         imput.setAttribute("disabled", "")
     }
 };
-document.getElementById("prueva").addEventListener("click", callTemplate2);
 function callTemplate2() {
     let newEvent = document.querySelector("template.Event");
         const importNewEvent = document.importNode(newEvent.content, true);
@@ -64,9 +64,15 @@ function callTemplate2() {
 }
 
 //____________________________________________________ esta función cierra el formulario de nuevo evento
+function closeEvent2(){
+    document.querySelector("body").removeChild(document.getElementById("EventDate"));
+    document.querySelector("body").removeChild(document.getElementById("fondo"));
+}
 function closeEvent(){
     document.querySelector("body").removeChild(document.getElementById("eventContent"));
     document.querySelector("body").removeChild(document.getElementById("formEvent"));
+    
+
 }
 
 //____________________________________________________ esta función añade el evento a guardar en el calendario
