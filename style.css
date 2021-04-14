@@ -112,11 +112,19 @@ h3{
   transition: filter, 0.4s, ease-out;
   font-family: 'Montserrat', sans-serif;
 }
-
+/* 
 h3:hover{
   filter:none;
   transform: scale(1.4);
   transition: all 0.4s 20ms ease-out;
+} */
+
+
+#next-month:hover {
+  transform: scale(1.4);
+  transition: all 1.5s;
+  transform: translate(3)ñ
+
 }
 
 #add-event-button{
