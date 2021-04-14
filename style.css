@@ -273,17 +273,22 @@ div#eventContent{
   visibility: hidden;
 }
 .closeButton-box{
-  left:15%;
-  position: absolute;
+  margin-left: 95%;
+
 }
 
 #closeButton-shape{
+<<<<<<< HEAD
   position:absolute;
   margin-left: 330px;
   margin-bottom: 4px;
   color: #695eff;
   font-weight: bold;
+=======
+  font-weight: 600;
+>>>>>>> 3ed469892509bfbe83f0e7f4bbe0b0ef09672476
   font-size: 20px;
+  color: #695eff;
 }
 
 #close-button{
@@ -303,7 +308,7 @@ form{
   flex-direction: column;
   z-index: 100;
   margin:  5% 33%;
-  padding: 2%;
+  padding: 2% 2% 2% 2%;
   height: 700px;
   background-color: white;
   border-radius: 1.5%;
@@ -312,7 +317,7 @@ form{
 
 #cancel-button {
   float: right;
-  padding: 4% 6% 4% 6%;
+  padding: 3% 5% 3% 5%;
   margin-top: 20px;
   margin-right: 5px;
   font-weight: bold;
@@ -327,17 +332,9 @@ background-color: rgb(255, 70, 70);
 color: white;
 }
 
-label {
-  font-weight: 500;
-}
-
-input {
-  border: 1px solid lightgrey;
-}
-
 #create-button {
   float: right;
-  padding: 4% 6% 4% 6%;
+  padding: 3% 5% 3% 5%;
   margin-top: 20px;
   font-weight: bold;
   font-size: 17px;
@@ -365,13 +362,12 @@ div.buttonStyles  label{
   width: 100%;
   height: 100%;
   left: 0%;
+  font-weight: 500;
   bottom: 0%;
   border-bottom: 2px solid rgb(235, 235, 235);
   transition: 2s;
   pointer-events: none;
 }
-
-
 
 div.buttonStyles input{
   cursor: pointer;
@@ -379,6 +375,7 @@ div.buttonStyles input{
   border: none;
   padding-top: 20px;
   background-color: rgba(255,255,255,0);
+  border-bottom: 1px solid lightgrey;
   width: 100%;
   height: 100%;
   outline: none;
@@ -420,9 +417,14 @@ form textarea{
   resize: none;
 }
 
+form label{
+  font-weight: 500;
+}
+
 #selctStyles {
   margin-top: 20px;
 }
+
 
 #new-event-specific {
   background-color: rgb(255, 70, 70);
