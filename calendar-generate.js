@@ -14,12 +14,12 @@ document.getElementById("previous-month").addEventListener("click", switchMonth,
 document.getElementById("next-month").addEventListener("click", switchMonth, true);
 
 // Added listeners to switch the year in the calendar
-document.getElementById("larrow").addEventListener("click", function() {
+document.getElementById("larrow").addEventListener("click", function () {
     dateSelected.setFullYear(dateSelected.getFullYear() - 1);
     generateCalendar(dateSelected.getFullYear(), dateSelected.getMonth());
 });
 
-var forwardYear = document.getElementById("rarrow").addEventListener("click", function() {
+var forwardYear = document.getElementById("rarrow").addEventListener("click", function () {
     dateSelected.setFullYear(dateSelected.getFullYear() + 1);
     generateCalendar(dateSelected.getFullYear(), dateSelected.getMonth());
 });
@@ -44,7 +44,7 @@ function generateCalendar(p_year, p_month) {
     for (var i = 0; i < daysMonth; i++) {
         if (firstDayMonth == 0) {
             document.getElementsByClassName("grid-day")[i + 6].innerHTML = i + 1;
-            if (i + 1 == dateSelected.getDate() && currentYear == dateSelected.getFullYear() && currentMonth == dateSelected.getMonth()){
+            if (i + 1 == dateSelected.getDate() && currentYear == dateSelected.getFullYear() && currentMonth == dateSelected.getMonth()) {
                 var day = document.getElementsByClassName("grid-day")[i + 6];
                 day.style.backgroundColor = "#695eff";
                 day.classList.remove('hover-class');
@@ -54,7 +54,7 @@ function generateCalendar(p_year, p_month) {
         }
         else {
             document.getElementsByClassName("grid-day")[i + firstDayMonth - 1].innerHTML = i + 1;
-            if (i + 1 == dateSelected.getDate() && currentYear == dateSelected.getFullYear() && currentMonth == dateSelected.getMonth()){
+            if (i + 1 == dateSelected.getDate() && currentYear == dateSelected.getFullYear() && currentMonth == dateSelected.getMonth()) {
                 var day = document.getElementsByClassName("grid-day")[i + firstDayMonth - 1];
                 day.style.backgroundColor = "#695eff";
                 day.classList.remove('hover-class');
@@ -83,6 +83,8 @@ function generateCalendar(p_year, p_month) {
 
     // The text in the year display is updated
     document.getElementById("year-text").innerHTML = p_year;
+
+    DataToCalendar();
 };
 
 // This function generates the empty grid in main
@@ -92,7 +94,7 @@ function generateGridEmpty() {
             document.querySelector("main").insertAdjacentHTML("beforeend", "<div class='week-day'></div>");
         }
         else {
-            document.querySelector("main").insertAdjacentHTML("beforeend", "<div class='grid-day hover-class'></div>");
+            document.querySelector("main").insertAdjacentHTML("beforeend", "<div class='grid-day hover-class' onmouseover='generateGridButton(event)'></div>");
         }
     }
 };
@@ -116,4 +118,51 @@ function eliminatePreviousGrid() {
     while (mainGrid.firstChild) {
         mainGrid.removeChild(mainGrid.firstChild);
     }
+};
+
+// This function generates the events in the corresponding event date
+function DataToCalendar(){
+    var firstDayMonth = new Date(dateSelected.getFullYear(), dateSelected.getMonth(), 1).getDay();
+
+    for (var i = 0; i < arrayEvents.length; i++) {
+        var objectTemp = arrayEvents[i];
+        var dateTemp = new Date(objectTemp.idate);
+        if(dateTemp.getMonth() == dateSelected.getMonth()){
+            if(firstDayMonth == 0){
+                document.getElementsByClassName("grid-day")[5 + dateTemp.getDate()].insertAdjacentHTML("beforeend", "<div class='event-box'>" + objectTemp.title + "</div>");
+            }
+            else{
+                document.getElementsByClassName("grid-day")[firstDayMonth + dateTemp.getDate() - 2].insertAdjacentHTML("beforeend", "<div class='event-box'>" + objectTemp.title + "</div>");
+            }
+        }
+    }
+}
+function generateGridButton(event) {
+    let buttonSpecific = document.getElementById("new-event-specific");
+    if (buttonSpecific) {
+        if ((event.target.getAttribute("class") == "grid-day hover-class") ||
+            (event.target.getAttribute("class") == "grid-day")) {
+            buttonSpecific.parentNode.removeChild(buttonSpecific);
+            event.target.insertAdjacentHTML("beforeend", "<input type='button' id='new-event-specific' value='+'>");
+            newEventActivator();
+        }
+    }
+    else {
+        event.target.insertAdjacentHTML("beforeend", "<input type='button' id='new-event-specific' value='+'>");
+        newEventActivator();
+    }
+};
+
+function newEventActivator() {
+    var button = document.getElementById("new-event-specific");
+    button.addEventListener('click', function () {
+        var script = document.createElement('script');
+        script.src = 'formulario.js';
+        script.type = 'text/javascript';
+
+        callTemplate();
+        habilitarReminder(this);
+        habilitarDate(this);
+
+    });
 };

@@ -87,6 +87,19 @@ main{
   font-weight: bold;
   font-size: 20px;
   padding: 10px 10px;
+  max-height: 100px;
+  overflow: auto;
+  animation-name: showDay;
+  animation-duration: 1s;
+}
+
+@keyframes showDay {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .grid-day:hover{
@@ -108,15 +121,7 @@ h3{
   font-weight: 300;
   font-size: 25px;
   opacity: 70%;
-  transition: transform 1s, 0.1s, ease-out;
-  transition: filter, 0.4s, ease-out;
   font-family: 'Montserrat', sans-serif;
-}
-
-h3:hover{
-  filter:none;
-  transform: scale(1.4);
-  transition: all 0.4s 20ms ease-out;
 }
 
 #add-event-button{
@@ -129,9 +134,14 @@ h3:hover{
   border: none;
   font-size: 40px;
   color: white;
-  box-shadow: 10px 10px 20px lightgrey;
+  box-shadow: 0px 0px 17px 6px rgb(235, 235, 235);
   background-color: #695eff;
   margin: 30px;
+  transition: all .2s ease-in-out;
+}
+
+#add-event-button:hover{
+  transform: rotate(90deg);
 }
 
 .form-popup{
@@ -334,9 +344,20 @@ form textarea{
 }
 
 #selctStyles {
-margin-top: 20px;
+  margin-top: 20px;
 }
 
+#new-event-specific {
+  background-color: rgb(255, 70, 70);
+  border: none;
+  float: right;
+  padding: 1% 4% 1% 4%;
+  color: white;
+  border-radius: 10%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
 /*__________________Inputs animations*/
 
 div.buttonStyles input:focus + .label-name .eventTittle-name,
@@ -349,4 +370,17 @@ div.buttonStyles input:focus + .label-name::after,
 div.buttonStyles input:valid + .label-name::after{
 transform: translateX(0%);
 
+}
+
+.event-box{
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  margin: 3px;
+  height: 25px;
+  font-size: 15px;
+  background:linear-gradient(10deg, #5eb1ff, rgba(0,0,0,0));
+  /* border: white solid 1px; */
+  border-radius: 5px;
+  color: white;
 }
