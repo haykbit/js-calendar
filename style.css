@@ -89,6 +89,17 @@ main{
   padding: 10px 10px;
   max-height: 100px;
   overflow: auto;
+  animation-name: showDay;
+  animation-duration: 1s;
+}
+
+@keyframes showDay {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .grid-day:hover{
@@ -110,15 +121,7 @@ h3{
   font-weight: 300;
   font-size: 25px;
   opacity: 70%;
-  transition: transform 1s, 0.1s, ease-out;
-  transition: filter, 0.4s, ease-out;
   font-family: 'Montserrat', sans-serif;
-}
-
-h3:hover{
-  filter:none;
-  transform: scale(1.4);
-  transition: all 0.4s 20ms ease-out;
 }
 
 #add-event-button{
