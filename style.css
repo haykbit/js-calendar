@@ -225,9 +225,9 @@ div#EventDate div.enventTittle{
 }
 
 titulo{
-  
   font-weight: 500;
   color: #695eff;
+  border
 }
 
 div#fondo{
@@ -279,7 +279,8 @@ div#eventContent{
 
 #closeButton-shape{
   position:absolute;
-  margin-left: 350px;
+  margin-left: 330px;
+  margin-bottom: 4px;
   color: #695eff;
   font-weight: bold;
   font-size: 20px;
