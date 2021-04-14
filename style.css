@@ -280,15 +280,12 @@ div#eventContent{
 }
 
 #closeButton-shape{
-<<<<<<< HEAD
   position:absolute;
   margin-left: 330px;
   margin-bottom: 4px;
   color: #695eff;
   font-weight: bold;
-=======
   font-weight: 600;
->>>>>>> 3ed469892509bfbe83f0e7f4bbe0b0ef09672476
   font-size: 20px;
   color: #695eff;
 }
