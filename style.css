@@ -87,7 +87,6 @@ main{
   font-weight: bold;
   font-size: 20px;
   padding: 10px 10px;
-  max-height: 100px;
   overflow: auto;
   animation-name: showDay;
   animation-duration: 1s;
@@ -200,6 +199,9 @@ div#EventDate{
   align-items: center;
   box-shadow:10px 10px 20px 0px #c2bdf0;
   border-radius: 20px;
+  animation-name:widthSize;
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
 }
 div#EventDate div{
   width: 80%;
@@ -217,10 +219,26 @@ div#EventDate div.enventTittle{
 div#fondo{
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(3px);
   z-index: 80;
   position: absolute;
   align-content: center;
+  animation-name:backgroundAperars;
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+}
+@keyframes backgroundAperars {
+  0% {opacity: 0;}
+
+  100% {opacity: 1;}
+}
+@keyframes widthSize {
+  0% {width:  2%;
+      height: 2%;}
+
+  50%{height: 50%;}
+
+  100% {width: 50%;}
 }
 
 /*______________________Formulario template*/
@@ -231,7 +249,6 @@ template.newEvent{
 
 div#eventContent{
   position:absolute;
-  
   z-index: 0;
   backdrop-filter: blur(2px);
   width: 100%;
@@ -285,10 +302,22 @@ form{
   margin-right: 5px;
   font-weight: bold;
   font-size: 17px;
-  color: white;
-  border: none;
+  color: black;
+  border: 4px solid rgb(255, 70, 70);
   border-radius: 5px;
-  background-color: rgb(255, 70, 70);
+  background-color: white;
+}
+#cancel-button:hover {
+background-color: rgb(255, 70, 70);
+color: white;
+}
+
+label {
+  font-weight: 500;
+}
+
+input {
+  border: 1px solid lightgrey;
 }
 
 #create-button {
@@ -297,16 +326,21 @@ form{
   margin-top: 20px;
   font-weight: bold;
   font-size: 17px;
-  color: white;
-  border: none;
+  color: black;
+  border: 4px solid rgb(105, 94, 255);
   border-radius: 5px;
-  background-color: #695eff;
+  background-color: white;
+}
+
+#create-button:hover {
+  background-color: rgb(105, 94, 255);
+  color: white;
 }
 
 div.buttonStyles{
   position: relative;
   overflow: hidden;
-  height: 50px;
+  height: 250px;
   margin-bottom: 20px;
   
 }
@@ -317,7 +351,7 @@ div.buttonStyles  label{
   height: 100%;
   left: 0%;
   bottom: 0%;
-  border-bottom: 1px solid rgb(12, 10, 10);
+  border-bottom: 2px solid rgb(235, 235, 235);
   transition: 2s;
   pointer-events: none;
 }
@@ -341,17 +375,18 @@ div.buttonStyles input{
   transition: 0.5s ease;
  
 }
-div.buttonStyles  label::after{
+div.buttonStyles label::after{
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(-5deg, rgba(255, 153, 0,100),  rgba(243, 245, 201,0.2) ,  rgba(243, 245, 201,0) );
-  border-bottom: 1px solid rgb(255, 153, 0);
+  background-image: linear-gradient(-2deg, rgb(105, 94, 255),  rgb(248, 247, 253) ,  rgb(255, 255, 255) );
+  border-bottom: 1px solid rgb(105, 94, 255);
   left: 0%;
+  bottom: 0%;
   transform: translateX(100%);
   transition: 0.5s ease;
-  
+  opacity: 0.3;
 }
 
 div.checkoxStyles{
@@ -390,7 +425,7 @@ form textarea{
 div.buttonStyles input:focus + .label-name .eventTittle-name,
 div.buttonStyles input:valid + .label-name .eventTittle-name{
   transform: translateY(-20px);
-  color:rgb(201, 127, 17);
+  color:rgb(105, 94, 255);
   font-size: 15px;
 }
 div.buttonStyles input:focus + .label-name::after,
@@ -403,11 +438,11 @@ transform: translateX(0%);
   display: flex;
   align-items: center;
   padding-left: 5px;
-  margin: 3px;
-  height: 25px;
-  font-size: 15px;
-  background:linear-gradient(10deg, #5eb1ff, rgba(0,0,0,0));
-  /* border: white solid 1px; */
+  margin: 7px 0px 0px 0px;
+  height: 17px;
+  max-width: 100%;
+  font-size: 12px;
+  background-color: black;
   border-radius: 5px;
   color: white;
 }

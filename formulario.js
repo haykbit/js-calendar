@@ -1,5 +1,6 @@
 //___________________en este array se guardarán todos los eventos guardados en el localStorage
 let arrayEvents = [];
+let inputDate;
 
 //___________________________________________________________________________________añadido la llamada del botón para llamar al template
 document.getElementById("add-event-button").addEventListener("click", callTemplate);
@@ -26,7 +27,8 @@ function callTemplate() {
     document.body.appendChild(importNewEvent);
 
     //______________________________________________________________________________añade los EventListeners para los botones
-    document.getElementById('eventContent').addEventListener('click', closeEvent);
+   
+    
     document.getElementById('closeButton-shape').addEventListener('click', closeEvent);
     document.getElementById('cancel-button').addEventListener('click', closeEvent);
     document.getElementById('formEvent').addEventListener('submit', saveDataAndCloseEvent, true);
@@ -55,7 +57,6 @@ function habilitarDate(date) {
         imput.setAttribute("disabled", "")
     }
 };
-document.getElementById("prueva").addEventListener("click", callTemplate2);
 function callTemplate2() {
     let newEvent = document.querySelector("template.Event");
         const importNewEvent = document.importNode(newEvent.content, true);
@@ -64,9 +65,15 @@ function callTemplate2() {
 }
 
 //____________________________________________________ esta función cierra el formulario de nuevo evento
+function closeEvent2(){
+    document.querySelector("body").removeChild(document.getElementById("EventDate"));
+    document.querySelector("body").removeChild(document.getElementById("fondo"));
+}
 function closeEvent(){
     document.querySelector("body").removeChild(document.getElementById("eventContent"));
     document.querySelector("body").removeChild(document.getElementById("formEvent"));
+    
+
 }
 
 //____________________________________________________ esta función añade el evento a guardar en el calendario
@@ -75,11 +82,20 @@ function addEventInCalendar(event){
     var dateTemp = new Date(event.idate);
     
     if(dateTemp.getMonth() == dateSelected.getMonth()){
-        if(firstDayMonth == 0){
-            document.getElementsByClassName("grid-day")[5 + dateTemp.getDate()].insertAdjacentHTML("beforeend", "<div class='event-box'>" + event.title + "</div>");
+        let father;
+        if (firstDayMonth == 0) {
+            father = document.getElementsByClassName("grid-day")[5 + dateTemp.getDate()];
         }
-        else{
-            document.getElementsByClassName("grid-day")[firstDayMonth + dateTemp.getDate() - 2].insertAdjacentHTML("beforeend", "<div class='event-box'>" + event.title + "</div>");
+        else {
+            father = document.getElementsByClassName("grid-day")[firstDayMonth + dateTemp.getDate() - 2];
+        }
+        let eventsInDay = father.getElementsByClassName("event-box").length;
+        let eventMax = father.getElementsByClassName("more-event-box")[0];
+        if(eventsInDay < 1){
+            father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2()'>" + event.title + "</div>");
+        }
+        else if((eventsInDay == 1)&&(!eventMax)){
+            father.insertAdjacentHTML("beforeend", "<div class='more-event-box'>...</div>");
         }
     }
 }
