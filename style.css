@@ -321,7 +321,7 @@ div.buttonStyles{
 div.buttonStyles  label{
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 50%;
   left: 0%;
   bottom: 0%;
   border-bottom: 2px solid rgb(235, 235, 235);
