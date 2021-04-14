@@ -1,13 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 * {
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
 body{
-  /*background: rgb(158, 236, 210);*/
-  /*background: linear-gradient(25deg, rgb(255, 255, 255) 0%, rgb(153, 255, 187) 44%, rgb(158, 236, 210) 77%);*/
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -85,7 +83,7 @@ main{
   border-bottom: 1px;
   color: black;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 15px;
   padding: 10px 10px;
   overflow: auto;
   animation-name: showDay;
@@ -157,6 +155,7 @@ h3{
   max-width: 700px;
   padding: 5px;
 }
+
 div#EventDate{
   background-color:  rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(5px);
@@ -176,12 +175,14 @@ div#EventDate{
   animation-duration: 0.3s;
   animation-timing-function: ease;
 }
+
 div#EventDate div{
   width: 80%;
   height: 50px;
   background: linear-gradient(-2deg, #a2c1fc ,  #ebe9fd,rgba(255,255,255,0)  );
   padding-bottom: 10px;
 }
+
 div#EventDate div.enventTittle{
   width: 80%;
   height: 100px;
@@ -200,11 +201,13 @@ div#fondo{
   animation-duration: 0.3s;
   animation-timing-function: ease;
 }
+
 @keyframes backgroundAperars {
   0% {opacity: 0;}
 
   100% {opacity: 1;}
 }
+
 @keyframes widthSize {
   0% {width:  2%;
       height: 2%;}
@@ -213,12 +216,10 @@ div#fondo{
 
   100% {width: 50%;}
 }
-
 /*______________________Formulario template*/
 template.newEvent{
   margin: 0 auto;
 }
-
 
 div#eventContent{
   position:absolute;
@@ -227,10 +228,11 @@ div#eventContent{
   width: 100%;
   height: 100%;
 }
-   /*_________boton cerrar*/
+/*_________boton cerrar*/
 #close-button{
   visibility: hidden;
 }
+
 .closeButton-box{
   margin-left: 95%;
 
@@ -246,7 +248,6 @@ div#eventContent{
   background-color: white;
   border: none;
 }
-
 /*_____________________Inside form*/
 h1.formName{
     text-align: left;
@@ -278,9 +279,10 @@ form{
   border-radius: 5px;
   background-color: white;
 }
+
 #cancel-button:hover {
-background-color: rgb(255, 70, 70);
-color: white;
+  background-color: rgb(255, 70, 70);
+  color: white;
 }
 
 #create-button {
@@ -338,6 +340,7 @@ div.buttonStyles input{
   transition: 0.5s ease;
  
 }
+
 div.buttonStyles label::after{
   content: "";
   position: absolute;
@@ -376,7 +379,6 @@ form label{
   margin-top: 20px;
 }
 
-
 #new-event-specific {
   background-color: rgb(255, 70, 70);
   border: none;
@@ -389,13 +391,13 @@ form label{
   font-size: 20px;
 }
 /*__________________Inputs animations*/
-
 div.buttonStyles input:focus + .label-name .eventTittle-name,
 div.buttonStyles input:valid + .label-name .eventTittle-name{
   transform: translateY(-20px);
   color:rgb(105, 94, 255);
   font-size: 15px;
 }
+
 div.buttonStyles input:focus + .label-name::after,
 div.buttonStyles input:valid + .label-name::after{
 transform: translateX(0%);
@@ -407,10 +409,17 @@ transform: translateX(0%);
   align-items: center;
   padding-left: 5px;
   margin: 7px 0px 0px 0px;
-  height: 17px;
-  max-width: 100%;
-  font-size: 12px;
+  height: 25px;
+  font-weight: bold;
+  font-size: 15px;
   background-color: black;
   border-radius: 5px;
   color: white;
+}
+
+.more-event-box{
+  height: 0px;
+  text-align: center;
+  margin-top: -7px;
+  font-size: 20px;
 }
