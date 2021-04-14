@@ -119,10 +119,27 @@ h3:hover{
   transition: all 0.4s 20ms ease-out;
 } */
 
+#previous-month:not(:active) {
+  /* now keep red background for 1s */
+  transition: color 400ms ease-out;
+  transition: translate 300ms ease-in-out;
+}
+
+#previous-month:active {
+  color: #695eff;
+  transform: translateX(40);
+}
+
 
 #next-month:hover {
   transform: scale(1.4);
-  transition: all 1.5s;
+  transition: all 300ms;
+  transform: translate(3);
+
+}
+#previous-month:hover {
+  transform: scale(1.4);
+  transition: all 300ms;
   transform: translate(3)ñ
 
 }

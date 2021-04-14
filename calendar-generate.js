@@ -117,3 +117,17 @@ function eliminatePreviousGrid() {
         mainGrid.removeChild(mainGrid.firstChild);
     }
 };
+
+
+var i = currentMonth;
+
+
+// console.log(i);
+// console.log(monthsYear);
+// if (i++)
+// {
+//     document.getElementById("actual-month")
+// }else(i--)
+// {
+//     document.getElementById("actual-month")
+// }

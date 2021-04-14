@@ -1,11 +1,6 @@
-
-var i = currentMonth;
-console.log(i);
-console.log(monthsYear);
-// if (i++)
-// {
-//     document.getElementById("actual-month").
-// }else(i--)
-// {
-
-// }
+document.getElementById("previous-month").addEventListener("click", function()
+    {
+        var actual = document.getElementById("actual-month;");
+        actual.classList.add("previous");
+        console.log("i");
+    });
