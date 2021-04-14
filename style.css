@@ -42,6 +42,7 @@ header{
   font-size: 60px;
   margin-left: 20px;
   margin-bottom: 65px;
+  color: lightgrey;
 }
 
 #month-display{
@@ -82,8 +83,8 @@ main{
   border: 1px solid rgb(245, 245, 245);
   border-bottom: 1px;
   color: black;
-  font-weight: bold;
-  font-size: 15px;
+  font-weight: 700;
+  font-size: 20px;
   padding: 10px 10px;
   overflow: auto;
   animation-name: showDay;
@@ -157,7 +158,7 @@ h3{
 }
 
 div#EventDate{
-  background-color:  rgba(255, 255, 255, 0.2);
+  background-color: white;
   backdrop-filter: blur(5px);
   width: 50%;
   height: 50%;
@@ -169,8 +170,8 @@ div#EventDate{
   justify-content: center;
   justify-content: space-around;
   align-items: center;
-  box-shadow:10px 10px 20px 0px #c2bdf0;
-  border-radius: 20px;
+  box-shadow: 0px 0px 17px 6px rgb(235, 235, 235);
+  border-radius: 5px;
   animation-name:widthSize;
   animation-duration: 0.3s;
   animation-timing-function: ease;
@@ -409,12 +410,11 @@ transform: translateX(0%);
   align-items: center;
   padding-left: 5px;
   margin: 7px 0px 0px 0px;
-  height: 25px;
-  font-weight: bold;
+  max-width: 85px;
   font-size: 15px;
   background-color: black;
-  border-radius: 5px;
-  color: white;
+  border-radius: 2px;
+  color:white;
 }
 
 .more-event-box{

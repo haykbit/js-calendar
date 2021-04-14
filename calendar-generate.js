@@ -182,6 +182,5 @@ function newEventActivator(elementTarget) {
 
         habilitarReminder(this);
         habilitarDate(this);
-
     });
 };
