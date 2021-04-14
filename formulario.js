@@ -1,5 +1,6 @@
 //___________________en este array se guardarán todos los eventos guardados en el localStorage
 let arrayEvents = [];
+let inputDate;
 
 //___________________________________________________________________________________añadido la llamada del botón para llamar al template
 document.getElementById("add-event-button").addEventListener("click", callTemplate);
@@ -81,11 +82,20 @@ function addEventInCalendar(event){
     var dateTemp = new Date(event.idate);
     
     if(dateTemp.getMonth() == dateSelected.getMonth()){
-        if(firstDayMonth == 0){
-            document.getElementsByClassName("grid-day")[5 + dateTemp.getDate()].insertAdjacentHTML("beforeend", "<div class='event-box'>" + event.title + "</div>");
+        let father;
+        if (firstDayMonth == 0) {
+            father = document.getElementsByClassName("grid-day")[5 + dateTemp.getDate()];
         }
-        else{
-            document.getElementsByClassName("grid-day")[firstDayMonth + dateTemp.getDate() - 2].insertAdjacentHTML("beforeend", "<div class='event-box'>" + event.title + "</div>");
+        else {
+            father = document.getElementsByClassName("grid-day")[firstDayMonth + dateTemp.getDate() - 2];
+        }
+        let eventsInDay = father.getElementsByClassName("event-box").length;
+        let eventMax = father.getElementsByClassName("more-event-box")[0];
+        if(eventsInDay < 1){
+            father.insertAdjacentHTML("beforeend", "<div class='event-box'>" + event.title + "</div>");
+        }
+        else if((eventsInDay == 1)&&(!eventMax)){
+            father.insertAdjacentHTML("beforeend", "<div class='more-event-box'>...</div>");
         }
     }
 }
