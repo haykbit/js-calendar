@@ -121,18 +121,26 @@ function eliminatePreviousGrid() {
 };
 
 // This function generates the events in the corresponding event date
-function DataToCalendar(){
+function DataToCalendar() {
     var firstDayMonth = new Date(dateSelected.getFullYear(), dateSelected.getMonth(), 1).getDay();
-
     for (var i = 0; i < arrayEvents.length; i++) {
         var objectTemp = arrayEvents[i];
         var dateTemp = new Date(objectTemp.idate);
-        if(dateTemp.getMonth() == dateSelected.getMonth()){
-            if(firstDayMonth == 0){
-                document.getElementsByClassName("grid-day")[5 + dateTemp.getDate()].insertAdjacentHTML("beforeend", "<div class='event-box'>" + objectTemp.title + "</div>");
+        if (dateTemp.getMonth() == dateSelected.getMonth()) {
+            let father;
+            if (firstDayMonth == 0) {
+                father = document.getElementsByClassName("grid-day")[5 + dateTemp.getDate()];
             }
-            else{
-                document.getElementsByClassName("grid-day")[firstDayMonth + dateTemp.getDate() - 2].insertAdjacentHTML("beforeend", "<div class='event-box'>" + objectTemp.title + "</div>");
+            else {
+                father = document.getElementsByClassName("grid-day")[firstDayMonth + dateTemp.getDate() - 2];
+            }
+            let eventsInDay = father.getElementsByClassName("event-box").length;
+            let eventMax = father.getElementsByClassName("more-event-box")[0];
+            if(eventsInDay < 1){
+                father.insertAdjacentHTML("beforeend", "<div class='event-box'>" + objectTemp.title + "</div>");
+            }
+            else if((eventsInDay == 1)&&(!eventMax)){
+                father.insertAdjacentHTML("beforeend", "<div class='more-event-box'>...</div>");
             }
         }
     }
@@ -143,12 +151,12 @@ function generateGridButton(event) {
         if ((event.target.getAttribute("class") == "grid-day hover-class") ||
             (event.target.getAttribute("class") == "grid-day")) {
             buttonSpecific.parentNode.removeChild(buttonSpecific);
-            event.target.insertAdjacentHTML("beforeend", "<input type='button' id='new-event-specific' value='+'>");
+            event.target.insertAdjacentHTML("afterbegin", "<input type='button' id='new-event-specific' value='+'>");
             newEventActivator();
         }
     }
     else {
-        event.target.insertAdjacentHTML("beforeend", "<input type='button' id='new-event-specific' value='+'>");
+        event.target.insertAdjacentHTML("afterbegin", "<input type='button' id='new-event-specific' value='+'>");
         newEventActivator();
     }
 };
@@ -161,6 +169,9 @@ function newEventActivator() {
         script.type = 'text/javascript';
 
         callTemplate();
+
+        document.getElementById("initial-date").defaultValue = "2021-04-09";
+
         habilitarReminder(this);
         habilitarDate(this);
 
