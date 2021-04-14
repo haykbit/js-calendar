@@ -44,7 +44,7 @@ function generateCalendar(p_year, p_month) {
     // The next lines insert the day numbers in the grid according to the month and year
     for (var i = 0; i < daysMonth; i++) {
         if (firstDayMonth == 0) {
-            document.getElementsByClassName("grid-day")[i + 6].innerHTML = i + 1;
+            document.getElementsByClassName("grid-day")[i + 6].insertAdjacentHTML("afterbegin", "<div class='numberDayGrid'>" + (i+1) + "</div>");
             if (i + 1 == dateSelected.getDate() && currentYear == dateSelected.getFullYear() && currentMonth == dateSelected.getMonth()) {
                 var day = document.getElementsByClassName("grid-day")[i + 6];
                 day.style.backgroundColor = "#695eff";
@@ -54,7 +54,7 @@ function generateCalendar(p_year, p_month) {
             }
         }
         else {
-            document.getElementsByClassName("grid-day")[i + firstDayMonth - 1].innerHTML = i + 1;
+            document.getElementsByClassName("grid-day")[i + firstDayMonth - 1].insertAdjacentHTML("afterbegin", "<div class='numberDayGrid'>" + (i+1) + "</div>");
             if (i + 1 == dateSelected.getDate() && currentYear == dateSelected.getFullYear() && currentMonth == dateSelected.getMonth()) {
                 var day = document.getElementsByClassName("grid-day")[i + firstDayMonth - 1];
                 day.style.backgroundColor = "#695eff";
@@ -173,7 +173,7 @@ function newEventActivator(elementTarget) {
 
         callTemplate();
 
-        var numberDay = elementTarget.innerText;
+        var numberDay = elementTarget.getElementsByClassName("numberDayGrid")[0].innerHTML;
         var numberMonth = dateSelected.getMonth()+1;
         if(numberDay<10){numberDay = "0" + numberDay;}
         if(numberMonth<10){numberMonth = "0" + numberMonth;}
