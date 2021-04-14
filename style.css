@@ -87,6 +87,8 @@ main{
   font-weight: bold;
   font-size: 20px;
   padding: 10px 10px;
+  max-height: 100px;
+  overflow: auto;
 }
 
 .grid-day:hover{
@@ -312,4 +314,17 @@ div.buttonStyles input:focus + .label-name::after,
 div.buttonStyles input:valid + .label-name::after{
 transform: translateX(0%);
 
+}
+
+.event-box{
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  margin: 3px;
+  height: 25px;
+  font-size: 15px;
+  background:linear-gradient(10deg, #5eb1ff, rgba(0,0,0,0));
+  /* border: white solid 1px; */
+  border-radius: 5px;
+  color: white;
 }
