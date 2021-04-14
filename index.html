@@ -21,9 +21,9 @@
             <p id="barra">|</p>
         </div>
         <div id="month-display">
-            <h3 id="previous-month"></h3>
-            <h1 id="actual-month"></h1>
-            <h3 id="next-month"></h3>
+            <h3 id="previous-month" class="previous" ></h3>
+            <h1 id="actual-month" class="actual"></h1>
+            <h3 id="next-month" class="next"></h3>
         </div>
     </header>
     <main>
@@ -45,7 +45,7 @@
         <h1 id="formName">Add an event</h1>
         <div class='buttonStyles'>
             <input type="text" name="eventTittle" id="event-tittle" required>
-            <label for="event-tittle" class="label-name"><span class="eventTittle-name"><h2>Tittle</h2></span></label>
+            <label for="event-tittle" class="label-name"><span class="eventTittle-name"><h2>Title</h2></span></label>
 
         </div>
         <div class='buttonStyles'>
@@ -101,11 +101,11 @@
 </template>
 <template class="Event">
     <div id="EventDate">
-        <div class=enventTittle><h1>titulo</h1></div>
-        <div class=inDate><h5>El evento empieza</h5></div>
-        <div class=fiDate><h5>Y termina</h5></div>
-        <div class=typeText><h5>tipo:</h5></div>
-        <div class=description><h5>consiste en:</h5></div>
+        <div class=enventTittle><h1>Título</h1></div>
+        <div class=inDate><h5>El evento empieza:</h5></div>
+        <div class=fiDate><h5>Y termina:</h5></div>
+        <div class=typeText><h5>Tipo:</h5></div>
+        <div class=description><h5>Consiste en:</h5></div>
     </div>
     <div id='fondo' onclick="closeEvent2()"></div>
 
@@ -119,5 +119,6 @@
 </script>
 <script src="formulario.js"></script>
 <script src="calendar-generate.js"></script>
+<script src="month-animation.js"></script>
 
 </html>
