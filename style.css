@@ -120,13 +120,19 @@ h1{
   justify-content: center;
   font-family: 'Montserrat', sans-serif;
   color: black;
+  font-weight: 500;
 }
 
+
 h3{
-  font-weight: 300;
+  font-weight: 400;
   font-size: 25px;
   opacity: 70%;
   font-family: 'Montserrat', sans-serif;
+}
+
+h5{
+  font-weight: 400;
 }
 
 
@@ -200,19 +206,28 @@ div#EventDate{
   animation-name:widthSize;
   animation-duration: 0.3s;
   animation-timing-function: ease;
-  font-weight: 200;
+  font-weight: 150;
 }
 div#EventDate div{
   width: 80%;
   height: 50px;
-  background: linear-gradient(-2deg, #a2c1fc ,  #ebe9fd,rgba(255,255,255,0)  );
+  background: white;
+  border-bottom: 1px black solid;
   padding-bottom: 10px;
+  
 }
 div#EventDate div.enventTittle{
+  
   width: 80%;
   height: 100px;
-  background: linear-gradient(-2deg, #a2c1fc ,  #ebe9fd,rgba(255,255,255,0)  );
-  padding-bottom: 10px;
+  border-bottom: none;
+  padding-bottom: 20px;
+}
+
+titulo{
+  
+  font-weight: 500;
+  color: #695eff;
 }
 
 div#fondo{
