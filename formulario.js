@@ -55,6 +55,13 @@ function habilitarDate(date) {
     } else {
         imput.setAttribute("disabled", "")
     }
+};
+document.getElementById("prueva").addEventListener("click", callTemplate2);
+function callTemplate2() {
+    let newEvent = document.querySelector("template.Event");
+        const importNewEvent = document.importNode(newEvent.content, true);
+        document.querySelector("body").appendChild(importNewEvent);
+        
 }
 
 //____________________________________________________ esta función cierra el formulario de nuevo evento
