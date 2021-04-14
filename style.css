@@ -129,9 +129,14 @@ h3:hover{
   border: none;
   font-size: 40px;
   color: white;
-  box-shadow: 10px 10px 20px lightgrey;
+  box-shadow: 0px 0px 17px 6px rgb(235, 235, 235);
   background-color: #695eff;
   margin: 30px;
+  transition: all .2s ease-in-out;
+}
+
+#add-event-button:hover{
+  transform: rotate(90deg);
 }
 
 .form-popup{
@@ -304,14 +309,12 @@ form textarea{
   background-color: rgb(255, 70, 70);
   border: none;
   float: right;
-  padding: 3% 5% 3% 5%;
+  padding: 1% 4% 1% 4%;
   color: white;
-  border-radius: 20%;
+  border-radius: 10%;
   text-align: center;
-  width: 40px;
-  height: 40px;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 20px;
 }
 /*__________________Inputs animations*/
 
