@@ -1,59 +1,35 @@
+//___________________en este array se guardarán todos los eventos guardados en el localStorage
+let arrayEvents = [];
+
+//___________________________________________________________________________________añadido la llamada del botón para llamar al template
 document.getElementById("add-event-button").addEventListener("click", callTemplate);
-x = 0;//_______________________contador para que no se llame al formulario dos veces
 
-function callTemplate() {
+//__________________________________actualizamos el array de eventos apenas iniciamos la página
+updateEventsArrayFromLocalStorage();
 
-    if (x == 0) {
-        //___________________________________________________________llamar template
-        let newEvent = document.querySelector("template.newEvent");
-        const importNewEvent = document.importNode(newEvent.content, true);
-        document.querySelector("body").appendChild(importNewEvent);
+//___________________________________________en esta función actualizamos el array desde los datos del localStorage
+function updateEventsArrayFromLocalStorage(){
+    arrayEvents = [];
 
-        let eventContent = document.getElementById("eventContent");
-        let eventForm = document.getElementById("formEvent");
-        //_____________________________________________________________cerrar formulario
-        // document.getElementById('eventContent').addEventListener('click', closeEvent);
-        eventContent.addEventListener('click', closeEvent);
-        document.getElementById('closeButton-shape').addEventListener('click', closeEvent);
-        document.getElementById('cancel-button').addEventListener('click', closeEvent);
-        document.getElementById('create-button').addEventListener('click', function() {
-            let eventTitle = document.getElementById("event-tittle").value;
-            let initialDate = document.getElementById("initial-date").value;
-            let finalDateOption = document.getElementById("final-date-option").value;
-            let remindTime = document.getElementById("time-remind").value;
-            let remindText = document.getElementById("remindText").value;
-            let eventType = document.getElementById("event-type").value;
-        
-            let event = {
-                title: eventTitle,
-                idate: initialDate,
-                fdate: finalDateOption,
-                remindTime: remindTime,
-                eventText: remindText,
-                eventType: eventType,
-            };
-        
-            let json = JSON.stringify(event);
-            localStorage.setItem(event.title, json);
-        
-            x = 0;
-        });
-
-        x += 1;
-        function closeEvent() {
-            document.querySelector("body").removeChild(eventContent);
-            document.querySelector("body").removeChild(eventForm);
-            x = 0;
-        };
-
-    } else {
-        //________________cambio la funcion del boton "add-event-button" par que envez de 
-        //__________________ abrir otro formulario cierre el que ya esta abierto
-        document.querySelector("body").removeChild(eventContent);
-        document.querySelector("body").removeChild(eventForm);
-        x = 0;
+    for (let i = 0; i < localStorage.length; i++) {
+        let eventSelected = "event" + i;
+        let objectTemp = JSON.parse(localStorage.getItem(eventSelected));
+        arrayEvents.push(objectTemp);
     }
+}
 
+//_________________________esta función muestra el formulario de nuevo evento
+function callTemplate() {
+    //___________________________________________________________copiar y añadir hijo desde el template
+    let newEvent = document.querySelector("template.newEvent");
+    const importNewEvent = document.importNode(newEvent.content, true);
+    document.body.appendChild(importNewEvent);
+
+    //______________________________________________________________________________añade los EventListeners para los botones
+    document.getElementById('eventContent').addEventListener('click', closeEvent);
+    document.getElementById('closeButton-shape').addEventListener('click', closeEvent);
+    document.getElementById('cancel-button').addEventListener('click', closeEvent);
+    document.getElementById('formEvent').addEventListener('submit', saveDataAndCloseEvent, true);
 }
 
 //____________________________________________________ habilitar los recordatorios
@@ -70,6 +46,7 @@ function habilitarReminder(remind) {
     }
 }
 
+//____________________________________________________ habilitar la fecha final
 function habilitarDate(date) {
     let imput = document.getElementById("final-date");
     if (date.checked == true) {
@@ -77,4 +54,50 @@ function habilitarDate(date) {
     } else {
         imput.setAttribute("disabled", "")
     }
-};
+}
+
+//____________________________________________________ esta función cierra el formulario de nuevo evento
+function closeEvent(){
+    document.querySelector("body").removeChild(document.getElementById("eventContent"));
+    document.querySelector("body").removeChild(document.getElementById("formEvent"));
+}
+
+//____________________________________________________ esta función añade el evento a guardar en el calendario
+function addEventInCalendar(event){
+    var firstDayMonth = new Date(dateSelected.getFullYear(), dateSelected.getMonth(), 1).getDay();
+    var dateTemp = new Date(event.idate);
+    
+    if(dateTemp.getMonth() == dateSelected.getMonth()){
+        if(firstDayMonth == 0){
+            document.getElementsByClassName("grid-day")[5 + dateTemp.getDate()].insertAdjacentHTML("beforeend", "<div class='event-box'>" + event.title + "</div>");
+        }
+        else{
+            document.getElementsByClassName("grid-day")[firstDayMonth + dateTemp.getDate() - 2].insertAdjacentHTML("beforeend", "<div class='event-box'>" + event.title + "</div>");
+        }
+    }
+}
+
+//____________________________________________________ esta función guarda los datos en localStorage y cierra el formulario
+function saveDataAndCloseEvent(evt){
+    evt.preventDefault();
+
+    let event = {
+        title: document.getElementById("event-tittle").value,
+        idate: document.getElementById("initial-date").value,
+        isFDate: document.getElementById("final-date-option").checked,
+        fdate: document.getElementById("final-date").value,
+        isRemind: document.getElementById("remind-option").checked,
+        remindTime: document.getElementById("time-remind").value,
+        eventText: document.getElementById("remindText").value,
+        eventType: document.getElementById("event-type").value
+    };
+
+    let jsonString = JSON.stringify(event);
+    let keyJson = "event" + arrayEvents.length;
+    localStorage.setItem(keyJson, jsonString);
+
+    updateEventsArrayFromLocalStorage();
+    addEventInCalendar(event);
+
+    closeEvent();
+}
