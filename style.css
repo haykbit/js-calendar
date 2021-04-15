@@ -519,6 +519,7 @@ div.buttonStyles input:valid + .label-name::after{
     border: none;
     font-size: 40px;
     color: white;
+    box-shadow: 0px 0px 17px 6px rgb(63, 48, 48);
     background-color: #695eff;
     margin: 30px;
     transition: all .2s ease-in-out;
