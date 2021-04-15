@@ -20,8 +20,7 @@ function updateEventsArrayFromLocalStorage() {
     arrayEvents = [];
 
     for (let i = 0; i < localStorage.length; i++) {
-        let eventSelected = "event" + i;
-        let objectTemp = JSON.parse(localStorage.getItem(eventSelected));
+        let objectTemp = JSON.parse(localStorage.getItem(i));
         arrayEvents.push(objectTemp);
     }
 }
@@ -159,8 +158,7 @@ function saveDataAndCloseEvent(evt) {
     };
 
     let jsonString = JSON.stringify(event);
-    let keyJson = "event" + arrayEvents.length;
-    localStorage.setItem(keyJson, jsonString);
+    localStorage.setItem(arrayEvents.length, jsonString);
 
     updateEventsArrayFromLocalStorage();
     addEventInCalendar(event);
@@ -186,14 +184,14 @@ function eliminateEvent(eventId) {
     };
 
     for (var i = 0; i < localStorage.length; i++) {
-        objectTemp.key = "event" + i;
+        objectTemp.key = i;
         objectTemp.value = localStorage.getItem(objectTemp.key);
         if(i < eventId){
             var objectTempCopy = Object.assign({}, objectTemp);
             arrayTemp.push(objectTempCopy);
         }
         else if(i > eventId){
-            objectTemp.key = "event" + (i - 1);
+            objectTemp.key = (i - 1);
             var objectTempCopy = Object.assign({}, objectTemp);
             arrayTemp.push(objectTempCopy);
         }
