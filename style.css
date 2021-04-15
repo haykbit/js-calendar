@@ -555,9 +555,6 @@ div.buttonStyles input:valid + .label-name::after{
 /* tablet screen */
 
 @media screen and (min-width: 540px) and (max-width: 1280px) {
-  body {
-    background: red;
-  }
 
   
   form{
