@@ -489,6 +489,7 @@ form label{
   text-align: center;
   font-weight: bold;
   font-size: 20px;
+  cursor: pointer;
 }
 
 div.buttonStyles input:focus + .label-name .eventTittle-name,
