@@ -10,20 +10,17 @@
 </head>
 
 <body>
-
-
     <header>
-
         <div id="year-display">
             <img id="larrow" src="img/larrow.png" />
             <h1 id="year-text"></h1>
             <img id="rarrow" src="img/rarrow.png" />
-            <p id="barra">|</p>
         </div>
+        <div id="barra">|</div>
         <div id="month-display">
-            <h3 id="previous-month" class="previous"></h3>
-            <h1 id="actual-month" class="actual"></h1>
-            <h3 id="next-month" class="next"></h3>
+            <div id="wrapper-previous-month"><h3 id="previous-month" class="previous"></h3></div>
+            <div id="wrapper-actual-month"><h1 id="actual-month" class="actual"></h1></div>
+            <div id="wrapper-next-month"><h3 id="next-month" class="next"></h3></div>
         </div>
     </header>
     <main>
@@ -33,7 +30,6 @@
         <div class="popup-inside">
         </div>
     </div>
-
 </body>
 
 <template class="newEvent">
