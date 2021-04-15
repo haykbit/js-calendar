@@ -478,18 +478,23 @@ div.buttonStyles input:valid + .label-name::after{
     box-shadow: 0px 0px 17px 6px rgb(235, 235, 235);
   }
 
-  div#eventDate {
+  #EventDate{
     margin: 15% 30%;
     min-width: 300px;
     min-height: 250px;
-      background-color: blue;
+      background-color: white;
       backdrop-filter: blur(5px);
       width: 40%;
       height: 70%;
       position: absolute;
-      margin: 10% 25%;
+      margin: 10% 15%;
       z-index: 100;
-  } 
+      tex
+  }
+  
+  #fondo {
+  width: 150%;
+  }
 
 
   div.week-day{
