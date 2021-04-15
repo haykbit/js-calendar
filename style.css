@@ -532,11 +532,20 @@ div.buttonStyles input:valid + .label-name::after{
 
   #month-display{
     display: flex;
-    width: 100%;
-    font-size: 15px;
-    text-overflow: ellipsis;
-
+    max-width: 300px;
+    flex-direction: column;
+    margin-top: 20px;
   }
+
+  .month{
+    font-size: 25px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    max-width: 300px;
+    text-overflow: ellipsis;
+  }
+
+
   #year-display{
       font-size: 20px;
 
