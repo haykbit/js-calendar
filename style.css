@@ -167,9 +167,11 @@ h4 {
 #EventDate{
   background-color: white;
   backdrop-filter: blur(5px);
+  height: 75%;
   width: 50%;
   position: absolute;
-  margin: 10% 25%;
+  top: 12.5%;
+  left: 25%;
   z-index: 100;
   display: flex;
   flex-direction: column;
@@ -231,7 +233,7 @@ h4 {
   margin: 0;
 }
 
-div#EventDate div.enventTittle{
+#EventDate div.enventTittle{
   width: 80%;
   height: 100px;
   border-bottom: none;
@@ -302,9 +304,11 @@ form{
   display: flex;
   flex-direction: column;
   z-index: 100;
-  margin:  5% 33%;
+  height: 75%;
+  width: 30%;
+  top: 12.5%;
+  left: 35%;
   padding: 2% 2% 2% 2%;
-  height: 700px;
   background-color: white;
   border-radius: 1.5%;
   box-shadow: 0px 0px 17px 6px rgb(235, 235, 235);
