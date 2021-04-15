@@ -23,7 +23,7 @@ function updateEventsArrayFromLocalStorage() {
         let objectTemp = JSON.parse(localStorage.getItem(i));
         arrayEvents.push(objectTemp);
     }
-}
+};
 
 //_________________________esta función muestra el formulario de nuevo evento
 function callTemplate() {
@@ -33,8 +33,6 @@ function callTemplate() {
     document.body.appendChild(importNewEvent);
 
     //______________________________________________________________________________añade los EventListeners para los botones
-
-
     document.getElementById('closeButton-shape').addEventListener('click', closeEvent);
     document.getElementById('cancel-button').addEventListener('click', closeEvent);
     document.getElementById('formEvent').addEventListener('submit', saveDataAndCloseEvent, true);
@@ -63,13 +61,14 @@ function habilitarDate(date) {
         imput.setAttribute("disabled", "")
     }
 };
+
 function callTemplate2() {
     let newEvent = document.querySelector("template.Event");
     const importNewEvent = document.importNode(newEvent.content, true);
     document.querySelector("body").appendChild(importNewEvent);
 
     document.getElementById('closeButton-visual').addEventListener('click', closeEvent2);
-}
+};
 
 function callTemplateDayEvents(event){
     if((event.target == event.currentTarget)||
@@ -112,11 +111,12 @@ function closeDayEvents(){
 function closeEvent2() {
     document.querySelector("body").removeChild(document.getElementById("EventDate"));
     document.querySelector("body").removeChild(document.getElementById("fondo"));
-}
+};
+
 function closeEvent() {
     document.querySelector("body").removeChild(document.getElementById("eventContent"));
     document.querySelector("body").removeChild(document.getElementById("formEvent"));
-}
+};
 
 //____________________________________________________ esta función añade el evento a guardar en el calendario
 function addEventInCalendar(event) {
@@ -140,7 +140,7 @@ function addEventInCalendar(event) {
             father.insertAdjacentHTML("beforeend", "<div class='more-event-box'>...</div>");
         }
     }
-}
+};
 
 //____________________________________________________ esta función guarda los datos en localStorage y cierra el formulario
 function saveDataAndCloseEvent(evt) {
@@ -164,16 +164,6 @@ function saveDataAndCloseEvent(evt) {
     addEventInCalendar(event);
 
     closeEvent();
-}
-
-function crearReminder() {
-    let remindTime = document.getElementById("time-remind").value;
-    let isReminded = document.getElementById("remind-option").checked;
-
-    if (isReminded == true){
-        
-    }
-
 }
 
 function eliminateEvent(eventId) {

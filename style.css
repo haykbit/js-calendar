@@ -13,28 +13,22 @@ body{
   height: 100vh;
 }
 
+header{
+  display: flex;
+  flex-direction: row;
+  height: 20%;
+}
+
 #larrow {
   width: 22px;
   height: 22px;
   margin-right: 10px;
 }
 
-.leave{
-  color:rgb(255, 70, 70);
-  font-size: 500px;
-
-}
-
 #rarrow {
   width: 22px;
   height: 22px;
   margin-left: 10px;
-}
-
-header{
-  display: flex;
-  flex-direction: row;
-  height: 20%;
 }
 
 #year-display{
@@ -107,22 +101,10 @@ main{
   }
 }
 
-.grid-day:hover{
-  color: black;
-}
-
 .hover-class:hover {
   border: 3px solid #695eff;
   border-radius: 4px;
 }
-
-h1{
-  justify-content: center;
-  font-family: 'Montserrat', sans-serif;
-  color: black;
-  font-weight: 700;
-}
-
 
 h3{
   font-weight: 400;
@@ -131,23 +113,20 @@ h3{
   font-family: 'Montserrat', sans-serif;
 }
 
+h4 {
+  font-size: 20px;
+}
+
 #next-month:hover {
-  transform: scale(1.4);
+  transform: scale(1.1);
   transition: all 300ms;
   transform: translate(3);
 
 }
 #previous-month:hover {
-  transform: scale(1.4);
+  transform: scale(1.1);
   transition: all 300ms;
   transform: translate(3);
-
-}
-#previous-month:hover {
-  transform: scale(1.4);
-  transition: all 300ms;
-  transform: translate(3)ñ
-
 }
 
 #add-event-button{
@@ -185,25 +164,71 @@ h3{
   padding: 5px;
 }
 
-div#EventDate{
+#EventDate{
   background-color: white;
   backdrop-filter: blur(5px);
-  width: 55%;
+  width: 50%;
   position: absolute;
   margin: 10% 25%;
   z-index: 100;
   display: flex;
   flex-direction: column;
   box-shadow: 0px 0px 17px 6px rgb(235, 235, 235);
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 3% 3% 3% 3%;
   animation-name:widthSize;
   animation-duration: 0.3s;
   animation-timing-function: ease;
 }
 
-#titleDataContent {
-  background-color: rgb(226, 96, 96);
+.eventVisualContent {
+  display: flex;
+}
+
+#inDate{
+  width: 50%;
+}
+
+#fiDate {
+  width: 50%;
+}
+
+.eventVisualType {
+  display: flex;
+}
+
+#typeText {
+  width: 50%;
+}
+
+#description {
+  width: 50%;
+}
+
+.titleDataContent {
+  background-color: rgb(245, 245, 245);
+  max-width: 70%;
+  padding: 4%;
+  border-radius: 5%;
+  display: flex;
+}
+.titleDataContent div {
+  margin-left: 10px;
+}
+
+.titleDataTime {
+  background-color: #695eff;
+  max-width: 40%;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 3%;
+  border-radius: 5px;
+}
+
+.titleDataTime h5{
+  margin: 0;
 }
 
 div#EventDate div.enventTittle{
@@ -214,7 +239,7 @@ div#EventDate div.enventTittle{
   font-weight: bold;
 }
 
-div#fondo, #background-DayEvents{
+#fondo, #background-DayEvents{
   width: 100%;
   height: 100%;
   backdrop-filter: blur(3px);
@@ -240,21 +265,13 @@ div#fondo, #background-DayEvents{
 
   100% {width: 50%;}
 }
-/*______________________Formulario template*/
-template.newEvent{
-  margin: 0 auto;
-}
 
-div#eventContent{
+#eventContent{
   position:absolute;
   z-index: 0;
   backdrop-filter: blur(2px);
   width: 100%;
   height: 100%;
-}
-/*_________boton cerrar*/
-#close-button{
-  visibility: hidden;
 }
 
 .closeButton-box{
@@ -278,16 +295,6 @@ div#eventContent{
   font-weight: 700;
   font-size: 20px;
   color: #695eff;
-}
-
-#close-button{
-  background-color: white;
-  border: none;
-}
-/*_____________________Inside form*/
-h1.formName{
-    text-align: left;
-    font-size: 10px;
 }
 
 form{
@@ -326,9 +333,7 @@ form{
   float: right;
   padding: 2% 2% 2% 2%;
   margin-top: 20px;
-  margin-right: 5px;
-  width: 20%;
-  margin-left: 78%;
+  margin-left: 70%;
   font-weight: bold;
   font-size: 17px;
   color:white;
@@ -359,7 +364,7 @@ form{
   color: white;
 }
 
-div.buttonStyles{
+.buttonStyles{
   position: relative;
   overflow: hidden;
   height: 250px;
@@ -367,7 +372,7 @@ div.buttonStyles{
   
 }
 
-div.buttonStyles label{
+.buttonStyles label{
   position: absolute;
   width: 100%;
   height: 100%;
@@ -379,7 +384,7 @@ div.buttonStyles label{
   pointer-events: none;
 }
 
-div.buttonStyles input{
+.buttonStyles input{
   cursor: pointer;
   min-width: 5%;
   border: none;
@@ -398,7 +403,7 @@ div.buttonStyles input{
  
 }
 
-div.buttonStyles label::after{
+.buttonStyles label::after{
   content: "";
   position: absolute;
   width: 100%;
@@ -412,7 +417,7 @@ div.buttonStyles label::after{
   opacity: 0.3;
 }
 
-div.checkoxStyles{
+.checkoxStyles{
   margin-bottom: 20px;
 }
 
@@ -447,7 +452,7 @@ form label{
   font-weight: bold;
   font-size: 20px;
 }
-/*__________________Inputs animations*/
+
 div.buttonStyles input:focus + .label-name .eventTittle-name,
 div.buttonStyles input:valid + .label-name .eventTittle-name{
   transform: translateY(-20px);
@@ -457,16 +462,17 @@ div.buttonStyles input:valid + .label-name .eventTittle-name{
 
 div.buttonStyles input:focus + .label-name::after,
 div.buttonStyles input:valid + .label-name::after{
-transform: translateX(0%);
-
+  transform: translateX(0%);
 }
 
 .event-box{
   display: flex;
   align-items: center;
-  padding-left: 5px;
+  padding: 5px;
   margin: 7px 0px 0px 0px;
   max-width: 85px;
+  max-height: 20px;
+  overflow: hidden;
   font-size: 15px;
   background-color: black;
   border-radius: 2px;

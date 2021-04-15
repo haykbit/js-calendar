@@ -74,10 +74,8 @@ function generateCalendar(p_year, p_month) {
         document.getElementById("actual-month").innerHTML = monthsYear[p_month];
         document.getElementById("next-month").innerHTML = monthsYear[p_month + 1];
     }
-
     // The text in the year display is updated
     document.getElementById("year-text").innerHTML = p_year;
-
     DataToCalendar();
 };
 

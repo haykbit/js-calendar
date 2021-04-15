@@ -58,17 +58,14 @@
         <div class='checkoxStyles'>
             <input type="checkbox" name="finalDateOption" id="final-date-option" onchange="habilitarDate(this)">
             <label for="final-date-option">Add end date</label>
-
         </div>
         <div class='buttonStyles'>
             <label for="final-date">Final date</label>
             <input type="date" name="finalDate" id="final-date" disabled>
-
         </div>
         <div class='checkoxStyles'>
             <input type="checkbox" name="remindOption" id="remind-option" onchange="habilitarReminder(this)">
             <label for="remind-option">Add Reminder</label>
-
         </div>
         <div class='selctStyles'>
             <label for="time-remind">Went we remind you?</label>
@@ -102,21 +99,33 @@
 
 <template class="Event">
     <div id="EventDate">
-        <span id="closeButton-visual">X</span>
-        <div id="enventTitleVisual" class="titleDataContent">
-            <h1>Evento Hotel Mandarin</h1>
+        <div id="eventVisualHeader">
+            <span id="closeButton-visual">X</span>
+            <div id="enventTitleVisual">
+                <h1>Evento Hotel Mandarin</h1>
+            </div>
         </div>
-        <div id="inDate" class="titleDataContent">
-            <h4>El evento empieza en</h4>
+        <div class="eventVisualContent">
+            <div id="inDate">
+                <h4>El evento empieza en</h4>
+                <h5 class="titleDataContent">Viernes 23 de Agosto, 2021</h5>
+                <div class="titleDataTime"><h5>13:00</h5></div>
+            </div>
+            <div id="fiDate">
+                <h4>Fin de evento</h4>
+                <h5 class="titleDataContent">Viernes 23 de Agosto, 2021</h5>
+                <div class="titleDataTime"><h5>16:00</h5></div>
+            </div>
         </div>
-        <div id="fiDate" class="titleDataContent">
-            <h4>Fin de evento</h4>
-        </div>
-        <div id="typeText" class="titleDataContent">
-            <h4>Tipo</h4>
-        </div>
-        <div id="description" class="titleDataContent">
-            <h4>Descripción</h4>
+        <div class="eventVisualType">
+            <div id="typeText">
+                <h4>Tipo</h4>
+                <h5 class="titleDataContent"><img src="img/circle-meeting.png" width="16px" height="16px"/><div>Meeting</div></h5>
+            </div>
+            <div id="description">
+                <h4>Descripción</h4>
+                <h5 class="titleDataContent">Reunión con Pablo - Presupuestos mes de Julio</h5>
+            </div>
         </div>
         <input id="eliminate-button" type="reset" value="Eliminate" />
     </div>
