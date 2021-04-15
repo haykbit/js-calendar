@@ -22,23 +22,28 @@ function updateEventsArrayFromLocalStorage(){
 }
 function remind() {
     
-  if(arrayEvents.length==0){console.log('empty data')
+  if(arrayEvents.length==0){console.log('Do not execute')
     }else{
     for(i=0;arrayEvents.length;i++){
-        
-        let fechaFinal=arrayEvents[i].fdate;
+        let iReminded=arrayEvents[i].isReminded;
+        let fechaInicial=arrayEvents[i].idate;
         let remindTime=arrayEvents[i].remindTime*60000;
 
         //let secInitial= new Date(fechaInicial).getTime();
-        let secFinal=new Date(fechaFinal).getTime();
+        let secInicio=new Date(fechaInicial).getTime();
         
-        let remindNaw=secFinal-remindTime;
-        let timeToEvent=(secFinal-new Date().getTime());
-        if (timeToEvent<=remindTime && timeToEvent>0){
+        let remindNaw=secInicio-remindTime;
+        console.log('momento en el que debe empezar a recordar',remindNaw)
+        let timeToEvent=(secInicio-new Date().getTime());
+        if (timeToEvent<=remindTime && timeToEvent>0 && iReminded==false && arrayEvents[i].isRemind==true){
             console.log('entra')
-            document.querySelector('body').insertAdjacentHTML("beforeend","<div class='reminders'>Remind</div>")
+            document.querySelector('body').insertAdjacentHTML("beforeend","<div class='reminders'>reminder</div>")
+            document.querySelector('div.reminders').insertAdjacentHTML("beforeend","<button class='showRemindText' onclick='showIt'><span>+</span></button>")
+            arrayEvents[i].isReminded=true;
+            
         }
-        console.log(arrayEvents[i]);
+        
+        console.log('ha sido recordado? ',iReminded);
 
         console.log('tiempoque falta para el evento ',timeToEvent)
         //console.log('remind time en miligec',remindTime);
@@ -47,7 +52,8 @@ function remind() {
         }
     }
 }
-setInterval(remind,10000)
+
+setInterval(remind,10000);
 //_________________________esta función muestra el formulario de nuevo evento
 function callTemplate() {
     //___________________________________________________________copiar y añadir hijo desde el template
@@ -141,7 +147,8 @@ function saveDataAndCloseEvent(evt){
         isRemind: document.getElementById("remind-option").checked,
         remindTime: document.getElementById("time-remind").value,
         eventText: document.getElementById("remindText").value,
-        eventType: document.getElementById("event-type").value
+        eventType: document.getElementById("event-type").value,
+        isReminded: false
     };
 
     let jsonString = JSON.stringify(event);
