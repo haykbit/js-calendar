@@ -10,10 +10,10 @@
 </head>
 
 <body>
-    
-   
+
+
     <header>
-        
+
         <div id="year-display">
             <img id="larrow" src="img/larrow.png" />
             <h1 id="year-text"></h1>
@@ -21,9 +21,9 @@
             <p id="barra">|</p>
         </div>
         <div id="month-display">
-            <h3 id="previous-month"></h3>
-            <h1 id="actual-month"></h1>
-            <h3 id="next-month"></h3>
+            <h3 id="previous-month" class="previous"></h3>
+            <h1 id="actual-month" class="actual"></h1>
+            <h3 id="next-month" class="next"></h3>
         </div>
     </header>
     <main>
@@ -33,11 +33,10 @@
         <div class="popup-inside">
         </div>
     </div>
-    
+
 </body>
 
 <template class="newEvent">
-
     <form id="formEvent" class="eventForm" action="">
         <div class="closeButton-box">
             <span id="closeButton-shape">X</span>
@@ -45,13 +44,16 @@
         <h1 id="formName">Add an event</h1>
         <div class='buttonStyles'>
             <input type="text" name="eventTittle" id="event-tittle" required>
-            <label for="event-tittle" class="label-name"><span class="eventTittle-name"><h2>Tittle</h2></span></label>
-
+            <label for="event-tittle" class="label-name">
+                <span class="eventTittle-name">
+                    <h2>Title</h2>
+                </span>
+            </label>
         </div>
+
         <div class='buttonStyles'>
             <label for="initial-date">Initial date</label>
             <input type="date" name="initialDate" id="initial-date">
-
         </div>
         <div class='checkoxStyles'>
             <input type="checkbox" name="finalDateOption" id="final-date-option" onchange="habilitarDate(this)">
@@ -69,19 +71,18 @@
 
         </div>
         <div class='selctStyles'>
-
             <label for="time-remind">Went we remind you?</label>
-            <select name="timeRemind" id="time-remind" class="habitiation" disabled>
-                <option value="5">5 minutes before</option>
-                <option value="10">10 minutes before</option>
-                <option value="15">15 minutes before</option>
-                <option value="30">30 minutes before</option>
-                <option value="60">1 hour before</option>
+            <select name="timeRemind" id="time-remind" class="habitiation" disabled onchange="crearReminder()">
+                <option id="five-minutes" value="5">5 minutes before</option>
+                <option id="ten-minutes" value="10">10 minutes before</option>
+                <option id="fifteen-minutes" value="15">15 minutes before</option>
+                <option id="thirty-minutes" value="30">30 minutes before</option>
+                <option id="sixty-minutes" value="60">1 hour before</option>
             </select>
         </div>
-        
-            <textarea id="remindText" name="textarea" rows="10" cols="50" class="habitiation" disabled></textarea>
-        
+
+        <textarea id="remindText" name="textarea" rows="10" cols="50" class="habitiation" disabled></textarea>
+
         <div id='selctStyles'>
             <label for="event-type">Event-type</label>
             <select name="eventType" id="event-type">
@@ -97,17 +98,28 @@
     </form>
 
     <div id="eventContent">
-
     </div>
 </template>
 
 <template class="Event">
     <div id="EventDate">
-        <div class=enventTittle><h1>titulo</h1></div>
-        <div class=inDate><h5>El evento empieza</h5></div>
-        <div class=fiDate><h5>Y termina</h5></div>
-        <div class=typeText><h5>tipo:</h5></div>
-        <div class=description><h5>consiste en:</h5></div>
+        <span id="closeButton-visual">X</span>
+        <div id="enventTitleVisual" class="titleDataContent">
+            <h1>Evento Hotel Mandarin</h1>
+        </div>
+        <div id="inDate" class="titleDataContent">
+            <h4>El evento empieza en</h4>
+        </div>
+        <div id="fiDate" class="titleDataContent">
+            <h4>Fin de evento</h4>
+        </div>
+        <div id="typeText" class="titleDataContent">
+            <h4>Tipo</h4>
+        </div>
+        <div id="description" class="titleDataContent">
+            <h4>Descripción</h4>
+        </div>
+        <input id="eliminate-button" type="reset" value="Eliminate" />
     </div>
     <div id='fondo' onclick="closeEvent2()"></div>
 </template>
@@ -131,5 +143,6 @@
 
 <script src="formulario.js"></script>
 <script src="calendar-generate.js"></script>
+<script src="month-animation.js"></script>
 
 </html>
