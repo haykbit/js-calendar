@@ -10,10 +10,10 @@
 </head>
 
 <body>
-    
-   
+
+
     <header>
-        
+
         <div id="year-display">
             <img id="larrow" src="img/larrow.png" />
             <h1 id="year-text"></h1>
@@ -21,7 +21,7 @@
             <p id="barra">|</p>
         </div>
         <div id="month-display">
-            <h3 id="previous-month" class="previous" ></h3>
+            <h3 id="previous-month" class="previous"></h3>
             <h1 id="actual-month" class="actual"></h1>
             <h3 id="next-month" class="next"></h3>
         </div>
@@ -33,11 +33,10 @@
         <div class="popup-inside">
         </div>
     </div>
-    
+
 </body>
 
 <template class="newEvent">
-
     <form id="formEvent" class="eventForm" action="">
         <div class="closeButton-box">
             <span id="closeButton-shape">X</span>
@@ -45,13 +44,16 @@
         <h1 id="formName">Add an event</h1>
         <div class='buttonStyles'>
             <input type="text" name="eventTittle" id="event-tittle" required>
-            <label for="event-tittle" class="label-name"><span class="eventTittle-name"><h2>Title</h2></span></label>
-
+            <label for="event-tittle" class="label-name">
+                <span class="eventTittle-name">
+                    <h2>Title</h2>
+                </span>
+            </label>
         </div>
+
         <div class='buttonStyles'>
             <label for="initial-date">Initial date</label>
             <input type="date" name="initialDate" id="initial-date">
-
         </div>
         <div class='checkoxStyles'>
             <input type="checkbox" name="finalDateOption" id="final-date-option" onchange="habilitarDate(this)">
@@ -78,9 +80,9 @@
                 <option id="sixty-minutes" value="60">1 hour before</option>
             </select>
         </div>
-        
-            <textarea id="remindText" name="textarea" rows="10" cols="50" class="habitiation" disabled></textarea>
-        
+
+        <textarea id="remindText" name="textarea" rows="10" cols="50" class="habitiation" disabled></textarea>
+
         <div id='selctStyles'>
             <label for="event-type">Event-type</label>
             <select name="eventType" id="event-type">
@@ -96,29 +98,36 @@
     </form>
 
     <div id="eventContent">
-
     </div>
 </template>
+
 <template class="Event">
     <div id="EventDate">
         <span id="closeButton-shape">X</span>
-        <div class=enventTittle><h1>Título</h1></div>
-        <div class=inDate><h5>El evento empieza:</h5></div>
-        <div class=fiDate><h5>Y termina:</h5></div>
-        <div class=typeText><h5>Tipo:</h5></div>
-        <div class=description><h5>Consiste en:</h5></div>
+        <div class=enventTittle>
+            <h1>Título</h1>
+        </div>
+        <div class=inDate>
+            <h5>El evento empieza:</h5>
+        </div>
+        <div class=fiDate>
+            <h5>Y termina:</h5>
+        </div>
+        <div class=typeText>
+            <h5>Tipo:</h5>
+        </div>
+        <div class=description>
+            <h5>Consiste en:</h5>
+        </div>
         <input id="eliminate-button" type="reset" value="Eliminate" />
     </div>
     <div id='fondo' onclick="closeEvent2()"></div>
-
-
 </template>
 
-<script> function unfoldpopup() {
-
-    }
-
+<script>
+    function unfoldpopup() { }
 </script>
+
 <script src="formulario.js"></script>
 <script src="calendar-generate.js"></script>
 <script src="month-animation.js"></script>
