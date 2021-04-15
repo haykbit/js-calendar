@@ -37,10 +37,14 @@ function remind() {
         let timeToEvent=(secInicio-new Date().getTime());
         if (timeToEvent<=remindTime && timeToEvent>0 && iReminded==false && arrayEvents[i].isRemind==true){
             console.log('entra')
-            document.querySelector('body').insertAdjacentHTML("beforeend","<div class='reminders'>reminder</div>")
-            document.querySelector('div.reminders').insertAdjacentHTML("beforeend","<button class='showRemindText' onclick='showIt'><span>+</span></button>")
-            arrayEvents[i].isReminded=true;
             
+
+            document.querySelector('div.remindContent').insertAdjacentHTML("beforeend","<div class='reminders'></div>");
+            document.querySelector('div.reminders:last-of-type').textContent=`Recuerda: ${arrayEvents[i].title}`;
+            document.querySelector('div.reminders:last-of-type').insertAdjacentHTML("beforeend","<button class='showRemindText' onclick='showRemindText()'><span>+</span></button>");
+            //document.querySelector('div.remindContent').insertAdjacentHTML("beforeend","<div class='remindersText'></div>");
+            //document.querySelector('div.reminders:last-of-type').textContent=`A recordar: ${arrayEvents[i].eventText}`;
+            arrayEvents[i].isReminded=true;
         }
         
         console.log('ha sido recordado? ',iReminded);
@@ -52,7 +56,6 @@ function remind() {
         }
     }
 }
-
 setInterval(remind,10000);
 //_________________________esta función muestra el formulario de nuevo evento
 function callTemplate() {
