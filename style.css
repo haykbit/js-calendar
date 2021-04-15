@@ -182,7 +182,30 @@ h4 {
 
 .eventVisualContent {
   display: flex;
+  animation-name: showEvent;
+  animation-duration: 2s;
 }
+
+#eventVisualHeader {
+  animation-name: showEvent;
+  animation-duration: 2s;
+}
+
+.eventVisualType {
+  display: flex;
+  animation-name: showEvent;
+  animation-duration: 2s;
+}
+
+@keyframes showEvent {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 
 #inDate{
   width: 50%;
@@ -190,10 +213,6 @@ h4 {
 
 #fiDate {
   width: 50%;
-}
-
-.eventVisualType {
-  display: flex;
 }
 
 #typeText {
@@ -467,10 +486,10 @@ div.buttonStyles input:valid + .label-name::after{
 .event-box{
   display: flex;
   align-items: center;
-  padding: 5px;
+  padding: 5px 5px 5px 5px;
   margin: 7px 0px 0px 0px;
   max-width: 85px;
-  max-height: 20px;
+  max-height: 25px;
   overflow: hidden;
   font-size: 15px;
   background-color: black;
