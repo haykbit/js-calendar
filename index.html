@@ -100,6 +100,7 @@
 
     </div>
 </template>
+
 <template class="Event">
     <div id="EventDate">
         <div class=enventTittle><h1>titulo</h1></div>
@@ -109,8 +110,23 @@
         <div class=description><h5>consiste en:</h5></div>
     </div>
     <div id='fondo' onclick="closeEvent2()"></div>
+</template>
 
-
+<template class="DayEvents">
+    <div id="window-DayEvents">
+        <div id="title-DayEvents">Tuesday, 23 of March of 2021</div>
+        <span id="separator-DayEvents"></span>
+        <div id="section-DayEvents">
+            <div class="wrapper-event">
+                <div class="information-DayEvents">
+                    <div class="title-DayEvents">titulo de evento</div>
+                    <div class="time-DayEvents">14:34h</div>
+                </div>
+                <div class="icon-eliminate-DayEvents">x</div>
+            </div>
+        </div>
+    </div>
+    <div id="background-DayEvents" onclick="closeDayEvents()"></div>
 </template>
 
 <script> function unfoldpopup() {

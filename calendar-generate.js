@@ -95,7 +95,7 @@ function generateGridEmpty() {
             document.querySelector("main").insertAdjacentHTML("beforeend", "<div class='week-day'></div>");
         }
         else {
-            document.querySelector("main").insertAdjacentHTML("beforeend", "<div class='grid-day hover-class' onmouseover='generateGridButton(event)'></div>");
+            document.querySelector("main").insertAdjacentHTML("beforeend", "<div class='grid-day hover-class' onmouseover='generateGridButton(event)' onclick='callTemplateDayEvents(event)'></div>");
         }
     }
 };

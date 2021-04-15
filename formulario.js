@@ -59,12 +59,22 @@ function habilitarDate(date) {
 };
 function callTemplate2() {
     let newEvent = document.querySelector("template.Event");
-        const importNewEvent = document.importNode(newEvent.content, true);
-        document.querySelector("body").appendChild(importNewEvent);
-        
+    const importNewEvent = document.importNode(newEvent.content, true);
+    document.querySelector("body").appendChild(importNewEvent);
+}
+
+function callTemplateDayEvents(event){
+    let newEvent = document.querySelector("template.DayEvents");
+    const importNewEvent = document.importNode(newEvent.content, true);
+    document.querySelector("body").appendChild(importNewEvent);
 }
 
 //____________________________________________________ esta función cierra el formulario de nuevo evento
+function closeDayEvents(){
+    document.querySelector("body").removeChild(document.getElementById("window-DayEvents"));
+    document.querySelector("body").removeChild(document.getElementById("background-DayEvents"));
+}
+
 function closeEvent2(){
     document.querySelector("body").removeChild(document.getElementById("EventDate"));
     document.querySelector("body").removeChild(document.getElementById("fondo"));
@@ -72,8 +82,6 @@ function closeEvent2(){
 function closeEvent(){
     document.querySelector("body").removeChild(document.getElementById("eventContent"));
     document.querySelector("body").removeChild(document.getElementById("formEvent"));
-    
-
 }
 
 //____________________________________________________ esta función añade el evento a guardar en el calendario
