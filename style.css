@@ -130,10 +130,6 @@ h3{
   font-family: 'Montserrat', sans-serif;
 }
 
-h5{
-  font-weight: 400;
-}
-
 #next-month:hover {
   transform: scale(1.4);
   transition: all 300ms;
@@ -191,8 +187,7 @@ h5{
 div#EventDate{
   background-color: white;
   backdrop-filter: blur(5px);
-  width: 40%;
-  height: 60%;
+  width: 55%;
   position: absolute;
   margin: 10% 25%;
   z-index: 100;
@@ -206,13 +201,8 @@ div#EventDate{
   animation-timing-function: ease;
 }
 
-div#EventDate div{
-  width: 80%;
-  height: 50px;
-  background: white;
-  border-bottom: 1px black solid;
-  padding-bottom: 10px;
-  
+#titleDataContent {
+  background-color: rgb(226, 96, 96);
 }
 
 div#EventDate div.enventTittle{
@@ -280,6 +270,15 @@ div#eventContent{
   color: #695eff;
 }
 
+#closeButton-visual {
+  margin-left: 95%;
+  color: #695eff;
+  font-weight: bold;
+  font-weight: 700;
+  font-size: 20px;
+  color: #695eff;
+}
+
 #close-button{
   background-color: white;
   border: none;
@@ -324,9 +323,11 @@ form{
 
 #eliminate-button {
   float: right;
-  padding: 3% 5% 3% 5%;
+  padding: 2% 2% 2% 2%;
   margin-top: 20px;
   margin-right: 5px;
+  width: 20%;
+  margin-left: 78%;
   font-weight: bold;
   font-size: 17px;
   color:white;

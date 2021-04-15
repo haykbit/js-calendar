@@ -62,6 +62,7 @@ function callTemplate2() {
     const importNewEvent = document.importNode(newEvent.content, true);
     document.querySelector("body").appendChild(importNewEvent);
 
+    document.getElementById('closeButton-visual').addEventListener('click', closeEvent2);
 }
 
 //____________________________________________________ esta función cierra el formulario de nuevo evento
@@ -72,8 +73,6 @@ function closeEvent2() {
 function closeEvent() {
     document.querySelector("body").removeChild(document.getElementById("eventContent"));
     document.querySelector("body").removeChild(document.getElementById("formEvent"));
-
-
 }
 
 //____________________________________________________ esta función añade el evento a guardar en el calendario
