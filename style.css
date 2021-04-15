@@ -450,10 +450,12 @@ div.buttonStyles input:valid + .label-name::after{
   div.week-day{
       overflow: hidden;
       text-overflow: clip;
+      min-height: 30px;
   }
   main{
     margin-top: 5%;
-    min-width: 450px;
+    min-width: 400px;
+    margin-left: 10px;
   }
 
   #add-event-button{
@@ -467,7 +469,7 @@ div.buttonStyles input:valid + .label-name::after{
     border: none;
     font-size: 40px;
     color: white;
-    box-shadow: 0px 0px 17px 6px rgb(235, 235, 235);
+    box-shadow: 0px 0px 17px 6px rgb(63, 48, 48);
     background-color: #695eff;
     margin: 30px;
     transition: all .2s ease-in-out;
@@ -476,9 +478,11 @@ div.buttonStyles input:valid + .label-name::after{
   #month-display{
     display: flex;
     width: 200px;
+    font-size: 15px;
 
   }
   #year-display{
+      font-size: 20px;
 
   }
 }
