@@ -465,6 +465,9 @@ div.buttonStyles input:valid + .label-name::after{
   } 
 
   form{
+    animation-name:widthSize;
+    animation-duration: 0.3s;
+    animation-timing-function: ease;
     z-index: 100;
     margin:  20% 5% 5%;
     padding: 2% 2% 2% 2%;
