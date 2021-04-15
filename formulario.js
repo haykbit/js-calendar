@@ -1,3 +1,10 @@
+// This variable saves the date shown in the calendar
+var dateSelected = new Date();
+
+// Defined constants to display the correct text
+const monthsYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
 //___________________en este array se guardarán todos los eventos guardados en el localStorage
 let arrayEvents = [];
 let inputDate;
@@ -69,6 +76,18 @@ function callTemplateDayEvents(event){
     let newEvent = document.querySelector("template.DayEvents");
     const importNewEvent = document.importNode(newEvent.content, true);
     document.querySelector("body").appendChild(importNewEvent);
+
+    var dateEvent = event.currentTarget.getElementsByClassName("numberDayGrid")[0].innerHTML;
+    var dayEvent = new Date(dateSelected.getFullYear(), dateSelected.getMonth(), dateEvent).getDay();
+    var monthEvent = dateSelected.getMonth();
+    var yearEvent = dateSelected.getFullYear();
+
+    if(dayEvent == 0){
+        document.getElementById("title-DayEvents").innerHTML = weekDays[6] + ", " + dateEvent + " of " + monthsYear[monthEvent] + " of " + yearEvent;
+    }
+    else{
+        document.getElementById("title-DayEvents").innerHTML = weekDays[dayEvent-1] + ", " + dateEvent + " of " + monthsYear[monthEvent] + " of " + yearEvent;
+    }
 }
 
 //____________________________________________________ esta función cierra el formulario de nuevo evento

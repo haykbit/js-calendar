@@ -1,13 +1,6 @@
-// This variable saves the date shown in the calendar
-var dateSelected = new Date();
-
 // These variables save the current year and month
 var currentYear = dateSelected.getFullYear();
 var currentMonth = dateSelected.getMonth();
-
-// Defined constants to display the correct text
-const monthsYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 // Added listeners to switch the month in the calendar
 document.getElementById("previous-month").addEventListener("click", switchMonth, true);
