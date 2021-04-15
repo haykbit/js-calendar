@@ -525,10 +525,16 @@ div.buttonStyles input:valid + .label-name::after{
     transition: all .2s ease-in-out;
   }
 
+  #eliminate-button{
+    width: 35%;
+    margin-left: 68%;
+  }
+
   #month-display{
     display: flex;
-    width: 200px;
+    width: 100%;
     font-size: 15px;
+    text-overflow: ellipsis;
 
   }
   #year-display{
