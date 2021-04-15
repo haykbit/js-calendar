@@ -17,6 +17,7 @@ header{
   display: flex;
   flex-direction: row;
   height: 20%;
+  user-select: none;
 }
 
 #year-display{
@@ -27,22 +28,20 @@ header{
   padding: 2%;
 }
 
-#larrow {
-  width: 22px;
-  height: 22px;
-}
-
-#rarrow {
+#larrow, #rarrow {
+  cursor: pointer;
   width: 22px;
   height: 22px;
 }
 
 #year-text{
+  cursor: default;
   text-align: center;
-  width: 175px;
+  width: 200px;
 }
 
 #barra {
+  cursor: default;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,11 +61,17 @@ header{
   display: flex;
   justify-content: center;
   position: relative;
-  left: 50px;
+  left: 30px;
   width: 150px;
 }
 
-#previous-month, #actual-month, #next-month{
+#previous-month, #next-month{
+  cursor: pointer;
+  width: fit-content;
+}
+
+#actual-month{
+  cursor: default;
   width: fit-content;
 }
 
@@ -74,7 +79,7 @@ header{
   display: flex;
   justify-content: center;
   position: relative;
-  left: 50px;
+  left: 30px;
   width: 350px;
 }
 
