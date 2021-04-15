@@ -477,7 +477,6 @@ transform: translateX(0%);
 
 @media screen and (max-width: 640px) {
   body {
-    background: blue;
     box-sizing: border-box;
     
   }
@@ -486,6 +485,7 @@ transform: translateX(0%);
       text-overflow: clip;
   }
   main{
+    margin-top: 5%;
     min-width: 450px;
   }
 
@@ -507,7 +507,8 @@ transform: translateX(0%);
   }
 
   #month-display{
-    max-width: 200px;
+    display: flex;
+    width: 200px;
 
   }
   #year-display{
