@@ -1,3 +1,10 @@
+// This variable saves the date shown in the calendar
+var dateSelected = new Date();
+
+// Defined constants to display the correct text
+const monthsYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
 //___________________en este array se guardarán todos los eventos guardados en el localStorage
 let arrayEvents = [];
 let inputDate;
@@ -13,8 +20,7 @@ function updateEventsArrayFromLocalStorage() {
     arrayEvents = [];
 
     for (let i = 0; i < localStorage.length; i++) {
-        let eventSelected = "event" + i;
-        let objectTemp = JSON.parse(localStorage.getItem(eventSelected));
+        let objectTemp = JSON.parse(localStorage.getItem(i));
         arrayEvents.push(objectTemp);
     }
 };
@@ -64,7 +70,44 @@ function callTemplate2() {
     document.getElementById('closeButton-visual').addEventListener('click', closeEvent2);
 };
 
+function callTemplateDayEvents(event){
+    if((event.target == event.currentTarget)||
+    (event.target == event.currentTarget.getElementsByClassName("numberDayGrid")[0])||
+    (event.target == event.currentTarget.getElementsByClassName("more-event-box")[0])){
+        let newEvent = document.querySelector("template.DayEvents");
+        const importNewEvent = document.importNode(newEvent.content, true);
+        document.querySelector("body").appendChild(importNewEvent);
+    
+        var dateEvent = event.currentTarget.getElementsByClassName("numberDayGrid")[0].innerHTML;
+        var dayEvent = new Date(dateSelected.getFullYear(), dateSelected.getMonth(), dateEvent).getDay();
+        var monthEvent = dateSelected.getMonth();
+        var yearEvent = dateSelected.getFullYear();
+    
+        if(dayEvent == 0){
+            document.getElementById("title-DayEvents").innerHTML = weekDays[6] + ", " + dateEvent + " of " + monthsYear[monthEvent] + " of " + yearEvent;
+        }
+        else{
+            document.getElementById("title-DayEvents").innerHTML = weekDays[dayEvent-1] + ", " + dateEvent + " of " + monthsYear[monthEvent] + " of " + yearEvent;
+        }
+    
+        for (var i = 0; i < arrayEvents.length; i++) {
+            var eventDate = new Date(arrayEvents[i].idate).getDate();
+            if(eventDate == dateEvent){
+                var timeHour = new Date(arrayEvents[i].idate).getHours();
+                var timeMinute = new Date(arrayEvents[i].idate).getMinutes();
+                if(timeHour < 10){ timeHour = "0" + timeHour; }
+                if(timeMinute < 10){ timeMinute = "0" + timeMinute; }
+                document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='wrapper-event' value='" + i + "'><div class='information-DayEvents'><div class='title-specific-DayEvents'>" + arrayEvents[i].title + "</div><div class='time-DayEvents'>" + timeHour + ":" + timeMinute + "</div></div><div class='icon-eliminate-DayEvents-wrapper'><div onclick='eliminateElementFromDayEvents(event)'>x</div></div></div>");
+            }
+        }
+    }
+}
+
 //____________________________________________________ esta función cierra el formulario de nuevo evento
+function closeDayEvents(){
+    document.querySelector("body").removeChild(document.getElementById("window-DayEvents"));
+    document.querySelector("body").removeChild(document.getElementById("background-DayEvents"));
+}
 function closeEvent2() {
     document.querySelector("body").removeChild(document.getElementById("EventDate"));
     document.querySelector("body").removeChild(document.getElementById("fondo"));
@@ -115,11 +158,65 @@ function saveDataAndCloseEvent(evt) {
     };
 
     let jsonString = JSON.stringify(event);
-    let keyJson = "event" + arrayEvents.length;
-    localStorage.setItem(keyJson, jsonString);
+    localStorage.setItem(arrayEvents.length, jsonString);
 
     updateEventsArrayFromLocalStorage();
     addEventInCalendar(event);
 
     closeEvent();
-};
+}
+
+function eliminateEvent(eventId) {
+    var arrayTemp = [];
+    var objectTemp = {
+        key: "",
+        value: ""
+    };
+
+    for (var i = 0; i < localStorage.length; i++) {
+        objectTemp.key = i;
+        objectTemp.value = localStorage.getItem(objectTemp.key);
+        if(i < eventId){
+            var objectTempCopy = Object.assign({}, objectTemp);
+            arrayTemp.push(objectTempCopy);
+        }
+        else if(i > eventId){
+            objectTemp.key = (i - 1);
+            var objectTempCopy = Object.assign({}, objectTemp);
+            arrayTemp.push(objectTempCopy);
+        }
+    }
+
+    localStorage.clear();
+
+    for (var i = 0; i < arrayTemp.length; i++) {
+        localStorage.setItem(arrayTemp[i].key, arrayTemp[i].value);
+    }
+
+    updateEventsArrayFromLocalStorage();
+    generateCalendar(dateSelected.getFullYear(), dateSelected.getMonth());
+}
+
+function eliminateElementFromDayEvents(event){
+    var eventValueElement = event.currentTarget.parentElement.parentElement;
+    var eventID = eventValueElement.getAttribute("value");
+    var wrapperElementFather = eventValueElement.parentElement;
+
+    while (wrapperElementFather.firstChild) {
+        wrapperElementFather.removeChild(wrapperElementFather.firstChild);
+    }
+    
+    var dateEvent = new Date(arrayEvents[eventID].idate).getDate();
+    eliminateEvent(eventID);
+
+    for (var i = 0; i < arrayEvents.length; i++) {
+        var eventDate = new Date(arrayEvents[i].idate).getDate();
+        if(eventDate == dateEvent){
+            var timeHour = new Date(arrayEvents[i].idate).getHours();
+            var timeMinute = new Date(arrayEvents[i].idate).getMinutes();
+            if(timeHour < 10){ timeHour = "0" + timeHour; }
+            if(timeMinute < 10){ timeMinute = "0" + timeMinute; }
+            document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='wrapper-event' value='" + i + "'><div class='information-DayEvents'><div class='title-specific-DayEvents'>" + arrayEvents[i].title + "</div><div class='time-DayEvents'>" + timeHour + ":" + timeMinute + "</div></div><div class='icon-eliminate-DayEvents-wrapper'><div onclick='eliminateElementFromDayEvents(event)'>x</div></div></div>");
+        }
+    }
+}

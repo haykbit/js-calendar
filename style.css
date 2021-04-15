@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 * {
+  /* outline: 1px black solid; */
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
@@ -238,7 +239,7 @@ div#EventDate div.enventTittle{
   font-weight: bold;
 }
 
-#fondo{
+#fondo, #background-DayEvents{
   width: 100%;
   height: 100%;
   backdrop-filter: blur(3px);
@@ -483,4 +484,70 @@ div.buttonStyles input:valid + .label-name::after{
   text-align: center;
   margin-top: -7px;
   font-size: 20px;
+}
+
+#window-DayEvents{
+  display: flex;
+  flex-direction: column;
+  background-color:  rgba(255, 255, 255);
+  width: 50%;
+  height: 75%;
+  position: absolute;
+  top: 12.5%;
+  left: 25%;
+  z-index: 100;
+  align-items: center;
+  box-shadow:10px 10px 20px 0px #c2bdf0;
+  border-radius: 20px;
+  animation-name:widthSize;
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+}
+
+#title-DayEvents{
+  display: flex;
+  align-items: center;
+  height: 75px;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 3%;
+  margin-bottom: 2%;
+}
+
+#separator-DayEvents{
+  height: 2px;
+  width: 85%;
+  background-color: black;
+  border-radius: 50%;
+}
+
+#section-DayEvents{
+  flex-grow: 1;
+  width: 90%;
+  margin: 5%;
+  overflow: auto;
+}
+
+.wrapper-event{
+  margin-bottom: 1%;
+  border: solid black 1px;
+  border-radius: 10px;
+  padding: 1%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.icon-eliminate-DayEvents-wrapper{
+  display: flex;
+  align-items: center;
+  padding-right: 2%;
+}
+
+.title-specific-DayEvents{
+  font-size: 25px;
+}
+
+.time-DayEvents{
+  font-size: 15px;
 }
