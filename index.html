@@ -28,7 +28,7 @@
     </header>
     <main>
     </main>
-    <button id="add-event-button" onclick="unfoldpopup()">+</button>
+    <button id="add-event-button">+</button>
     <div class="form-popup">
         <div class="popup-inside">
         </div>
@@ -94,8 +94,7 @@
         </div>
     </form>
 
-    <div id="eventContent">
-    </div>
+    <div id="eventContent" onclick="closeEvent()"></div>
 </template>
 
 <template class="Event">
@@ -133,9 +132,15 @@
     <div id='fondo' onclick="closeEvent2()"></div>
 </template>
 
-<script>
-    function unfoldpopup() { }
-</script>
+<template class="DayEvents">
+    <div id="window-DayEvents">
+        <div id="title-DayEvents"></div>
+        <span id="separator-DayEvents"></span>
+        <div id="section-DayEvents">
+        </div>
+    </div>
+    <div id="background-DayEvents" onclick="closeDayEvents()"></div>
+</template>
 
 <script src="formulario.js"></script>
 <script src="calendar-generate.js"></script>
