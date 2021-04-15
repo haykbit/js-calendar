@@ -2,28 +2,6 @@
 
 /* mobile */
 
-@media screen and (max-width: 640px) {
-  body {
-    background: blue;
-  }
-}
-
-/* deskopt */
-
-@media screen and (min-width: 640px) and (max-width: 1280px) {
-  body {
-    background: red;
-  }
-}
-
-/* big screens */
-
-@media screen and (min-width: 1280px) {
-  body {
-    background: green;
-  }
-}
-
 * {
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
@@ -461,4 +439,70 @@ div.buttonStyles input:valid + .label-name::after{
   text-align: center;
   margin-top: -7px;
   font-size: 20px;
+}
+
+
+@media screen and (max-width: 640px) {
+  body {
+    background: blue;
+    box-sizing: border-box;
+    
+  }
+  div.week-day{
+      overflow: hidden;
+      text-overflow: clip;
+  }
+  main{
+    min-width: 450px;
+  }
+
+  #add-event-button{
+    border-radius: 100%;
+    position: relative;
+    box-sizing: border-box;
+    bottom: 3%;
+    left: 1%;
+    width: 50px;
+    height: 50px;
+    border: none;
+    font-size: 40px;
+    color: white;
+    box-shadow: 0px 0px 17px 6px rgb(235, 235, 235);
+    background-color: #695eff;
+    margin: 30px;
+    transition: all .2s ease-in-out;
+  }
+
+  #month-display{
+    max-width: 200px;
+
+  }
+  #year-display{
+
+  }
+}
+
+/* tablet screen */
+
+@media screen and (min-width: 640px) and (max-width: 1280px) {
+  body {
+    background: red;
+  }
+
+  div.week-day{
+    overflow: hidden;
+    text-overflow: clip;
+}
+}
+
+/* big screens */
+
+@media screen and (min-width: 1280px) {
+  body {
+    background: green;
+  }
+}
+
+@media (orientation: landscape) {
+  
 }
