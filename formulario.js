@@ -177,3 +177,34 @@ function crearReminder() {
     }
 
 }
+
+function eliminateEvent(eventId) {
+    var arrayTemp = [];
+    var objectTemp = {
+        key: "",
+        value: ""
+    };
+
+    for (var i = 0; i < localStorage.length; i++) {
+        objectTemp.key = "event" + i;
+        objectTemp.value = localStorage.getItem(objectTemp.key);
+        if(i < eventId){
+            var objectTempCopy = Object.assign({}, objectTemp);
+            arrayTemp.push(objectTempCopy);
+        }
+        else if(i > eventId){
+            objectTemp.key = "event" + (i - 1);
+            var objectTempCopy = Object.assign({}, objectTemp);
+            arrayTemp.push(objectTempCopy);
+        }
+    }
+
+    localStorage.clear();
+
+    for (var i = 0; i < arrayTemp.length; i++) {
+        localStorage.setItem(arrayTemp[i].key, arrayTemp[i].value);
+    }
+
+    updateEventsArrayFromLocalStorage();
+    generateCalendar(dateSelected.getFullYear(), dateSelected.getMonth());
+}
