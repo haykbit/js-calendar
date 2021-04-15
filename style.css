@@ -482,7 +482,7 @@ transform: translateX(0%);
   }
   div.week-day{
       overflow: hidden;
-      text-overflow: clip;
+      text-overflow: ellipsis;
       min-height: 30px;
   }
   main{
