@@ -88,6 +88,17 @@ function callTemplateDayEvents(event){
     else{
         document.getElementById("title-DayEvents").innerHTML = weekDays[dayEvent-1] + ", " + dateEvent + " of " + monthsYear[monthEvent] + " of " + yearEvent;
     }
+
+    for (var i = 0; i < arrayEvents.length; i++) {
+        var eventDate = new Date(arrayEvents[i].idate).getDate();
+        if(eventDate == dateEvent){
+            var timeHour = new Date(arrayEvents[i].idate).getHours();
+            var timeMinute = new Date(arrayEvents[i].idate).getMinutes();
+            if(timeHour < 10){ timeHour = "0" + timeHour; }
+            if(timeMinute < 10){ timeMinute = "0" + timeMinute; }
+            document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='wrapper-event'><div class='information-DayEvents'><div class='title-specific-DayEvents'>" + arrayEvents[i].title + "</div><div class='time-DayEvents'>" + timeHour + ":" + timeMinute + "</div></div><div class='icon-eliminate-DayEvents'>x</div></div>");
+        }
+    }
 }
 
 //____________________________________________________ esta función cierra el formulario de nuevo evento
