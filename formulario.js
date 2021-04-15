@@ -98,7 +98,7 @@ function callTemplateDayEvents(event){
                 var timeMinute = new Date(arrayEvents[i].idate).getMinutes();
                 if(timeHour < 10){ timeHour = "0" + timeHour; }
                 if(timeMinute < 10){ timeMinute = "0" + timeMinute; }
-                document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='wrapper-event' value='" + i + "'><div class='information-DayEvents'><div class='title-specific-DayEvents'>" + arrayEvents[i].title + "</div><div class='time-DayEvents'>" + timeHour + ":" + timeMinute + "</div></div><div class='icon-eliminate-DayEvents-wrapper'><div>x</div></div></div>");
+                document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='wrapper-event' value='" + i + "'><div class='information-DayEvents'><div class='title-specific-DayEvents'>" + arrayEvents[i].title + "</div><div class='time-DayEvents'>" + timeHour + ":" + timeMinute + "</div></div><div class='icon-eliminate-DayEvents-wrapper'><div onclick='eliminateElementFromDayEvents(event)'>x</div></div></div>");
             }
         }
     }
@@ -205,4 +205,28 @@ function eliminateEvent(eventId) {
 
     updateEventsArrayFromLocalStorage();
     generateCalendar(dateSelected.getFullYear(), dateSelected.getMonth());
+}
+
+function eliminateElementFromDayEvents(event){
+    var eventValueElement = event.currentTarget.parentElement.parentElement;
+    var eventID = eventValueElement.getAttribute("value");
+    var wrapperElementFather = eventValueElement.parentElement;
+
+    while (wrapperElementFather.firstChild) {
+        wrapperElementFather.removeChild(wrapperElementFather.firstChild);
+    }
+    
+    var dateEvent = new Date(arrayEvents[eventID].idate).getDate();
+    eliminateEvent(eventID);
+
+    for (var i = 0; i < arrayEvents.length; i++) {
+        var eventDate = new Date(arrayEvents[i].idate).getDate();
+        if(eventDate == dateEvent){
+            var timeHour = new Date(arrayEvents[i].idate).getHours();
+            var timeMinute = new Date(arrayEvents[i].idate).getMinutes();
+            if(timeHour < 10){ timeHour = "0" + timeHour; }
+            if(timeMinute < 10){ timeMinute = "0" + timeMinute; }
+            document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='wrapper-event' value='" + i + "'><div class='information-DayEvents'><div class='title-specific-DayEvents'>" + arrayEvents[i].title + "</div><div class='time-DayEvents'>" + timeHour + ":" + timeMinute + "</div></div><div class='icon-eliminate-DayEvents-wrapper'><div onclick='eliminateElementFromDayEvents(event)'>x</div></div></div>");
+        }
+    }
 }
