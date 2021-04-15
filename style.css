@@ -559,9 +559,54 @@ div.buttonStyles input:valid + .label-name::after{
     background: red;
   }
 
+  
+  form{
+    font-size: small;
+    padding: 5px 5px 5px 5px;
+    animation-name:widthSize;
+    animation-duration: 0.3s;
+    animation-timing-function: ease;
+    font-size: 15px;
+    z-index: 100;
+    margin:  5% 25% 5%;
+    /* padding: 2% 2% 2% 2%; */
+    height: 500px;
+    box-sizing: content-box;
+    border-radius: 1.5%;
+    box-shadow: 0px 0px 17px 6px rgb(235, 235, 235);
+  }
+
+  #formName{
+    margin-right: 25px;
+    text-align: right;
+    font-size: 20px;
+    margin-bottom: 0%;
+    margin-top: 2%;
+  }
+
+
+  
+  #EventDate{
+    margin: 15% 30%;
+    min-width: 300px;
+    min-height: 250px;
+    max-height: 500px ;
+      background-color: white;
+      backdrop-filter: blur(5px);
+      width: 40%;
+      height: 70%;
+      position: absolute;
+      margin: 10% 15%;
+      z-index: 100;
+      tex
+  }
+
+
+
   div.week-day{
     overflow: hidden;
-    text-overflow: clip;
+    text-overflow: ellipsis;
+    min-height: 30px;
 }
 }
 
@@ -569,7 +614,6 @@ div.buttonStyles input:valid + .label-name::after{
 
 @media screen and (min-width: 1280px) {
   body {
-    background: green;
   }
 }
 
