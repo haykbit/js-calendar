@@ -24,37 +24,42 @@ function remind() {
     
   if(arrayEvents.length==0){console.log('Do not execute')
     }else{
-    for(i=0;arrayEvents.length;i++){
-        let iReminded=arrayEvents[i].isReminded;
-        let fechaInicial=arrayEvents[i].idate;
-        let remindTime=arrayEvents[i].remindTime*60000;
-
-        //let secInitial= new Date(fechaInicial).getTime();
-        let secInicio=new Date(fechaInicial).getTime();
         
-        let remindNaw=secInicio-remindTime;
-        console.log('momento en el que debe empezar a recordar',remindNaw)
-        let timeToEvent=(secInicio-new Date().getTime());
-        if (timeToEvent<=remindTime && timeToEvent>0 && iReminded==false && arrayEvents[i].isRemind==true){
-            console.log('entra')
+        for(i=0;arrayEvents.length;i++){
             
+            let iReminded=arrayEvents[i].isReminded;
+            let fechaInicial=arrayEvents[i].idate;
+            let remindTime=arrayEvents[i].remindTime*60000;
 
-            document.querySelector('div.remindContent').insertAdjacentHTML("beforeend","<div class='reminders'></div>");
-            document.querySelector('div.reminders:last-of-type').textContent=`Recuerda: ${arrayEvents[i].title}`;
-            document.querySelector('div.reminders:last-of-type').insertAdjacentHTML("beforeend","<button class='showRemindText' onclick='showRemindText()'><span>+</span></button>");
-            //document.querySelector('div.remindContent').insertAdjacentHTML("beforeend","<div class='remindersText'></div>");
-            //document.querySelector('div.reminders:last-of-type').textContent=`A recordar: ${arrayEvents[i].eventText}`;
-            arrayEvents[i].isReminded=true;
-        }
-        
-        console.log('ha sido recordado? ',iReminded);
+            //let secInitial= new Date(fechaInicial).getTime();
+            let secInicio=new Date(fechaInicial).getTime();
+            
+            let remindNaw=secInicio-remindTime;
+            console.log('momento en el que debe empezar a recordar',remindNaw)
+            let timeToEvent=(secInicio-new Date().getTime());
+            if (timeToEvent<=remindTime && timeToEvent>0 && iReminded==false && arrayEvents[i].isRemind==true){
 
-        console.log('tiempoque falta para el evento ',timeToEvent)
-        //console.log('remind time en miligec',remindTime);
-        //let duracionEvento=secFinal-secInitial;
-        //console.log('Duracion del evento', duracionEvento);
+                document.querySelector('div.remindContent').insertAdjacentHTML("beforeend","<div value='"+i+"' class='reminders'>"+`Recuerda: ${arrayEvents[i].title}`+"</div>");
+                document.querySelector('div.reminders:last-of-type').insertAdjacentHTML("beforeend","<button class='showRemindText' onclick='showRemindText(this)'><span>+</span></button>");
+                setTimeout(deleteRemind,10000)
+                arrayEvents[i].isReminded=true;
+            }
         }
     }
+}
+
+function showRemindText(specificButton) {
+   
+    let specificDiv=specificButton.parentElement;
+    for(i=0;i<arrayEvents.length;i++){
+        if(specificDiv.getAttribute('value')==i){
+                document.querySelector('div.reminderText').insertAdjacentHTML("beforeend",`<p class='remindRefer'>${arrayEvents[i].title}</p> <p class='remindParagraf'> ${arrayEvents[i].eventText}</p>`);
+        }
+    }
+}
+
+function deleteRemind() {
+    document.querySelector('section.reminder').removeChild(document.querySelector('div.remindContent'));
 }
 setInterval(remind,10000);
 //_________________________esta función muestra el formulario de nuevo evento

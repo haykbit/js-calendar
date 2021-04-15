@@ -417,8 +417,17 @@ transform: translateX(0%);
   border-radius: 5px;
   color: white;
 }
-div.remindContent{
+section.reminder{
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  right: 0px;
+  min-width: 20%;
+  
+}
+
+div.remindContent{
+  
   display: flex;
   flex-direction: column;
   right: 0px;
@@ -440,6 +449,21 @@ div.reminders{
   animation-duration: 1s;
   animation-timing-function: ease;
   margin-bottom: 10px;
+}
+div.reminderText{  
+  
+  color: rgb(3, 3, 3);
+  padding: 10px 20px;
+  background: linear-gradient(30deg,rgb(74, 64, 250),rgb(255, 255, 255));
+  right: 0px;
+  border-radius: 20px 0px 0px 20px;
+  height: 100%;
+}
+p.remindParagraf{
+  max-width: 100px;
+}
+p.remindRefer{
+  color: white;
 }
 button.showRemindText{
   position: relative;
