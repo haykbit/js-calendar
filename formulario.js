@@ -73,30 +73,34 @@ function callTemplate2() {
 }
 
 function callTemplateDayEvents(event){
-    let newEvent = document.querySelector("template.DayEvents");
-    const importNewEvent = document.importNode(newEvent.content, true);
-    document.querySelector("body").appendChild(importNewEvent);
-
-    var dateEvent = event.currentTarget.getElementsByClassName("numberDayGrid")[0].innerHTML;
-    var dayEvent = new Date(dateSelected.getFullYear(), dateSelected.getMonth(), dateEvent).getDay();
-    var monthEvent = dateSelected.getMonth();
-    var yearEvent = dateSelected.getFullYear();
-
-    if(dayEvent == 0){
-        document.getElementById("title-DayEvents").innerHTML = weekDays[6] + ", " + dateEvent + " of " + monthsYear[monthEvent] + " of " + yearEvent;
-    }
-    else{
-        document.getElementById("title-DayEvents").innerHTML = weekDays[dayEvent-1] + ", " + dateEvent + " of " + monthsYear[monthEvent] + " of " + yearEvent;
-    }
-
-    for (var i = 0; i < arrayEvents.length; i++) {
-        var eventDate = new Date(arrayEvents[i].idate).getDate();
-        if(eventDate == dateEvent){
-            var timeHour = new Date(arrayEvents[i].idate).getHours();
-            var timeMinute = new Date(arrayEvents[i].idate).getMinutes();
-            if(timeHour < 10){ timeHour = "0" + timeHour; }
-            if(timeMinute < 10){ timeMinute = "0" + timeMinute; }
-            document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='wrapper-event'><div class='information-DayEvents'><div class='title-specific-DayEvents'>" + arrayEvents[i].title + "</div><div class='time-DayEvents'>" + timeHour + ":" + timeMinute + "</div></div><div class='icon-eliminate-DayEvents'>x</div></div>");
+    if((event.target == event.currentTarget)||
+    (event.target == event.currentTarget.getElementsByClassName("numberDayGrid")[0])||
+    (event.target == event.currentTarget.getElementsByClassName("more-event-box")[0])){
+        let newEvent = document.querySelector("template.DayEvents");
+        const importNewEvent = document.importNode(newEvent.content, true);
+        document.querySelector("body").appendChild(importNewEvent);
+    
+        var dateEvent = event.currentTarget.getElementsByClassName("numberDayGrid")[0].innerHTML;
+        var dayEvent = new Date(dateSelected.getFullYear(), dateSelected.getMonth(), dateEvent).getDay();
+        var monthEvent = dateSelected.getMonth();
+        var yearEvent = dateSelected.getFullYear();
+    
+        if(dayEvent == 0){
+            document.getElementById("title-DayEvents").innerHTML = weekDays[6] + ", " + dateEvent + " of " + monthsYear[monthEvent] + " of " + yearEvent;
+        }
+        else{
+            document.getElementById("title-DayEvents").innerHTML = weekDays[dayEvent-1] + ", " + dateEvent + " of " + monthsYear[monthEvent] + " of " + yearEvent;
+        }
+    
+        for (var i = 0; i < arrayEvents.length; i++) {
+            var eventDate = new Date(arrayEvents[i].idate).getDate();
+            if(eventDate == dateEvent){
+                var timeHour = new Date(arrayEvents[i].idate).getHours();
+                var timeMinute = new Date(arrayEvents[i].idate).getMinutes();
+                if(timeHour < 10){ timeHour = "0" + timeHour; }
+                if(timeMinute < 10){ timeMinute = "0" + timeMinute; }
+                document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='wrapper-event'><div class='information-DayEvents'><div class='title-specific-DayEvents'>" + arrayEvents[i].title + "</div><div class='time-DayEvents'>" + timeHour + ":" + timeMinute + "</div></div><div class='icon-eliminate-DayEvents'>x</div></div>");
+            }
         }
     }
 }
