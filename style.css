@@ -115,19 +115,15 @@ main{
   border-radius: 4px;
 }
 
-h1{
-  justify-content: center;
-  font-family: 'Montserrat', sans-serif;
-  color: black;
-  font-weight: 700;
-}
-
-
 h3{
   font-weight: 400;
   font-size: 25px;
   opacity: 70%;
   font-family: 'Montserrat', sans-serif;
+}
+
+h4 {
+  font-size: 20px;
 }
 
 #next-month:hover {
@@ -194,15 +190,57 @@ div#EventDate{
   display: flex;
   flex-direction: column;
   box-shadow: 0px 0px 17px 6px rgb(235, 235, 235);
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 3% 3% 3% 3%;
   animation-name:widthSize;
   animation-duration: 0.3s;
   animation-timing-function: ease;
 }
 
-#titleDataContent {
-  background-color: rgb(226, 96, 96);
+.eventVisualContent {
+  display: flex;
+}
+
+#inDate{
+  width: 50%;
+}
+
+#fiDate {
+  width: 50%;
+}
+
+.eventVisualType {
+  display: flex;
+}
+
+#typeText {
+  width: 50%;
+}
+
+#description {
+  width: 50%;
+}
+
+.titleDataContent {
+  background-color: rgb(245, 245, 245);
+  max-width: 70%;
+  padding: 4%;
+  border-radius: 5%;
+}
+
+.titleDataTime {
+  background-color: #695eff;
+  max-width: 40%;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 3%;
+  border-radius: 5px;
+}
+
+.titleDataTime h5{
+  margin: 0;
 }
 
 div#EventDate div.enventTittle{
@@ -325,9 +363,7 @@ form{
   float: right;
   padding: 2% 2% 2% 2%;
   margin-top: 20px;
-  margin-right: 5px;
-  width: 20%;
-  margin-left: 78%;
+  margin-left: 70%;
   font-weight: bold;
   font-size: 17px;
   color:white;
