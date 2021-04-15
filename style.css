@@ -444,7 +444,6 @@ div.buttonStyles input:valid + .label-name::after{
 
 @media screen and (max-width: 640px) {
   body {
-    background: blue;
     box-sizing: border-box;
     
   }
@@ -453,6 +452,7 @@ div.buttonStyles input:valid + .label-name::after{
       text-overflow: clip;
   }
   main{
+    margin-top: 5%;
     min-width: 450px;
   }
 
@@ -474,7 +474,8 @@ div.buttonStyles input:valid + .label-name::after{
   }
 
   #month-display{
-    max-width: 200px;
+    display: flex;
+    width: 200px;
 
   }
   #year-display{
