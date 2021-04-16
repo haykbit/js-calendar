@@ -35,7 +35,7 @@
 <template class="newEvent">
     <form id="formEvent" class="eventForm" action="">
         <div class="closeButton-box">
-            <span id="closeButton-shape">X</span>
+            <span id="closeButton-shape">x</span>
         </div>
         <h1 id="formName">Add an event</h1>
         <div class='buttonStyles'>
@@ -49,7 +49,7 @@
 
         <div class='buttonStyles'>
             <label for="initial-date">Initial date</label>
-            <input type="date" name="initialDate" id="initial-date">
+            <input type="date" name="initialDate" id="initial-date" required>
         </div>
         <div class='checkoxStyles'>
             <input type="checkbox" name="finalDateOption" id="final-date-option" onchange="habilitarDate(this)">
@@ -74,10 +74,10 @@
             </select>
         </div>
 
-        <textarea id="remindText" name="textarea" rows="10" cols="50" class="habitiation" disabled></textarea>
+        <textarea id="remindText" name="textarea" rows="10" cols="50" class="habitiation" maxlength="500" disabled></textarea>
 
         <div id='selctStyles'>
-            <label for="event-type">Event-type</label>
+            <label for="event-type">Event Type</label>
             <select name="eventType" id="event-type">
                 <option value="Meeting">Meeting</option>
                 <option value="Personal">Personal</option>
