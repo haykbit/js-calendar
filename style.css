@@ -526,8 +526,13 @@ div.buttonStyles input:valid + .label-name::after{
 }
 
 .more-event-box{
+  cursor: default;
   text-align: center;
   font-size: 20px;
+}
+
+.numberDayGrid{
+  cursor: default;
 }
 
 #window-DayEvents{
