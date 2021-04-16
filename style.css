@@ -840,6 +840,96 @@ div.buttonStyles input:valid + .label-name::after{
   background-color: #695eff;
   margin: 30px;
 }
+section.reminder{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  right: 0px;
+  min-width: 20%;
+  
+}
+
+div.remindContent{
+  
+  display: flex;
+  flex-direction: column;
+  right: 0px;
+  min-width: 30%;
+  position: relative;
+  
+}
+div.reminders{
+  
+  display: flex;
+  flex-direction: row;
+  min-width: 30%;
+  min-height: 30px;
+  
+  background: linear-gradient(30deg,rgb(74, 64, 250),rgb(255, 255, 255));
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px 0px 0px 20px;
+  animation-name: show;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  margin-bottom: 10px;
+}
+div.reminderText{  
+  display: flex;
+  flex-direction: column;
+  color: rgb(3, 3, 3);
+  padding: 10px 20px;
+  background: linear-gradient(30deg,rgb(74, 64, 250),rgb(255, 255, 255));
+  right: 0px;
+  border-radius: 20px 0px 0px 20px;
+  height: 100%;
+  animation-name: show;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  margin-bottom: 10px;
+  
+}
+p.remindParagraf{
+  max-width: 100px;
+}
+p.remindRefer{
+  color: white;
+}
+p.remindRefer{
+  color: white;
+}
+button.showRemindText{
+  position: absolute;
+  margin-left: 70%;
+  background-color: rgb(105, 94, 255);
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  outline: none;
+}
+button.closeRemindText{
+  position: absolute;
+  margin-left: 70%;
+  background-color: rgb(105, 94, 255);
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  outline: none;
+}
+
+@keyframes show {
+  0%{position: absolute;
+    opacity: 0;
+    right: -500px;}
+ 
+  100%{position: relative;
+    right: 0px;
+    opacity: 1;}
+}
 
 .addNewEvent input:hover{
   background-color: white;

@@ -22,9 +22,64 @@ function updateEventsArrayFromLocalStorage() {
     for (let i = 0; i < localStorage.length; i++) {
         let objectTemp = JSON.parse(localStorage.getItem(i));
         arrayEvents.push(objectTemp);
+        console.log(arrayEvents[i].idate)
     }
-};
+    
+}
+function remind() {
+    
+  if(arrayEvents.length==0){console.log('Do not execute')
+    }else{
+        
+        for(i=0;i<arrayEvents.length;i++){
+            
+            let iReminded=arrayEvents[i].isReminded;
+            let fechaInicial=arrayEvents[i].idate;
+            let remindTime=arrayEvents[i].remindTime*60000;
 
+            //let secInitial= new Date(fechaInicial).getTime();
+            let secInicio=new Date(fechaInicial).getTime();
+            
+            let remindNaw=secInicio-remindTime;
+            console.log('momento en el que debe empezar a recordar',remindNaw)
+            let timeToEvent=(secInicio-new Date().getTime());
+            if (timeToEvent<=remindTime && timeToEvent>0 && iReminded==false && arrayEvents[i].isRemind==true){
+
+                document.querySelector('div.remindContent').insertAdjacentHTML("beforeend","<div value='"+i+"' class='reminders'>"+`<p class='remindtitle'>Recuerda: ${arrayEvents[i].title}</p>`+"</div>");
+                document.querySelector('div.reminders:last-of-type').insertAdjacentHTML("beforeend","<button class='showRemindText' onclick='showRemindText(this); this.onclick=null;'><span>+</span></button>");
+                setTimeout(deleteRemind,10000)
+                arrayEvents[i].isReminded=true;
+                let object=JSON.parse(localStorage.getItem(i));
+                object.isReminded=true;
+                localStorage.setItem(i, JSON.stringify(object));
+
+
+
+            }
+        }
+    }
+}
+
+function showRemindText(specificButton) {
+   
+    let specificDiv=specificButton.parentElement;
+    for(i=0;i<arrayEvents.length;i++){
+        if(specificDiv.getAttribute('value')==i){
+                document.querySelector('section.reminder').insertAdjacentHTML("beforeend",`<div class='reminderText'><button class='closeRemindText' onclick='closeRemindText(this);'><span>x</span></button><p class='remindRefer'>${arrayEvents[i].title}</p> <p class='remindParagraf'> ${arrayEvents[i].eventText}</p><div>`);
+
+        }
+    }
+}
+function closeRemindText(specificText){
+    let specificDivText=specificText.parentElement;
+    console.log(specificDivText)
+    document.querySelector('section.reminder').removeChild(specificDivText);
+    
+}
+function deleteRemind() {
+    document.querySelector('div.remindContent').removeChild(document.querySelector('div.reminders'));
+}
+setInterval(remind,10000);
 //_________________________esta función muestra el formulario de nuevo evento
 function callTemplate() {
     //___________________________________________________________copiar y añadir hijo desde el template
@@ -201,7 +256,8 @@ function saveDataAndCloseEvent(evt) {
         isRemind: document.getElementById("remind-option").checked,
         remindTime: document.getElementById("time-remind").value,
         eventText: document.getElementById("remindText").value,
-        eventType: document.getElementById("event-type").value
+        eventType: document.getElementById("event-type").value,
+        isReminded: false
     };
 
     let jsonString = JSON.stringify(event);

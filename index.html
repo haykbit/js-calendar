@@ -6,11 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Calendar</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
+
+    <header><section class="reminder">
+        <div class='remindContent'>
+        </div>
+
+    </section>
         <div id="year-display">
             <img id="larrow" src="img/larrow.png" />
             <h1 id="year-text"></h1>
@@ -48,7 +54,8 @@
         </div>
         <div class='buttonStyles'>
             <label for="initial-date">Initial date</label>
-            <input type="date" name="initialDate" id="initial-date" required>
+            <input type="datetime-local" name="initialDate" id="initial-date" required>
+
         </div>
         <div class='checkoxStyles'>
             <input type="checkbox" name="finalDateOption" id="final-date-option" onchange="habilitarDate(this)">
@@ -56,7 +63,8 @@
         </div>
         <div class='buttonStyles'>
             <label for="final-date">Final date</label>
-            <input type="date" name="finalDate" id="final-date" disabled>
+            <input type="datetime-local" name="finalDate" id="final-date" disabled>
+
         </div>
         <div class='checkoxStyles'>
             <input type="checkbox" name="remindOption" id="remind-option" onchange="habilitarReminder(this)">
@@ -64,7 +72,7 @@
         </div>
         <div class='selctStyles'>
             <label for="time-remind">Went we remind you?</label>
-            <select name="timeRemind" id="time-remind" class="habitiation" disabled onchange="crearReminder()">
+            <select name="timeRemind" id="time-remind" class="habitiation" disabled>
                 <option id="five-minutes" value="5">5 minutes before</option>
                 <option id="ten-minutes" value="10">10 minutes before</option>
                 <option id="fifteen-minutes" value="15">15 minutes before</option>
@@ -141,6 +149,5 @@
 
 <script src="formulario.js"></script>
 <script src="calendar-generate.js"></script>
-<script src="month-animation.js"></script>
 
 </html>
