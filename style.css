@@ -21,6 +21,9 @@ header{
   height: 20%;
 }
 
+button:focus {outline:0;}
+input:focus {outline:0;}
+
 #larrow {
   width: 26px;
   height: 26px;
@@ -87,7 +90,7 @@ main{
 .week-day{
   text-align: center;
   color: #695eff;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   font-family: 'Montserrat', sans-serif;
   border-bottom: 1px solid rgb(241, 241, 241);
@@ -99,7 +102,7 @@ main{
   border-bottom: 1px;
   color: black;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 25px;
   padding: 10px 10px;
   overflow: auto;
   animation-name: showDay;
@@ -116,8 +119,9 @@ main{
 }
 
 .hover-class:hover {
-  border: 3px solid #695eff;
-  border-radius: 4px;
+  border-radius: 2px;
+  box-shadow: 0px 0px 1px 3px #695eff;
+  z-index: 100;
 }
 
 h3{
@@ -146,10 +150,10 @@ h4 {
 #add-event-button{
   border-radius: 100%;
   position: absolute;
-  bottom: 4%;
+  bottom: 0%;
   right: 1%;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border: none;
   font-size: 40px;
   color: white;
@@ -159,8 +163,12 @@ h4 {
 }
 
 #add-event-button:hover{
-  transform: rotate(90deg);
-  box-shadow: 0px 0px 1px 5px #695eff;
+  background-color: white;
+  color: #695eff;
+  font-weight: bold;
+  transform: scale(1.1);
+  transition: all 300ms;
+  transform: translate(3);
 }
 
 .form-popup{
@@ -607,17 +615,15 @@ div.buttonStyles input:valid + .label-name::after{
   }
 
   #add-event-button{
-    border-radius: 100%;
+    border-radius: 2%;
     position: relative;
     box-sizing: border-box;
     bottom: 3%;
-    left: 1%;
     width: 50px;
     height: 50px;
     border: none;
     font-size: 40px;
     color: white;
-    box-shadow: 0px 0px 17px 6px rgb(63, 48, 48);
     background-color: #695eff;
     margin: 30px;
     transition: all .2s ease-in-out;
@@ -715,8 +721,7 @@ div.buttonStyles input:valid + .label-name::after{
 /* big screens */
 
 @media screen and (min-width: 1280px) {
-  body {
-  }
+
 }
 
 @media (orientation: landscape) {
@@ -786,4 +791,6 @@ div.buttonStyles input:valid + .label-name::after{
 
 .time-DayEvents{
   font-size: 15px;
+}
+
 }
