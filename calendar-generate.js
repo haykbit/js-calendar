@@ -116,7 +116,7 @@ function eliminatePreviousGrid() {
 function DataToCalendar() {
     var firstDayMonth = new Date(dateSelected.getFullYear(), dateSelected.getMonth(), 1).getDay();
     for (var i = 0; i < arrayEvents.length; i++) {
-        var objectTemp = arrayEvents[i];
+        var objectTemp = Object.assign({}, arrayEvents[i]);
         var dateTemp = new Date(objectTemp.idate);
         if (dateTemp.getMonth() == dateSelected.getMonth() && dateTemp.getFullYear() == dateSelected.getFullYear()) {
             let father;
@@ -136,7 +136,6 @@ function DataToCalendar() {
             }
         }
     }
-
 };
 
 function generateGridButton(event) {
