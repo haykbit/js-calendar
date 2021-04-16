@@ -62,49 +62,122 @@ function habilitarDate(date) {
     }
 };
 
-function callTemplate2() {
-    let newEvent = document.querySelector("template.Event");
-    const importNewEvent = document.importNode(newEvent.content, true);
-    document.querySelector("body").appendChild(importNewEvent);
+/*<div id="EventDate">
+        <div id="eventVisualHeader">
+            <span id="closeButton-visual">X</span>
+            <div id="enventTitleVisual">
+                <h1>Evento Hotel Mandarin</h1>
+            </div>
+        </div>
+        <div class="eventVisualContent">
+            <div id="inDate">
+                <h4>El evento empieza en</h4>
+                <h5 class="titleDataContent">Viernes 23 de Agosto, 2021</h5>
+                <div class="titleDataTime"><h5>13:00</h5></div>
+            </div>
+            <div id="fiDate">
+                <h4>Fin de evento</h4>
+                <h5 class="titleDataContent">Viernes 23 de Agosto, 2021</h5>
+                <div class="titleDataTime"><h5>16:00</h5></div>
+            </div>
+        </div>
+        <div class="eventVisualType">
+            <div id="typeText">
+                <h4>Tipo</h4>
+                <h5 class="titleDataContent"><img src="img/circle-meeting.png" width="16px" height="16px"/><div>Meeting</div></h5>
+            </div>
+            <div id="description">
+                <h4>Descripción</h4>
+                <h5 class="titleDataContent">Reunión con Pablo - Presupuestos mes de Julio</h5>
+            </div>
+        </div>
+        <input id="eliminate-button" type="reset" value="Eliminate" />
+    </div>
+    <div id='fondo' onclick="closeEvent2()"></div>*/
 
-    document.getElementById('closeButton-visual').addEventListener('click', closeEvent2);
+function callTemplate2(event) {
+
+    if ((event.target == event.currentTarget ||
+        (event.target == event.currentTarget.getElementsByClassName("numberDayGrid")[0]) ||
+        (event.target == event.currentTarget.getElementsByClassName("more-event-box")[0]))) {
+
+        let newEvent = document.querySelector("template.Event");
+        const importNewEvent = document.importNode(newEvent.content, true);
+        document.querySelector("body").appendChild(importNewEvent);
+
+        console.log(event.currentTarget);
+        
+        var singleEvent = document.getElementById("enventTitleVisual");
+        var titleSingleEvent = singleEvent.querySelector("h1");
+        var dateSingleEvent = document.getElementById("dateCurrentEvent");
+        var timeSingleEvent = document.getElementById("timeCurrentEvent");
+        var endDateSingleEvent = document.getElementById("endDateCurrentEvent");
+        var endTimeSingleEvent = document.getElementById("endTimeCurrentEvent");
+        var typeSingleEvent = document.getElementById("typeText");
+        var dSingleEvent = document.getElementById("description");
+        var descSingleEvent = dSingleEvent.querySelector("h5");
+
+        var eventValue = event.currentTarget.getAttribute('value');
+
+        titleSingleEvent.innerHTML = arrayEvents[eventValue].title;
+        dateSingleEvent.innerHTML = arrayEvents[eventValue].idate;
+        /*timeSingleEvent.innerHTML = arrayEvents[eventValue].itime;*/
+        if (arrayEvents[eventValue].isFDate == false) {
+            document.getElementById("fiDate").style.visibility = "hidden";
+        }
+        else {
+            endDateSingleEvent.innerHTML = arrayEvents[eventValue].fdate;
+            /*endTimeSingleEvent.innerHTML = arrayEvents[eventValue].ftime;*/
+        }
+
+        if (arrayEvents[eventValue].eventType == "Meeting") {
+            typeSingleEvent.insertAdjacentHTML("beforeend", "<h5 class='titleDataContent' id='typeOfEvent'><img src='img/circle-meeting.png' width='16px height='16px'/>&nbsp" + arrayEvents[eventValue].eventType);
+        } else if (arrayEvents[eventValue].eventType == "Personal") {
+
+        } else if (arrayEvents[eventValue].eventType == "Meeting") {
+        
+        }
+        document.getElementById('closeButton-visual').addEventListener('click', closeEvent2);
+    }
+
 };
 
-function callTemplateDayEvents(event){
-    if((event.target == event.currentTarget)||
-    (event.target == event.currentTarget.getElementsByClassName("numberDayGrid")[0])||
-    (event.target == event.currentTarget.getElementsByClassName("more-event-box")[0])){
+function callTemplateDayEvents(event) {
+    if ((event.target == event.currentTarget) ||
+        (event.target == event.currentTarget.getElementsByClassName("numberDayGrid")[0]) ||
+        (event.target == event.currentTarget.getElementsByClassName("more-event-box")[0])) {
         let newEvent = document.querySelector("template.DayEvents");
         const importNewEvent = document.importNode(newEvent.content, true);
         document.querySelector("body").appendChild(importNewEvent);
-    
+
         var dateEvent = event.currentTarget.getElementsByClassName("numberDayGrid")[0].innerHTML;
         var dayEvent = new Date(dateSelected.getFullYear(), dateSelected.getMonth(), dateEvent).getDay();
         var monthEvent = dateSelected.getMonth();
         var yearEvent = dateSelected.getFullYear();
-    
-        if(dayEvent == 0){
+
+        if (dayEvent == 0) {
             document.getElementById("title-DayEvents").innerHTML = weekDays[6] + ", " + dateEvent + " of " + monthsYear[monthEvent] + " of " + yearEvent;
         }
-        else{
-            document.getElementById("title-DayEvents").innerHTML = weekDays[dayEvent-1] + ", " + dateEvent + " of " + monthsYear[monthEvent] + " of " + yearEvent;
+        else {
+            document.getElementById("title-DayEvents").innerHTML = weekDays[dayEvent - 1] + ", " + dateEvent + " of " + monthsYear[monthEvent] + " of " + yearEvent;
         }
-    
+
         for (var i = 0; i < arrayEvents.length; i++) {
             var eventDate = new Date(arrayEvents[i].idate).getDate();
-            if(eventDate == dateEvent){
+            if (eventDate == dateEvent) {
                 var timeHour = new Date(arrayEvents[i].idate).getHours();
                 var timeMinute = new Date(arrayEvents[i].idate).getMinutes();
-                if(timeHour < 10){ timeHour = "0" + timeHour; }
-                if(timeMinute < 10){ timeMinute = "0" + timeMinute; }
-                document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='wrapper-event' value='" + i + "'><div class='information-DayEvents'><div class='title-specific-DayEvents'>" + arrayEvents[i].title + "</div><div class='time-DayEvents'>" + timeHour + ":" + timeMinute + "</div></div><div class='icon-eliminate-DayEvents-wrapper'><div onclick='eliminateElementFromDayEvents(event)'>x</div></div></div>");
+                if (timeHour < 10) { timeHour = "0" + timeHour; }
+                if (timeMinute < 10) { timeMinute = "0" + timeMinute; }
+                document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='wrapper-event' value='" + i + "' onclick='callTemplate2(event)'><div class='information-DayEvents'><div class='title-specific-DayEvents'>" + arrayEvents[i].title + "</div><div class='time-DayEvents'>" + timeHour + ":" + timeMinute + "</div></div><div class='icon-eliminate-DayEvents-wrapper'><div onclick='eliminateElementFromDayEvents(event)'>x</div></div></div>");
             }
         }
+
     }
 }
 
 //____________________________________________________ esta función cierra el formulario de nuevo evento
-function closeDayEvents(){
+function closeDayEvents() {
     document.querySelector("body").removeChild(document.getElementById("window-DayEvents"));
     document.querySelector("body").removeChild(document.getElementById("background-DayEvents"));
 }
@@ -121,23 +194,26 @@ function closeEvent() {
 //____________________________________________________ esta función añade el evento a guardar en el calendario
 function addEventInCalendar(event) {
     var firstDayMonth = new Date(dateSelected.getFullYear(), dateSelected.getMonth(), 1).getDay();
-    var dateTemp = new Date(event.idate);
+    for (var i = 0; i < arrayEvents.length; i++) {
+        var objectTemp = arrayEvents[i];
+        var dateTemp = new Date(objectTemp.idate);
+        if (dateTemp.getMonth() == dateSelected.getMonth()) {
+            let father;
+            if (firstDayMonth == 0) {
+                father = document.getElementsByClassName("grid-day")[5 + dateTemp.getDate()];
+            }
+            else {
+                father = document.getElementsByClassName("grid-day")[firstDayMonth + dateTemp.getDate() - 2];
+            }
+            let eventsInDay = father.getElementsByClassName("event-box").length;
+            let eventMax = father.getElementsByClassName("more-event-box")[0];
+            if (eventsInDay < 1) {
+                father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2(event)' value='" + i + "'>" + objectTemp.title + "</div>");
+            }
+            else if ((eventsInDay == 1) && (!eventMax)) {
+                father.insertAdjacentHTML("beforeend", "<div class='more-event-box' onclick='callTemplate2(event)'>...</div>");
+            }
 
-    if (dateTemp.getMonth() == dateSelected.getMonth()) {
-        let father;
-        if (firstDayMonth == 0) {
-            father = document.getElementsByClassName("grid-day")[5 + dateTemp.getDate()];
-        }
-        else {
-            father = document.getElementsByClassName("grid-day")[firstDayMonth + dateTemp.getDate() - 2];
-        }
-        let eventsInDay = father.getElementsByClassName("event-box").length;
-        let eventMax = father.getElementsByClassName("more-event-box")[0];
-        if (eventsInDay < 1) {
-            father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2()'>" + event.title + "</div>");
-        }
-        else if ((eventsInDay == 1) && (!eventMax)) {
-            father.insertAdjacentHTML("beforeend", "<div class='more-event-box'>...</div>");
         }
     }
 };
@@ -176,11 +252,11 @@ function eliminateEvent(eventId) {
     for (var i = 0; i < localStorage.length; i++) {
         objectTemp.key = i;
         objectTemp.value = localStorage.getItem(objectTemp.key);
-        if(i < eventId){
+        if (i < eventId) {
             var objectTempCopy = Object.assign({}, objectTemp);
             arrayTemp.push(objectTempCopy);
         }
-        else if(i > eventId){
+        else if (i > eventId) {
             objectTemp.key = (i - 1);
             var objectTempCopy = Object.assign({}, objectTemp);
             arrayTemp.push(objectTempCopy);
@@ -197,7 +273,7 @@ function eliminateEvent(eventId) {
     generateCalendar(dateSelected.getFullYear(), dateSelected.getMonth());
 }
 
-function eliminateElementFromDayEvents(event){
+function eliminateElementFromDayEvents(event) {
     var eventValueElement = event.currentTarget.parentElement.parentElement;
     var eventID = eventValueElement.getAttribute("value");
     var wrapperElementFather = eventValueElement.parentElement;
@@ -205,17 +281,17 @@ function eliminateElementFromDayEvents(event){
     while (wrapperElementFather.firstChild) {
         wrapperElementFather.removeChild(wrapperElementFather.firstChild);
     }
-    
+
     var dateEvent = new Date(arrayEvents[eventID].idate).getDate();
     eliminateEvent(eventID);
 
     for (var i = 0; i < arrayEvents.length; i++) {
         var eventDate = new Date(arrayEvents[i].idate).getDate();
-        if(eventDate == dateEvent){
+        if (eventDate == dateEvent) {
             var timeHour = new Date(arrayEvents[i].idate).getHours();
             var timeMinute = new Date(arrayEvents[i].idate).getMinutes();
-            if(timeHour < 10){ timeHour = "0" + timeHour; }
-            if(timeMinute < 10){ timeMinute = "0" + timeMinute; }
+            if (timeHour < 10) { timeHour = "0" + timeHour; }
+            if (timeMinute < 10) { timeMinute = "0" + timeMinute; }
             document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='wrapper-event' value='" + i + "'><div class='information-DayEvents'><div class='title-specific-DayEvents'>" + arrayEvents[i].title + "</div><div class='time-DayEvents'>" + timeHour + ":" + timeMinute + "</div></div><div class='icon-eliminate-DayEvents-wrapper'><div onclick='eliminateElementFromDayEvents(event)'>x</div></div></div>");
         }
     }

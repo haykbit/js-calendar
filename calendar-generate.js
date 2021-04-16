@@ -129,10 +129,10 @@ function DataToCalendar() {
             let eventsInDay = father.getElementsByClassName("event-box").length;
             let eventMax = father.getElementsByClassName("more-event-box")[0];
             if (eventsInDay < 1) {
-                father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2()' value='" + i + "'>"+ objectTemp.title + "</div>");
+                father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2(event)' value='" + i + "'>"+ objectTemp.title + "</div>");
             }
             else if ((eventsInDay == 1) && (!eventMax)) {
-                father.insertAdjacentHTML("beforeend", "<div class='more-event-box'>...</div>");
+                father.insertAdjacentHTML("beforeend", "<div class='more-event-box' onclick='callTemplate2(event)'>...</div>");
             }
         }
     }
@@ -175,3 +175,7 @@ function newEventActivator(elementTarget) {
         habilitarDate(this);
     });
 };
+
+function visualizeEvent (){
+
+}

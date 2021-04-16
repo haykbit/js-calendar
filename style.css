@@ -20,15 +20,27 @@ header{
 }
 
 #larrow {
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   margin-right: 10px;
 }
 
+#larrow:hover {
+  transform: scale(0.8);
+  transition: all 300ms;
+  transform: translate(3);
+}
+
 #rarrow {
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   margin-left: 10px;
+}
+
+#rarrow:hover {
+  transform: scale(0.8);
+  transition: all 300ms;
+  transform: translate(3);
 }
 
 #year-display{
@@ -41,7 +53,7 @@ header{
 
 #barra {
   font-size: 60px;
-  margin-left: 20px;
+  margin-left: 25px;
   margin-bottom: 65px;
   color: lightgrey;
 }
@@ -132,14 +144,13 @@ h4 {
 #add-event-button{
   border-radius: 100%;
   position: absolute;
-  bottom: 3%;
-  right: 4%;
+  bottom: 4%;
+  right: 1%;
   width: 50px;
   height: 50px;
   border: none;
   font-size: 40px;
   color: white;
-  box-shadow: 0px 0px 17px 6px rgb(235, 235, 235);
   background-color: #695eff;
   margin: 30px;
   transition: all .2s ease-in-out;
@@ -147,6 +158,7 @@ h4 {
 
 #add-event-button:hover{
   transform: rotate(90deg);
+  box-shadow: 0px 0px 1px 5px #695eff;
 }
 
 .form-popup{
@@ -167,7 +179,7 @@ h4 {
 #EventDate{
   background-color: white;
   backdrop-filter: blur(5px);
-  width: 50%;
+  width: 40%;
   position: absolute;
   margin: 10% 25%;
   z-index: 100;
@@ -190,6 +202,9 @@ h4 {
 #eventVisualHeader {
   animation-name: showEvent;
   animation-duration: 2s;
+  font-size: 30px;
+  margin: 0;
+  margin-bottom: -8%;
 }
 
 .eventVisualType {
@@ -220,8 +235,18 @@ h4 {
   width: 50%;
 }
 
+#typeText h5{
+  justify-content: left;
+  margin-left: 10px;
+}
+
 #description {
   width: 50%;
+}
+
+#description h5 {
+  max-width: 100%;
+  justify-content: left;
 }
 
 .titleDataContent {
@@ -229,8 +254,12 @@ h4 {
   max-width: 70%;
   padding: 4%;
   border-radius: 5%;
+  font-weight: 300;
   display: flex;
+  justify-content: center;
+
 }
+
 .titleDataContent div {
   margin-left: 10px;
 }
@@ -470,6 +499,10 @@ form label{
   text-align: center;
   font-weight: bold;
   font-size: 20px;
+}
+
+#new-event-specific:hover {
+  box-shadow: 0px 0px 1px 1px rgb(255, 70, 70);
 }
 
 div.buttonStyles input:focus + .label-name .eventTittle-name,
