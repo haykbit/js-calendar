@@ -120,7 +120,7 @@ main{
 
 .hover-class:hover {
   border-radius: 2px;
-  box-shadow: 0px 0px 1px 3px #695eff;
+  box-shadow: 0px 0px 0px 4px #695eff;
   z-index: 100;
 }
 
@@ -135,12 +135,27 @@ h4 {
   font-size: 20px;
 }
 
+#actual-month {
+  padding: 2%;
+  background-color: white;
+}
+
+#next-month {
+  padding: 2%;
+  background-color: white;
+}
+
+#previous-month {
+  padding: 2%;
+  background-color: white;
+}
+
 #next-month:hover {
   transform: scale(1.1);
   transition: all 300ms;
   transform: translate(3);
-
 }
+
 #previous-month:hover {
   transform: scale(1.1);
   transition: all 300ms;
@@ -155,6 +170,7 @@ h4 {
   width: 60px;
   height: 60px;
   border: none;
+  font-weight: bold;
   font-size: 40px;
   color: white;
   background-color: #695eff;
@@ -163,12 +179,13 @@ h4 {
 }
 
 #add-event-button:hover{
-  background-color: white;
-  color: #695eff;
+  background-color: rgb(255, 70, 70);
+  color: white;
   font-weight: bold;
   transform: scale(1.1);
   transition: all 300ms;
   transform: translate(3);
+  transform: rotate(90deg);
 }
 
 .form-popup{
@@ -500,7 +517,7 @@ form label{
 }
 
 #new-event-specific {
-  background-color: rgb(255, 70, 70);
+  background-color: #ff4646;
   border: none;
   float: right;
   padding: 1% 4% 1% 4%;
@@ -512,7 +529,7 @@ form label{
 }
 
 #new-event-specific:hover {
-  box-shadow: 0px 0px 1px 1px rgb(255, 70, 70);
+  box-shadow: 0px 0px 0px 2px rgb(255, 70, 70);
 }
 
 div.buttonStyles input:focus + .label-name .eventTittle-name,
@@ -738,8 +755,8 @@ div.buttonStyles input:valid + .label-name::after{
   left: 25%;
   z-index: 100;
   align-items: center;
-  box-shadow:10px 10px 20px 0px #c2bdf0;
-  border-radius: 20px;
+  box-shadow: 0px  0px 17px 6px rgb(235, 235, 235);
+  border-radius: 1.5%;
   animation-name:widthSize;
   animation-duration: 0.3s;
   animation-timing-function: ease;
@@ -771,18 +788,52 @@ div.buttonStyles input:valid + .label-name::after{
 
 .wrapper-event{
   margin-bottom: 1%;
-  border: solid black 1px;
-  border-radius: 10px;
-  padding: 1%;
+  border-radius: 5px;
+  background-color: #695eff;
+  color: white;
+  font-weight: bold;
+  padding: 2%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
+.wrapper-event img:hover{
+  transform: scale(0.8);
+  transition: all 200ms;
+  transform: translate(3);
+}
+
+.addNewEvent input {
+  border-radius: 100%;
+  position: absolute;
+  bottom: 0%;
+  right: 1%;
+  width: 60px;
+  height: 60px;
+  border: none;
+  font-size: 40px;
+  color: white;
+  background-color: #695eff;
+  margin: 30px;
+}
+
+.addNewEvent input:hover{
+  background-color: white;
+  color: #695eff;
+  font-weight: bold;
+  transform: scale(1.1);
+  transition: all 300ms;
+  transform: translate(3);
+}
+
 .icon-eliminate-DayEvents-wrapper{
   display: flex;
   align-items: center;
-  padding-right: 2%;
+  padding: 2% 2% 2% 2%;
+  font-size: 30px;
+  line-height: 20px;
+  color: white;
 }
 
 .title-specific-DayEvents{

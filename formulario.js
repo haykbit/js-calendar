@@ -62,39 +62,6 @@ function habilitarDate(date) {
     }
 };
 
-/*<div id="EventDate">
-        <div id="eventVisualHeader">
-            <span id="closeButton-visual">X</span>
-            <div id="enventTitleVisual">
-                <h1>Evento Hotel Mandarin</h1>
-            </div>
-        </div>
-        <div class="eventVisualContent">
-            <div id="inDate">
-                <h4>El evento empieza en</h4>
-                <h5 class="titleDataContent">Viernes 23 de Agosto, 2021</h5>
-                <div class="titleDataTime"><h5>13:00</h5></div>
-            </div>
-            <div id="fiDate">
-                <h4>Fin de evento</h4>
-                <h5 class="titleDataContent">Viernes 23 de Agosto, 2021</h5>
-                <div class="titleDataTime"><h5>16:00</h5></div>
-            </div>
-        </div>
-        <div class="eventVisualType">
-            <div id="typeText">
-                <h4>Tipo</h4>
-                <h5 class="titleDataContent"><img src="img/circle-meeting.png" width="16px" height="16px"/><div>Meeting</div></h5>
-            </div>
-            <div id="description">
-                <h4>Descripción</h4>
-                <h5 class="titleDataContent">Reunión con Pablo - Presupuestos mes de Julio</h5>
-            </div>
-        </div>
-        <input id="eliminate-button" type="reset" value="Eliminate" />
-    </div>
-    <div id='fondo' onclick="closeEvent2()"></div>*/
-
 function callTemplate2(event) {
 
     if ((event.target == event.currentTarget ||
@@ -106,7 +73,7 @@ function callTemplate2(event) {
         document.querySelector("body").appendChild(importNewEvent);
 
         console.log(event.currentTarget);
-        
+
         var singleEvent = document.getElementById("enventTitleVisual");
         var titleSingleEvent = singleEvent.querySelector("h1");
         var dateSingleEvent = document.getElementById("dateCurrentEvent");
@@ -135,7 +102,7 @@ function callTemplate2(event) {
         } else if (arrayEvents[eventValue].eventType == "Personal") {
 
         } else if (arrayEvents[eventValue].eventType == "Meeting") {
-        
+
         }
         document.getElementById('closeButton-visual').addEventListener('click', closeEvent2);
     }
@@ -169,8 +136,13 @@ function callTemplateDayEvents(event) {
                 var timeMinute = new Date(arrayEvents[i].idate).getMinutes();
                 if (timeHour < 10) { timeHour = "0" + timeHour; }
                 if (timeMinute < 10) { timeMinute = "0" + timeMinute; }
-                document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='wrapper-event' value='" + i + "' onclick='callTemplate2(event)'><div class='information-DayEvents'><div class='title-specific-DayEvents'>" + arrayEvents[i].title + "</div><div class='time-DayEvents'>" + timeHour + ":" + timeMinute + "</div></div><div class='icon-eliminate-DayEvents-wrapper'><div onclick='eliminateElementFromDayEvents(event)'>x</div></div></div>");
+                document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='wrapper-event' value='" + i + "' onclick='callTemplate2(event)'><div class='information-DayEvents'><div class='title-specific-DayEvents'>" + arrayEvents[i].title + "</div><div class='time-DayEvents'>" + timeHour + ":" + timeMinute + "</div></div><div class='icon-eliminate-DayEvents-wrapper'><div onclick='eliminateElementFromDayEvents(event)'><img src='img/remove(1).png' width='32px' height='32px' /></div></div></div>");
             }
+        }
+
+        var re = new RegExp('[a-z]');
+        if (!event.currentTarget.lastChild.innerHTML.match(re)) {
+            document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='addNewEvent'><div class='information-DayEvents'><input type='button' value='+'/ onclick='callTemplate()'></div></div>");
         }
 
     }
@@ -292,7 +264,13 @@ function eliminateElementFromDayEvents(event) {
             var timeMinute = new Date(arrayEvents[i].idate).getMinutes();
             if (timeHour < 10) { timeHour = "0" + timeHour; }
             if (timeMinute < 10) { timeMinute = "0" + timeMinute; }
-            document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='wrapper-event' value='" + i + "'><div class='information-DayEvents'><div class='title-specific-DayEvents'>" + arrayEvents[i].title + "</div><div class='time-DayEvents'>" + timeHour + ":" + timeMinute + "</div></div><div class='icon-eliminate-DayEvents-wrapper'><div onclick='eliminateElementFromDayEvents(event)'>x</div></div></div>");
+            document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='wrapper-event' value='" + i + "' onclick='callTemplate2(event)'><div class='information-DayEvents'><div class='title-specific-DayEvents'>" + arrayEvents[i].title + "</div><div class='time-DayEvents'>" + timeHour + ":" + timeMinute + "</div></div><div class='icon-eliminate-DayEvents-wrapper'><div onclick='eliminateElementFromDayEvents(event)'><img src='img/remove(1).png' width='32px' height='32px' /></div></div></div>");
         }
     }
+
+    var re = new RegExp('[a-z]');
+    if (!event.currentTarget.lastChild.innerHTML.match(re)) {
+        document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='addNewEvent'><div class='information-DayEvents'><input type='button' value='+'/ onclick='callTemplate()'></div></div>");
+    }
+
 }
