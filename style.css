@@ -588,7 +588,6 @@ div.buttonStyles input:valid + .label-name::after{
       position: absolute;
       margin: 10% 15%;
       z-index: 100;
-      tex
   }
   
   #fondo {
