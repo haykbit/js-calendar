@@ -134,7 +134,7 @@ function addEventInCalendar(ID, event) {
         let eventsInDay = father.getElementsByClassName("event-box").length;
         let eventMax = father.getElementsByClassName("more-event-box")[0];
         if (eventsInDay < 1) {
-            father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2()' value='" + ID + "'>" + event.title + "</div>");
+            father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2()' value='" + ID + "'><p>" + event.title + "</p></div>");
         }
         else if ((eventsInDay == 1) && (!eventMax)) {
             father.insertAdjacentHTML("beforeend", "<div class='more-event-box'>...</div>");
