@@ -15,12 +15,12 @@
             <img id="larrow" src="img/larrow.png" />
             <h1 id="year-text"></h1>
             <img id="rarrow" src="img/rarrow.png" />
-            <p id="barra">|</p>
         </div>
+        <div id="barra">|</div>
         <div id="month-display">
-            <h3 id="previous-month" class="month"></h3>
-            <h1 id="actual-month" class="month"></h1>
-            <h3 id="next-month" class="month"></h3>
+            <div id="wrapper-previous-month"><h3 id="previous-month" class="month"></h3></div>
+            <div id="wrapper-actual-month"><h1 id="actual-month" class="month"></h1></div>
+            <div id="wrapper-next-month"><h3 id="next-month" class="month"></h3></div>
         </div>
     </header>
     <main>
@@ -35,11 +35,11 @@
 <template class="newEvent">
     <form id="formEvent" class="eventForm" action="">
         <div class="closeButton-box">
-            <span id="closeButton-shape">X</span>
+            <span id="closeButton-shape">x</span>
         </div>
         <h1 id="formName">Add an event</h1>
         <div class='buttonStyles'>
-            <input type="text" name="eventTittle" id="event-tittle" required>
+            <input type="text" name="eventTittle" id="event-tittle" maxlength="60" required>
             <label for="event-tittle" class="label-name">
                 <span class="eventTittle-name">
                     <h2>Title</h2>
@@ -48,7 +48,7 @@
         </div>
         <div class='buttonStyles'>
             <label for="initial-date">Initial date</label>
-            <input type="date" name="initialDate" id="initial-date">
+            <input type="date" name="initialDate" id="initial-date" required>
         </div>
         <div class='checkoxStyles'>
             <input type="checkbox" name="finalDateOption" id="final-date-option" onchange="habilitarDate(this)">
@@ -73,10 +73,10 @@
             </select>
         </div>
 
-        <textarea id="remindText" name="textarea" rows="10" cols="50" class="habitiation" disabled></textarea>
+        <textarea id="remindText" name="textarea" rows="10" cols="50" class="habitiation" maxlength="500" disabled></textarea>
 
         <div id='selctStyles'>
-            <label for="event-type">Event-type</label>
+            <label for="event-type">Event Type</label>
             <select name="eventType" id="event-type">
                 <option value="Meeting">Meeting</option>
                 <option value="Personal">Personal</option>

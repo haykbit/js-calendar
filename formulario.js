@@ -136,7 +136,7 @@ function callTemplateDayEvents(event) {
                 var timeMinute = new Date(arrayEvents[i].idate).getMinutes();
                 if (timeHour < 10) { timeHour = "0" + timeHour; }
                 if (timeMinute < 10) { timeMinute = "0" + timeMinute; }
-                document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='wrapper-event' value='" + i + "' onclick='callTemplate2(event)'><div class='information-DayEvents'><div class='title-specific-DayEvents'>" + arrayEvents[i].title + "</div><div class='time-DayEvents'>" + timeHour + ":" + timeMinute + "</div></div><div class='icon-eliminate-DayEvents-wrapper'><div onclick='eliminateElementFromDayEvents(event)'><img src='img/remove(1).png' width='32px' height='32px' /></div></div></div>");
+                document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='wrapper-event' value='" + i + "' onclick='callTemplate2(event)'><div class='information-DayEvents'><div class='title-specific-DayEvents'><p>" + arrayEvents[i].title + "</p></div><div class='time-DayEvents'>" + timeHour + ":" + timeMinute + "</div></div><div class='icon-eliminate-DayEvents-wrapper'><div onclick='eliminateElementFromDayEvents(event)'><img src='img/remove(1).png' width='32px' height='32px' /></div></div></div>");
             }
         }
 
@@ -164,7 +164,7 @@ function closeEvent() {
 };
 
 //____________________________________________________ esta función añade el evento a guardar en el calendario
-function addEventInCalendar(event) {
+function addEventInCalendar(ID, event) {
     var firstDayMonth = new Date(dateSelected.getFullYear(), dateSelected.getMonth(), 1).getDay();
     for (var i = 0; i < arrayEvents.length; i++) {
         var objectTemp = arrayEvents[i];
@@ -180,12 +180,11 @@ function addEventInCalendar(event) {
             let eventsInDay = father.getElementsByClassName("event-box").length;
             let eventMax = father.getElementsByClassName("more-event-box")[0];
             if (eventsInDay < 1) {
-                father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2(event)' value='" + i + "'>" + objectTemp.title + "</div>");
+                father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2()' value='" + ID + "'><p>" + event.title + "</p></div>");
             }
             else if ((eventsInDay == 1) && (!eventMax)) {
-                father.insertAdjacentHTML("beforeend", "<div class='more-event-box' onclick='callTemplate2(event)'>...</div>");
+                father.insertAdjacentHTML("beforeend", "<div class='more-event-box'>...</div>");
             }
-
         }
     }
 };
@@ -209,7 +208,7 @@ function saveDataAndCloseEvent(evt) {
     localStorage.setItem(arrayEvents.length, jsonString);
 
     updateEventsArrayFromLocalStorage();
-    addEventInCalendar(event);
+    addEventInCalendar(arrayEvents.length-1, event);
 
     closeEvent();
 }

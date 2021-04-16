@@ -118,7 +118,7 @@ function eliminatePreviousGrid() {
 function DataToCalendar() {
     var firstDayMonth = new Date(dateSelected.getFullYear(), dateSelected.getMonth(), 1).getDay();
     for (var i = 0; i < arrayEvents.length; i++) {
-        var objectTemp = arrayEvents[i];
+        var objectTemp = Object.assign({}, arrayEvents[i]);
         var dateTemp = new Date(objectTemp.idate);
         if (dateTemp.getMonth() == dateSelected.getMonth() && dateTemp.getFullYear() == dateSelected.getFullYear()) {
             let father;
@@ -131,14 +131,13 @@ function DataToCalendar() {
             let eventsInDay = father.getElementsByClassName("event-box").length;
             let eventMax = father.getElementsByClassName("more-event-box")[0];
             if (eventsInDay < 1) {
-                father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2(event)' value='" + i + "'>"+ objectTemp.title + "</div>");
+                father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2(event)' value='" + i + "'><p>"+ objectTemp.title + "</p></div>");
             }
             else if ((eventsInDay == 1) && (!eventMax)) {
                 father.insertAdjacentHTML("beforeend", "<div class='more-event-box' onclick='callTemplate2(event)'>...</div>");
             }
         }
     }
-
 };
 
 function generateGridButton(event) {

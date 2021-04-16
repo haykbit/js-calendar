@@ -19,47 +19,35 @@ header{
   display: flex;
   flex-direction: row;
   height: 20%;
-}
-
-button:focus {outline:0;}
-input:focus {outline:0;}
-
-#larrow {
-  width: 26px;
-  height: 26px;
-  margin-right: 10px;
-}
-
-#larrow:hover {
-  transform: scale(0.8);
-  transition: all 300ms;
-  transform: translate(3);
-}
-
-#rarrow {
-  width: 26px;
-  height: 26px;
-  margin-left: 10px;
-}
-
-#rarrow:hover {
-  transform: scale(0.8);
-  transition: all 300ms;
-  transform: translate(3);
+  user-select: none;
 }
 
 #year-display{
   font-size: 30px;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
   padding: 2%;
 }
 
+#larrow, #rarrow {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+}
+
+#year-text{
+  cursor: default;
+  text-align: center;
+  width: 200px;
+}
+
 #barra {
+  cursor: default;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 60px;
-  margin-left: 25px;
-  margin-bottom: 65px;
   color: lightgrey;
 }
 
@@ -69,6 +57,32 @@ input:focus {outline:0;}
   flex-direction: row;
   align-items: center;
   flex-grow: 1;
+}
+
+#wrapper-previous-month, #wrapper-next-month{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  left: 30px;
+  width: 150px;
+}
+
+#previous-month, #next-month{
+  cursor: pointer;
+  width: fit-content;
+}
+
+#actual-month{
+  cursor: default;
+  width: fit-content;
+}
+
+#wrapper-actual-month{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  left: 30px;
+  width: 350px;
 }
 
 main{
@@ -154,31 +168,35 @@ h4 {
 }
 
 #next-month:hover {
-  transform: scale(1.1);
+  transform: scale(1.25);
   transition: all 300ms;
   transform: translate(3);
 }
 
 #previous-month:hover {
-  transform: scale(1.1);
+  transform: scale(1.25);
   transition: all 300ms;
   transform: translate(3);
 }
 
 #add-event-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 100%;
   position: absolute;
-  bottom: 0%;
-  right: 1%;
+  bottom: 7%;
+  right: 4%;
   width: 60px;
   height: 60px;
+  padding: 0px;
   border: none;
-  font-weight: bold;
-  font-size: 40px;
+  font-size: 60px;
   color: white;
   background-color: #695eff;
-  margin: 30px;
   transition: all .2s ease-in-out;
+  cursor: pointer;
+  outline: none;
 }
 
 #add-event-button:hover{
@@ -209,9 +227,11 @@ h4 {
 #EventDate{
   background-color: white;
   backdrop-filter: blur(5px);
-  width: 40%;
+  height: 75%;
+  width: 50%;
   position: absolute;
-  margin: 10% 25%;
+  top: 12.5%;
+  left: 25%;
   z-index: 100;
   display: flex;
   flex-direction: column;
@@ -308,7 +328,7 @@ h4 {
   margin: 0;
 }
 
-div#EventDate div.enventTittle{
+#EventDate div.enventTittle{
   width: 80%;
   height: 100px;
   border-bottom: none;
@@ -379,9 +399,11 @@ form{
   display: flex;
   flex-direction: column;
   z-index: 100;
-  margin:  5% 33%;
+  height: 75%;
+  width: 30%;
+  top: 12.5%;
+  left: 35%;
   padding: 2% 2% 2% 2%;
-  height: 700px;
   background-color: white;
   border-radius: 1.5%;
   box-shadow: 0px 0px 17px 6px rgb(235, 235, 235);
@@ -528,6 +550,7 @@ form label{
   text-align: center;
   font-weight: bold;
   font-size: 20px;
+  cursor: pointer;
 }
 
 #new-event-specific:hover {
@@ -549,21 +572,27 @@ div.buttonStyles input:valid + .label-name::after{
 .event-box{
   display: flex;
   align-items: center;
-  padding: 5px 5px 5px 5px;
-  margin: 7px 0px 0px 0px;
-  max-width: 85px;
-  max-height: 25px;
-  overflow: hidden;
+  padding: 5px;
+  margin: 10px 0px 0px 0px;
+  max-width: 180px;
+  max-height: 20px;
   font-size: 15px;
   background-color: black;
-  border-radius: 2px;
+  border-radius: 4px;
   color:white;
+  cursor: pointer;
+}
+
+.event-box p{
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .more-event-box{
-  height: 0px;
+  cursor: default;
   text-align: center;
-  margin-top: -7px;
   font-size: 20px;
 }
            /* MEDIA QUERYS */
@@ -734,6 +763,10 @@ div.buttonStyles input:valid + .label-name::after{
 @media (orientation: landscape) {
   
 
+.numberDayGrid{
+  cursor: default;
+}
+
 #window-DayEvents{
   display: flex;
   flex-direction: column;
@@ -827,7 +860,15 @@ div.buttonStyles input:valid + .label-name::after{
 }
 
 .title-specific-DayEvents{
+  max-width: 800px;
   font-size: 25px;
+}
+
+.title-specific-DayEvents p{
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .time-DayEvents{
