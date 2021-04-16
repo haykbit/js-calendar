@@ -594,7 +594,15 @@ div.buttonStyles input:valid + .label-name::after{
 }
 
 .title-specific-DayEvents{
+  max-width: 800px;
   font-size: 25px;
+}
+
+.title-specific-DayEvents p{
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .time-DayEvents{

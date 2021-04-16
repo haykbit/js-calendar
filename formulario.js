@@ -97,7 +97,7 @@ function callTemplateDayEvents(event){
                 var timeMinute = new Date(arrayEvents[i].idate).getMinutes();
                 if(timeHour < 10){ timeHour = "0" + timeHour; }
                 if(timeMinute < 10){ timeMinute = "0" + timeMinute; }
-                document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='wrapper-event' value='" + i + "'><div class='information-DayEvents'><div class='title-specific-DayEvents'>" + arrayEvents[i].title + "</div><div class='time-DayEvents'>" + timeHour + ":" + timeMinute + "</div></div><div class='icon-eliminate-DayEvents-wrapper'><div onclick='eliminateElementFromDayEvents(event)'>x</div></div></div>");
+                document.getElementById("section-DayEvents").insertAdjacentHTML("beforeend", "<div class='wrapper-event' value='" + i + "'><div class='information-DayEvents'><div class='title-specific-DayEvents'><p>" + arrayEvents[i].title + "</p></div><div class='time-DayEvents'>" + timeHour + ":" + timeMinute + "</div></div><div class='icon-eliminate-DayEvents-wrapper'><div onclick='eliminateElementFromDayEvents(event)'>x</div></div></div>");
             }
         }
     }
