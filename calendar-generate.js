@@ -187,3 +187,8 @@ function showNextMonth() {
         }
     }
 }
+
+function currentDate(){
+    var newCurrentYear = new Date();
+    generateCalendar(newCurrentYear.getFullYear(), newCurrentYear.getMonth());
+}

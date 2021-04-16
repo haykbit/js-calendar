@@ -71,6 +71,11 @@ input:focus {outline:0;}
   flex-grow: 1;
 }
 
+#currentDate {
+  width: 70px;
+  height: 30px;
+}
+
 main{
   display: flex;
   background-color: white;
