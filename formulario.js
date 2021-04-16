@@ -43,6 +43,12 @@ function remind() {
                 document.querySelector('div.reminders:last-of-type').insertAdjacentHTML("beforeend","<button class='showRemindText' onclick='showRemindText(this); this.onclick=null;'><span>+</span></button>");
                 setTimeout(deleteRemind,10000)
                 arrayEvents[i].isReminded=true;
+                let object=JSON.parse(localStorage.getItem('event'+i));
+                object.isReminded=true;
+                localStorage.setItem('event'+i, JSON.stringify(object));
+
+
+
             }
         }
     }
