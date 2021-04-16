@@ -39,8 +39,8 @@ function remind() {
             let timeToEvent=(secInicio-new Date().getTime());
             if (timeToEvent<=remindTime && timeToEvent>0 && iReminded==false && arrayEvents[i].isRemind==true){
 
-                document.querySelector('div.remindContent').insertAdjacentHTML("beforeend","<div value='"+i+"' class='reminders'>"+`Recuerda: ${arrayEvents[i].title}`+"</div>");
-                document.querySelector('div.reminders:last-of-type').insertAdjacentHTML("beforeend","<button class='showRemindText' onclick='showRemindText(this)'><span>+</span></button>");
+                document.querySelector('div.remindContent').insertAdjacentHTML("beforeend","<div value='"+i+"' class='reminders'>"+`<p class='remindtitle'>Recuerda: ${arrayEvents[i].title}</p>`+"</div>");
+                document.querySelector('div.reminders:last-of-type').insertAdjacentHTML("beforeend","<button class='showRemindText' onclick='showRemindText(this); this.onclick=null;'><span>+</span></button>");
                 setTimeout(deleteRemind,10000)
                 arrayEvents[i].isReminded=true;
             }
@@ -53,13 +53,19 @@ function showRemindText(specificButton) {
     let specificDiv=specificButton.parentElement;
     for(i=0;i<arrayEvents.length;i++){
         if(specificDiv.getAttribute('value')==i){
-                document.querySelector('div.reminderText').insertAdjacentHTML("beforeend",`<p class='remindRefer'>${arrayEvents[i].title}</p> <p class='remindParagraf'> ${arrayEvents[i].eventText}</p>`);
+                document.querySelector('section.reminder').insertAdjacentHTML("beforeend",`<div class='reminderText'><button class='closeRemindText' onclick='closeRemindText(this);'><span>x</span></button><p class='remindRefer'>${arrayEvents[i].title}</p> <p class='remindParagraf'> ${arrayEvents[i].eventText}</p><div>`);
+
         }
     }
 }
-
+function closeRemindText(specificText){
+    let specificDivText=specificText.parentElement;
+    console.log(specificDivText)
+    document.querySelector('section.reminder').removeChild(specificDivText);
+    
+}
 function deleteRemind() {
-    document.querySelector('section.reminder').removeChild(document.querySelector('div.remindContent'));
+    document.querySelector('div.remindContent').removeChild(document.querySelector('div.reminders'));
 }
 setInterval(remind,10000);
 //_________________________esta función muestra el formulario de nuevo evento
