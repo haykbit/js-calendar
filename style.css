@@ -1,49 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+/* mobile */
+
 * {
+  /* outline: 1px black solid; */
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
 body{
-  /*background: rgb(158, 236, 210);*/
-  /*background: linear-gradient(25deg, rgb(255, 255, 255) 0%, rgb(153, 255, 187) 44%, rgb(158, 236, 210) 77%);*/
   display: flex;
   flex-direction: column;
   margin: 0;
   height: 100vh;
 }
 
-#larrow {
-  width: 22px;
-  height: 22px;
-  margin-right: 10px;
-}
-
-#rarrow {
-  width: 22px;
-  height: 22px;
-  margin-left: 10px;
-}
-
 header{
   display: flex;
   flex-direction: row;
   height: 20%;
+  user-select: none;
 }
 
 #year-display{
   font-size: 30px;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
   padding: 2%;
 }
 
+#larrow, #rarrow {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+}
+
+#year-text{
+  cursor: default;
+  text-align: center;
+  width: 200px;
+}
+
 #barra {
+  cursor: default;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 60px;
-  margin-left: 20px;
-  margin-bottom: 65px;
+  color: lightgrey;
 }
 
 #month-display{
@@ -52,6 +57,32 @@ header{
   flex-direction: row;
   align-items: center;
   flex-grow: 1;
+}
+
+#wrapper-previous-month, #wrapper-next-month{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  left: 30px;
+  width: 150px;
+}
+
+#previous-month, #next-month{
+  cursor: pointer;
+  width: fit-content;
+}
+
+#actual-month{
+  cursor: default;
+  width: fit-content;
+}
+
+#wrapper-actual-month{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  left: 30px;
+  width: 350px;
 }
 
 main{
@@ -73,7 +104,7 @@ main{
 .week-day{
   text-align: center;
   color: #695eff;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   font-family: 'Montserrat', sans-serif;
   border-bottom: 1px solid rgb(241, 241, 241);
@@ -84,8 +115,8 @@ main{
   border: 1px solid rgb(245, 245, 245);
   border-bottom: 1px;
   color: black;
-  font-weight: bold;
-  font-size: 20px;
+  font-weight: 700;
+  font-size: 25px;
   padding: 10px 10px;
   overflow: auto;
   animation-name: showDay;
@@ -101,45 +132,80 @@ main{
   }
 }
 
-.grid-day:hover{
-  color: black;
-}
-
 .hover-class:hover {
-  border: 3px solid #695eff;
-  border-radius: 4px;
-}
-
-h1{
-  justify-content: center;
-  font-family: 'Montserrat', sans-serif;
-  color: black;
+  border-radius: 2px;
+  box-shadow: 0px 0px 0px 4px #695eff;
+  z-index: 100;
 }
 
 h3{
-  font-weight: 300;
+  font-weight: 400;
   font-size: 25px;
   opacity: 70%;
   font-family: 'Montserrat', sans-serif;
 }
 
+h4 {
+  font-size: 20px;
+}
+
+#actual-month {
+  padding: 2%;
+  background-color: white;
+  margin: 0;
+}
+
+#next-month {
+  padding: 2%;
+  background-color: white;
+  margin: 0;
+}
+
+#previous-month {
+  padding: 2%;
+  background-color: white;
+  margin: 0;
+}
+
+#next-month:hover {
+  transform: scale(1.25);
+  transition: all 300ms;
+  transform: translate(3);
+}
+
+#previous-month:hover {
+  transform: scale(1.25);
+  transition: all 300ms;
+  transform: translate(3);
+}
+
 #add-event-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 100%;
   position: absolute;
-  bottom: 3%;
+  bottom: 7%;
   right: 4%;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
+  padding: 0px;
   border: none;
-  font-size: 40px;
+  font-size: 60px;
   color: white;
-  box-shadow: 0px 0px 17px 6px rgb(235, 235, 235);
   background-color: #695eff;
-  margin: 30px;
   transition: all .2s ease-in-out;
+  cursor: pointer;
+  outline: none;
 }
 
 #add-event-button:hover{
+  background-color: rgb(255, 70, 70);
+  color: white;
+  font-weight: bold;
+  transform: scale(1.1);
+  transition: all 300ms;
+  transform: translate(3);
   transform: rotate(90deg);
 }
 
@@ -157,39 +223,120 @@ h3{
   max-width: 700px;
   padding: 5px;
 }
-div#EventDate{
-  background-color:  rgba(255, 255, 255, 0.2);
+
+#EventDate{
+  background-color: white;
   backdrop-filter: blur(5px);
+  height: 75%;
   width: 50%;
-  height: 50%;
   position: absolute;
-  margin: 10% 25%;
+  top: 12.5%;
+  left: 25%;
   z-index: 100;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  justify-content: space-around;
-  align-items: center;
-  box-shadow:10px 10px 20px 0px #c2bdf0;
-  border-radius: 20px;
+  box-shadow: 0px 0px 17px 6px rgb(235, 235, 235);
+  border-radius: 10px;
+  padding: 3% 3% 3% 3%;
   animation-name:widthSize;
   animation-duration: 0.3s;
   animation-timing-function: ease;
 }
-div#EventDate div{
-  width: 80%;
-  height: 50px;
-  background: linear-gradient(-2deg, #a2c1fc ,  #ebe9fd,rgba(255,255,255,0)  );
-  padding-bottom: 10px;
-}
-div#EventDate div.enventTittle{
-  width: 80%;
-  height: 100px;
-  background: linear-gradient(-2deg, #a2c1fc ,  #ebe9fd,rgba(255,255,255,0)  );
-  padding-bottom: 10px;
+
+.eventVisualContent {
+  display: flex;
+  animation-name: showEvent;
+  animation-duration: 2s;
 }
 
-div#fondo{
+#eventVisualHeader {
+  animation-name: showEvent;
+  animation-duration: 2s;
+  font-size: 30px;
+  margin: 0;
+  margin-bottom: -8%;
+}
+
+.eventVisualType {
+  display: flex;
+  animation-name: showEvent;
+  animation-duration: 2s;
+}
+
+@keyframes showEvent {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+#inDate{
+  width: 50%;
+}
+
+#fiDate {
+  width: 50%;
+}
+
+#typeText {
+  width: 50%;
+}
+
+#typeText h5{
+  justify-content: left;
+}
+
+#description {
+  width: 50%;
+}
+
+#description h5 {
+  max-width: 100%;
+  justify-content: left;
+}
+
+.titleDataContent {
+  background-color: rgb(245, 245, 245);
+  max-width: 70%;
+  padding: 4%;
+  border-radius: 5%;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+
+}
+
+.titleDataContent div {
+  margin-left: 10px;
+}
+
+.titleDataTime {
+  background-color: #695eff;
+  max-width: 40%;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 3%;
+  border-radius: 5px;
+}
+
+.titleDataTime h5{
+  margin: 0;
+}
+
+#EventDate div.enventTittle{
+  width: 80%;
+  height: 100px;
+  border-bottom: none;
+  padding-bottom: 20px;
+  font-weight: bold;
+}
+
+#fondo, #background-DayEvents{
   width: 100%;
   height: 100%;
   backdrop-filter: blur(3px);
@@ -200,11 +347,13 @@ div#fondo{
   animation-duration: 0.3s;
   animation-timing-function: ease;
 }
+
 @keyframes backgroundAperars {
   0% {opacity: 0;}
 
   100% {opacity: 1;}
 }
+
 @keyframes widthSize {
   0% {width:  2%;
       height: 2%;}
@@ -214,45 +363,35 @@ div#fondo{
   100% {width: 50%;}
 }
 
-/*______________________Formulario template*/
-template.newEvent{
-  margin: 0 auto;
-}
-
-
-div#eventContent{
+#eventContent{
   position:absolute;
   z-index: 0;
   backdrop-filter: blur(2px);
   width: 100%;
   height: 100%;
 }
-   /*_________boton cerrar*/
-#close-button{
-  visibility: hidden;
-}
+
 .closeButton-box{
-  left:15%;
-  position: absolute;
+  margin-left: 95%;
 }
 
 #closeButton-shape{
   position:absolute;
-  margin-left: 350px;
+  margin-bottom: 4px;
   color: #695eff;
   font-weight: bold;
+  font-weight: 700;
   font-size: 20px;
+  color: #695eff;
 }
 
-#close-button{
-  background-color: white;
-  border: none;
-}
-
-/*_____________________Inside form*/
-h1.formName{
-    text-align: left;
-    font-size: 10px;
+#closeButton-visual {
+  margin-left: 95%;
+  color: #695eff;
+  font-weight: bold;
+  font-weight: 700;
+  font-size: 20px;
+  color: #695eff;
 }
 
 form{
@@ -260,9 +399,11 @@ form{
   display: flex;
   flex-direction: column;
   z-index: 100;
-  margin:  5% 33%;
-  padding: 2%;
-  height: 700px;
+  height: 75%;
+  width: 30%;
+  top: 12.5%;
+  left: 35%;
+  padding: 2% 2% 2% 2%;
   background-color: white;
   border-radius: 1.5%;
   box-shadow: 0px 0px 17px 6px rgb(235, 235, 235);
@@ -270,47 +411,59 @@ form{
 
 #cancel-button {
   float: right;
-  padding: 4% 6% 4% 6%;
+  padding: 3% 5% 3% 5%;
   margin-top: 20px;
   margin-right: 5px;
   font-weight: bold;
   font-size: 17px;
-  color: black;
-  border: 4px solid rgb(255, 70, 70);
+  color:white;
+  border: 3px solid white;
   border-radius: 5px;
-  background-color: white;
+  background-color:  rgb(255, 70, 70);
 }
+
 #cancel-button:hover {
-background-color: rgb(255, 70, 70);
-color: white;
+  background-color: rgb(255, 70, 70);
+  border: 3px solid rgb(255, 70, 70);
+  color: white;
 }
 
-label {
-  font-weight: 500;
+#eliminate-button {
+  float: right;
+  padding: 2% 2% 2% 2%;
+  margin-top: 20px;
+  margin-left: 70%;
+  font-weight: bold;
+  font-size: 17px;
+  color:white;
+  border: 3px solid white;
+  border-radius: 5px;
+  background-color:rgb(255, 70, 70);
 }
 
-input {
-  border: 1px solid lightgrey;
+#eliminate-button:hover {
+  border: 3px solid rgb(255, 70, 70);
 }
 
 #create-button {
   float: right;
-  padding: 4% 6% 4% 6%;
+  padding: 3% 5% 3% 5%;
   margin-top: 20px;
   font-weight: bold;
   font-size: 17px;
-  color: black;
-  border: 4px solid rgb(105, 94, 255);
+  color: white;
+  border: 3px solid white;
   border-radius: 5px;
-  background-color: white;
+  background-color:rgb(105, 94, 255);
 }
 
 #create-button:hover {
   background-color: rgb(105, 94, 255);
+  border: 3px solid rgb(105, 94, 255);
   color: white;
 }
 
-div.buttonStyles{
+.buttonStyles{
   position: relative;
   overflow: hidden;
   height: 250px;
@@ -318,23 +471,25 @@ div.buttonStyles{
   
 }
 
-div.buttonStyles  label{
+.buttonStyles label{
   position: absolute;
   width: 100%;
   height: 100%;
   left: 0%;
+  font-weight: 700;
   bottom: 0%;
   border-bottom: 2px solid rgb(235, 235, 235);
   transition: 2s;
   pointer-events: none;
 }
 
-div.buttonStyles input{
+.buttonStyles input{
   cursor: pointer;
   min-width: 5%;
   border: none;
   padding-top: 20px;
   background-color: rgba(255,255,255,0);
+  border-bottom: 1px solid lightgrey;
   width: 100%;
   height: 100%;
   outline: none;
@@ -346,7 +501,8 @@ div.buttonStyles input{
   transition: 0.5s ease;
  
 }
-div.buttonStyles label::after{
+
+.buttonStyles label::after{
   content: "";
   position: absolute;
   width: 100%;
@@ -360,7 +516,7 @@ div.buttonStyles label::after{
   opacity: 0.3;
 }
 
-div.checkoxStyles{
+.checkoxStyles{
   margin-bottom: 20px;
 }
 
@@ -376,12 +532,16 @@ form textarea{
   resize: none;
 }
 
+form label{
+  font-weight: 500;
+}
+
 #selctStyles {
   margin-top: 20px;
 }
 
 #new-event-specific {
-  background-color: rgb(255, 70, 70);
+  background-color: #ff4646;
   border: none;
   float: right;
   padding: 1% 4% 1% 4%;
@@ -390,8 +550,12 @@ form textarea{
   text-align: center;
   font-weight: bold;
   font-size: 20px;
+  cursor: pointer;
 }
-/*__________________Inputs animations*/
+
+#new-event-specific:hover {
+  box-shadow: 0px 0px 0px 2px rgb(255, 70, 70);
+}
 
 div.buttonStyles input:focus + .label-name .eventTittle-name,
 div.buttonStyles input:valid + .label-name .eventTittle-name{
@@ -399,23 +563,282 @@ div.buttonStyles input:valid + .label-name .eventTittle-name{
   color:rgb(105, 94, 255);
   font-size: 15px;
 }
+
 div.buttonStyles input:focus + .label-name::after,
 div.buttonStyles input:valid + .label-name::after{
-transform: translateX(0%);
-
+  transform: translateX(0%);
 }
 
 .event-box{
   display: flex;
   align-items: center;
-  padding-left: 5px;
-  margin: 7px 0px 0px 0px;
-  height: 17px;
-  max-width: 100%;
-  font-size: 12px;
+  padding: 5px;
+  margin: 10px 0px 0px 0px;
+  max-width: 180px;
+  max-height: 20px;
+  font-size: 15px;
   background-color: black;
+  border-radius: 4px;
+  color:white;
+  cursor: pointer;
+}
+
+.event-box p{
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.more-event-box{
+  cursor: default;
+  text-align: center;
+  font-size: 20px;
+}
+           /* MEDIA QUERYS */
+
+  /* MOBILE */
+@media screen and (max-width: 540px) {
+  body {
+    box-sizing: border-box;
+  }
+
+  .event-box{
+    font-size: 7px;
+    text-overflow: clip;
+  }
+/* 
+  #eventContent{
+    max-width: 640px;
+    min-width: 200px;
+  }  */
+ 
+   #formEvent{
+    font-size: 15px;
+    min-width: 300px;
+  } 
+
+  form{
+    animation-name:widthSize;
+    animation-duration: 0.3s;
+    animation-timing-function: ease;
+    z-index: 100;
+    margin:  20% 5% 5%;
+    padding: 2% 2% 2% 2%;
+    height: 600px;
+    background-color: white;
+    box-sizing: content-box;
+    border-radius: 1.5%;
+    box-shadow: 0px 0px 17px 6px rgb(235, 235, 235);
+  }
+
+  #EventDate{
+    margin: 15% 30%;
+    min-width: 300px;
+    min-height: 250px;
+      background-color: white;
+      backdrop-filter: blur(5px);
+      width: 40%;
+      height: 70%;
+      position: absolute;
+      margin: 10% 15%;
+      z-index: 100;
+  }
+  
+  #fondo {
+  width: 150%;
+  }
+
+
+  div.week-day{
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-height: 30px;
+  }
+  main{
+    margin-top: 5%;
+    min-width: 400px;
+    margin-left: 10px;
+  }
+
+  #add-event-button{
+    border-radius: 2%;
+    position: relative;
+    box-sizing: border-box;
+    bottom: 3%;
+    width: 50px;
+    height: 50px;
+    border: none;
+    font-size: 40px;
+    color: white;
+    background-color: #695eff;
+    margin: 30px;
+    transition: all .2s ease-in-out;
+  }
+
+  #eliminate-button{
+    width: 35%;
+    margin-left: 68%;
+  }
+
+  #month-display{
+    display: flex;
+    max-width: 300px;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  .month{
+    font-size: 25px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    max-width: 300px;
+    text-overflow: ellipsis;
+  }
+
+
+  #year-display{
+      font-size: 20px;
+
+  }
+}
+
+/* tablet screen */
+
+@media screen and (min-width: 540px) and (max-width: 1280px) {
+
+  
+  form{
+    font-size: small;
+    padding: 5px 5px 5px 5px;
+    animation-name:widthSize;
+    animation-duration: 0.3s;
+    animation-timing-function: ease;
+    font-size: 15px;
+    z-index: 100;
+    margin:  5% 25% 5%;
+    padding: 2% 2% 2% 2%;
+    height: 650px;
+    box-sizing: content-box;
+    border-radius: 1.5%;
+    box-shadow: 0px 0px 17px 6px rgb(235, 235, 235);
+  }
+
+  .titleDataContent
+  {
+    font-size: 15px;
+  }
+  
+  #EventDate{
+    margin: 10% 25%;
+    background-color: white;
+    backdrop-filter: blur(5px);
+    width: 40%;
+    height: 80%;
+    position: absolute;
+    z-index: 100;
+    font-size: 15px;
+  }
+
+  #eliminate-button{
+    width: 35%;
+    margin-top: 65px;
+    margin-left: 185px;
+    font-size: 15px;
+  }
+
+  div.week-day{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 30px;
+}
+}
+
+/* big screens */
+
+@media screen and (min-width: 1280px) {
+
+}
+
+@media (orientation: landscape) {
+  
+
+.numberDayGrid{
+  cursor: default;
+}
+
+#window-DayEvents{
+  display: flex;
+  flex-direction: column;
+  background-color:  rgba(255, 255, 255);
+  width: 50%;
+  height: 75%;
+  position: absolute;
+  top: 12.5%;
+  left: 25%;
+  z-index: 100;
+  align-items: center;
+  box-shadow: 0px  0px 17px 6px rgb(235, 235, 235);
+  border-radius: 1.5%;
+  animation-name:widthSize;
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+}
+
+#title-DayEvents{
+  display: flex;
+  align-items: center;
+  height: 75px;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 3%;
+  margin-bottom: 2%;
+}
+
+#separator-DayEvents{
+  height: 2px;
+  width: 85%;
+  background-color: black;
+  border-radius: 50%;
+}
+
+#section-DayEvents{
+  flex-grow: 1;
+  width: 90%;
+  margin: 5%;
+  overflow: auto;
+}
+
+.wrapper-event{
+  margin-bottom: 1%;
   border-radius: 5px;
+  background-color: #695eff;
   color: white;
+  font-weight: bold;
+  padding: 2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.wrapper-event img:hover{
+  transform: scale(0.8);
+  transition: all 200ms;
+  transform: translate(3);
+}
+
+.addNewEvent input {
+  border-radius: 100%;
+  position: absolute;
+  bottom: 0%;
+  right: 1%;
+  width: 60px;
+  height: 60px;
+  border: none;
+  font-size: 40px;
+  color: white;
+  background-color: #695eff;
+  margin: 30px;
 }
 section.reminder{
   position: fixed;
@@ -506,5 +929,40 @@ button.closeRemindText{
   100%{position: relative;
     right: 0px;
     opacity: 1;}
-  
+}
+
+.addNewEvent input:hover{
+  background-color: white;
+  color: #695eff;
+  font-weight: bold;
+  transform: scale(1.1);
+  transition: all 300ms;
+  transform: translate(3);
+}
+
+.icon-eliminate-DayEvents-wrapper{
+  display: flex;
+  align-items: center;
+  padding: 2% 2% 2% 2%;
+  font-size: 30px;
+  line-height: 20px;
+  color: white;
+}
+
+.title-specific-DayEvents{
+  max-width: 800px;
+  font-size: 25px;
+}
+
+.title-specific-DayEvents p{
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.time-DayEvents{
+  font-size: 15px;
+}
+
 }

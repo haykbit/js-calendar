@@ -1,13 +1,6 @@
-// This variable saves the date shown in the calendar
-var dateSelected = new Date();
-
 // These variables save the current year and month
 var currentYear = dateSelected.getFullYear();
 var currentMonth = dateSelected.getMonth();
-
-// Defined constants to display the correct text
-const monthsYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 // Added listeners to switch the month in the calendar
 document.getElementById("previous-month").addEventListener("click", switchMonth, true);
@@ -44,7 +37,7 @@ function generateCalendar(p_year, p_month) {
     // The next lines insert the day numbers in the grid according to the month and year
     for (var i = 0; i < daysMonth; i++) {
         if (firstDayMonth == 0) {
-            document.getElementsByClassName("grid-day")[i + 6].innerHTML = i + 1;
+            document.getElementsByClassName("grid-day")[i + 6].insertAdjacentHTML("afterbegin", "<div class='numberDayGrid'>" + (i+1) + "</div>");
             if (i + 1 == dateSelected.getDate() && currentYear == dateSelected.getFullYear() && currentMonth == dateSelected.getMonth()) {
                 var day = document.getElementsByClassName("grid-day")[i + 6];
                 day.style.backgroundColor = "#695eff";
@@ -54,7 +47,7 @@ function generateCalendar(p_year, p_month) {
             }
         }
         else {
-            document.getElementsByClassName("grid-day")[i + firstDayMonth - 1].innerHTML = i + 1;
+            document.getElementsByClassName("grid-day")[i + firstDayMonth - 1].insertAdjacentHTML("afterbegin", "<div class='numberDayGrid'>" + (i+1) + "</div>");
             if (i + 1 == dateSelected.getDate() && currentYear == dateSelected.getFullYear() && currentMonth == dateSelected.getMonth()) {
                 var day = document.getElementsByClassName("grid-day")[i + firstDayMonth - 1];
                 day.style.backgroundColor = "#695eff";
@@ -81,10 +74,9 @@ function generateCalendar(p_year, p_month) {
         document.getElementById("actual-month").innerHTML = monthsYear[p_month];
         document.getElementById("next-month").innerHTML = monthsYear[p_month + 1];
     }
-
     // The text in the year display is updated
     document.getElementById("year-text").innerHTML = p_year;
-
+    //showNextMonth();
     DataToCalendar();
 };
 
@@ -95,9 +87,10 @@ function generateGridEmpty() {
             document.querySelector("main").insertAdjacentHTML("beforeend", "<div class='week-day'></div>");
         }
         else {
-            document.querySelector("main").insertAdjacentHTML("beforeend", "<div class='grid-day hover-class' onmouseover='generateGridButton(event)'></div>");
+            document.querySelector("main").insertAdjacentHTML("beforeend", "<div class='grid-day hover-class' onmouseover='generateGridButton(event)' onclick='callTemplateDayEvents(event)'></div>");
         }
     }
+    //showNextMonth();
 };
 
 // This function switches the month according to the month selected
@@ -125,10 +118,9 @@ function eliminatePreviousGrid() {
 function DataToCalendar() {
     var firstDayMonth = new Date(dateSelected.getFullYear(), dateSelected.getMonth(), 1).getDay();
     for (var i = 0; i < arrayEvents.length; i++) {
-        var objectTemp = arrayEvents[i];
+        var objectTemp = Object.assign({}, arrayEvents[i]);
         var dateTemp = new Date(objectTemp.idate);
-        
-        if (dateTemp.getMonth() == dateSelected.getMonth()) {
+        if (dateTemp.getMonth() == dateSelected.getMonth() && dateTemp.getFullYear() == dateSelected.getFullYear()) {
             let father;
             if (firstDayMonth == 0) {
                 father = document.getElementsByClassName("grid-day")[5 + dateTemp.getDate()];
@@ -138,34 +130,33 @@ function DataToCalendar() {
             }
             let eventsInDay = father.getElementsByClassName("event-box").length;
             let eventMax = father.getElementsByClassName("more-event-box")[0];
-            if(eventsInDay < 1){
-                father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2()'>" + objectTemp.title + "</div>");
+            if (eventsInDay < 1) {
+                father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2(event)' value='" + i + "'><p>"+ objectTemp.title + "</p></div>");
             }
-            else if((eventsInDay == 1)&&(!eventMax)){
-                father.insertAdjacentHTML("beforeend", "<div class='more-event-box'>...</div>");
+            else if ((eventsInDay == 1) && (!eventMax)) {
+                father.insertAdjacentHTML("beforeend", "<div class='more-event-box' onclick='callTemplate2(event)'>...</div>");
             }
         }
     }
-   
+};
 
-}
 function generateGridButton(event) {
     let buttonSpecific = document.getElementById("new-event-specific");
     if (buttonSpecific) {
         if ((event.target.getAttribute("class") == "grid-day hover-class") ||
-            (event.target.getAttribute("class") == "grid-day")) {
+            (event.target.getAttribute("class") == "grid-day")) { 
             buttonSpecific.parentNode.removeChild(buttonSpecific);
             event.target.insertAdjacentHTML("afterbegin", "<input type='button' id='new-event-specific' value='+'>");
-            newEventActivator();
+            newEventActivator(event.target);
         }
     }
     else {
         event.target.insertAdjacentHTML("afterbegin", "<input type='button' id='new-event-specific' value='+'>");
-        newEventActivator();
+        newEventActivator(event.target);
     }
 };
 
-function newEventActivator() {
+function newEventActivator(elementTarget) {
     var button = document.getElementById("new-event-specific");
     button.addEventListener('click', function () {
         var script = document.createElement('script');
@@ -174,10 +165,24 @@ function newEventActivator() {
 
         callTemplate();
 
-        document.getElementById("initial-date").defaultValue = "2021-04-09";
+        var numberDay = elementTarget.getElementsByClassName("numberDayGrid")[0].innerHTML;
+        var numberMonth = dateSelected.getMonth()+1;
+        if(numberDay<10){numberDay = "0" + numberDay;}
+        if(numberMonth<10){numberMonth = "0" + numberMonth;}
+        var stringDate = dateSelected.getFullYear() + "-" + numberMonth + "-" + numberDay;
+        document.getElementById("initial-date").defaultValue = stringDate;
 
         habilitarReminder(this);
         habilitarDate(this);
-
     });
 };
+
+function showNextMonth() {    
+    for (let i = 0; i < 42; i++) {
+        if (document.querySelectorAll(".grid-day.hover-class")[i].innerText == ""){
+            document.querySelectorAll(".grid-day.hover-class")[i].style.backgroundColor = "red";
+        }else {
+            document.querySelectorAll(".grid-day.hover-class")[i].style.backgroundColor = "blue";
+        }
+    }
+}
