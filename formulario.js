@@ -96,13 +96,30 @@ function callTemplate() {
 //____________________________________________________ habilitar los recordatorios
 function habilitarReminder(remind) {
     let renindImputs = document.querySelectorAll(".habitiation");
+    let remindLabel = document.querySelectorAll("label.RemindLabel");
     if (remind.checked == true) {
         renindImputs.forEach(element => {
             element.removeAttribute("disabled");
+            //element.style.marginTop='3%';
+
+        });
+
+        remindLabel.forEach(element => {
+            element.style.color='rgb(105, 94, 255)';
+            element.style.fontSize='16px';
+            element.style.fontWeight='700';
+            element.style.marginBottom='3%';
+
         });
     } else {
         renindImputs.forEach(element => {
             element.setAttribute("disabled", "")
+        });
+        remindLabel.forEach(element => {
+            element.style.color='rgb(161, 161, 161)';
+            element.style.fontSize=' 15px';
+            element.style.fontWeight='300';
+            element.style.marginBottom='';
         });
     }
 }
@@ -112,8 +129,14 @@ function habilitarDate(date) {
     let imput = document.getElementById("final-date");
     if (date.checked == true) {
         imput.removeAttribute("disabled")
+        document.getElementById('finalDateName').style.color='rgb(105, 94, 255)';
+        document.getElementById('finalDateName').style.fontWeight='700';
+        document.getElementById('finalDateName').style.fontSize='16px';
     } else {
         imput.setAttribute("disabled", "")
+        document.getElementById('finalDateName').style.color='rgb(161, 161, 161)';
+        document.getElementById('finalDateName').style.fontWeight='300';
+        document.getElementById('finalDateName').style.fontSize='15px';
     }
 };
 
