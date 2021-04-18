@@ -127,8 +127,7 @@ function callTemplate2(event) {
         const importNewEvent = document.importNode(newEvent.content, true);
         document.querySelector("body").appendChild(importNewEvent);
 
-        console.log(event.currentTarget);
-
+        var eventValue = event.currentTarget.getAttribute('value');
         var singleEvent = document.getElementById("enventTitleVisual");
         var titleSingleEvent = singleEvent.querySelector("h1");
         var dateSingleEvent = document.getElementById("dateCurrentEvent");
@@ -138,18 +137,17 @@ function callTemplate2(event) {
         var typeSingleEvent = document.getElementById("typeText");
         var dSingleEvent = document.getElementById("description");
         var descSingleEvent = dSingleEvent.querySelector("h5");
-
-        var eventValue = event.currentTarget.getAttribute('value');
+        var dateTime = new Date(arrayEvents[eventValue].idate);
 
         titleSingleEvent.innerHTML = arrayEvents[eventValue].title;
-        dateSingleEvent.innerHTML = arrayEvents[eventValue].idate;
-        /*timeSingleEvent.innerHTML = arrayEvents[eventValue].itime;*/
+        dateSingleEvent.innerHTML = dateTime.getFullYear() + "-" + dateTime.getMonth() + "-" + dateTime.getDate();
+        timeSingleEvent.innerHTML = dateTime.getHours() + ":" + dateTime.getMinutes();
         if (arrayEvents[eventValue].isFDate == false) {
             document.getElementById("fiDate").style.visibility = "hidden";
         }
         else {
             endDateSingleEvent.innerHTML = arrayEvents[eventValue].fdate;
-            /*endTimeSingleEvent.innerHTML = arrayEvents[eventValue].ftime;*/
+            endTimeSingleEvent.innerHTML = arrayEvents[eventValue].ftime;
         }
 
         if (arrayEvents[eventValue].eventType == "Meeting") {
@@ -159,6 +157,7 @@ function callTemplate2(event) {
         } else if (arrayEvents[eventValue].eventType == "Meeting") {
 
         }
+        //document.getElementById('eliminate-button').addEventListener('click', eliminateElementFromDayEvents(event));
         document.getElementById('closeButton-visual').addEventListener('click', closeEvent2);
     }
 
@@ -235,7 +234,7 @@ function addEventInCalendar(ID, event) {
             let eventsInDay = father.getElementsByClassName("event-box").length;
             let eventMax = father.getElementsByClassName("more-event-box")[0];
             if (eventsInDay < 1) {
-                father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2()' value='" + ID + "'><p>" + event.title + "</p></div>");
+                father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2(event)' value='" + ID + "'><p>" + event.title + "</p></div>");
             }
             else if ((eventsInDay == 1) && (!eventMax)) {
                 father.insertAdjacentHTML("beforeend", "<div class='more-event-box'>...</div>");
