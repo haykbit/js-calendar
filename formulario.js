@@ -101,6 +101,7 @@ function habilitarReminder(remind) {
         renindImputs.forEach(element => {
             element.removeAttribute("disabled");
             //element.style.marginTop='3%';
+            element.style.background='linear-gradient(5deg,rgba(105, 94, 255,0.05),rgba(248, 247, 253,0))'
 
         });
 
@@ -120,6 +121,7 @@ function habilitarReminder(remind) {
             element.style.fontSize=' 15px';
             element.style.fontWeight='300';
             element.style.marginBottom='';
+            
         });
     }
 }
