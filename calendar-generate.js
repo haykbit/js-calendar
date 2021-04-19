@@ -19,7 +19,6 @@ var forwardYear = document.getElementById("rarrow").addEventListener("click", fu
 
 // First, calendar is generated in the current year and month
 generateCalendar(dateSelected.getFullYear(), dateSelected.getMonth());
-blockEmptyCells();
 
 // This function generates the new calendar in the month and year selected
 function generateCalendar(p_year, p_month) {
@@ -76,6 +75,7 @@ function generateCalendar(p_year, p_month) {
     }
     // The text in the year display is updated
     document.getElementById("year-text").innerHTML = p_year;
+    blockEmptyCells();
     DataToCalendar();
 };
 
@@ -188,10 +188,10 @@ function newEventActivator(elementTarget) {
 };
 
 function blockEmptyCells() {
-    for (let i = 0; i < 41; i++) {
-        if (document.querySelectorAll(".grid-day.hover-class")[i].innerText == "") {
-            document.querySelectorAll(".grid-day.hover-class")[i].setAttribute('onmouseover', '');
-            document.querySelectorAll(".grid-day.hover-class")[i].setAttribute('onclick', '');
+    for (let i = 0; i < 42; i++) {
+        if (document.querySelectorAll(".grid-day")[i].innerText == "") {
+            document.querySelectorAll(".grid-day")[i].setAttribute('onmouseover', '');
+            document.querySelectorAll(".grid-day")[i].setAttribute('onclick', '');
         }
     }
 }
