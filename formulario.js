@@ -40,7 +40,6 @@ function remind() {
 
             //let secInitial= new Date(fechaInicial).getTime();
             let secInicio = new Date(fechaInicial).getTime();
-
             let remindNaw = secInicio - remindTime;
             console.log('momento en el que debe empezar a recordar', remindNaw)
             let timeToEvent = (secInicio - new Date().getTime());
@@ -54,20 +53,16 @@ function remind() {
                 object.isReminded = true;
                 localStorage.setItem(i, JSON.stringify(object));
 
-
-
             }
         }
     }
 }
 
 function showRemindText(specificButton) {
-
     let specificDiv = specificButton.parentElement;
     for (i = 0; i < arrayEvents.length; i++) {
         if (specificDiv.getAttribute('value') == i) {
             document.querySelector('section.reminder').insertAdjacentHTML("beforeend", `<div class='reminderText'><button class='closeRemindText' onclick='closeRemindText(this);'><span>x</span></button><p class='remindRefer'>${arrayEvents[i].title}</p> <p class='remindParagraf'> ${arrayEvents[i].eventText}</p><div>`);
-
         }
     }
 }
@@ -75,8 +70,8 @@ function closeRemindText(specificText) {
     let specificDivText = specificText.parentElement;
     console.log(specificDivText)
     document.querySelector('section.reminder').removeChild(specificDivText);
-
 }
+
 function deleteRemind() {
     document.querySelector('div.remindContent').removeChild(document.querySelector('div.reminders'));
 }
@@ -101,9 +96,7 @@ function habilitarReminder(remind) {
     if (remind.checked == true) {
         renindImputs.forEach(element => {
             element.removeAttribute("disabled");
-            //element.style.marginTop='3%';
             element.style.background = 'linear-gradient(5deg,rgba(105, 94, 255,0.05),rgba(248, 247, 253,0))'
-
         });
 
         remindLabel.forEach(element => {
@@ -111,7 +104,6 @@ function habilitarReminder(remind) {
             element.style.fontSize = '16px';
             element.style.fontWeight = '700';
             element.style.marginBottom = '3%';
-
         });
     } else {
         renindImputs.forEach(element => {
@@ -122,7 +114,6 @@ function habilitarReminder(remind) {
             element.style.fontSize = ' 15px';
             element.style.fontWeight = '300';
             element.style.marginBottom = '';
-
         });
     }
 }
@@ -191,7 +182,6 @@ function callTemplate2(event) {
         } else {
             console.log(document.getElementById("dSingleEvent"));
         }
-        //document.getElementById('eliminate-button').addEventListener('click', eliminateElementFromDayEvents(event));
         document.getElementById('closeButton-visual').addEventListener('click', closeEvent2);
         if (document.getElementById('EventDate')) {
             document.getElementById('eliminate-button').addEventListener('click', function () {
