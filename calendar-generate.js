@@ -76,8 +76,8 @@ function generateCalendar(p_year, p_month) {
     }
     // The text in the year display is updated
     document.getElementById("year-text").innerHTML = p_year;
-    //showNextMonth();
     DataToCalendar();
+    showNextMonth();
 };
 
 // This function generates the empty grid in main
@@ -90,7 +90,6 @@ function generateGridEmpty() {
             document.querySelector("main").insertAdjacentHTML("beforeend", "<div class='grid-day hover-class' onmouseover='generateGridButton(event)' onclick='callTemplateDayEvents(event)'></div>");
         }
     }
-    //showNextMonth();
 };
 
 // This function switches the month according to the month selected
@@ -180,9 +179,8 @@ function newEventActivator(elementTarget) {
 function showNextMonth() {    
     for (let i = 0; i < 42; i++) {
         if (document.querySelectorAll(".grid-day.hover-class")[i].innerText == ""){
-            document.querySelectorAll(".grid-day.hover-class")[i].style.backgroundColor = "red";
-        }else {
-            document.querySelectorAll(".grid-day.hover-class")[i].style.backgroundColor = "blue";
+            document.querySelectorAll(".grid-day.hover-class")[i].setAttribute('onmouseover','');
+            document.querySelectorAll(".grid-day.hover-class")[i].setAttribute('onclick','');
         }
     }
 }

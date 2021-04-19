@@ -99,6 +99,14 @@ main{
   margin-left: 35px;
   box-sizing: content-box;
   border: 1px ;
+  min-width: 400px;
+}
+
+.emtpyDay {
+  border: 1px solid rgb(245, 245, 245);
+  border-bottom: 1px;
+  padding: 10px 10px;
+  overflow: auto;
 }
 
 .week-day{
@@ -535,7 +543,6 @@ form select{
   border-bottom: 1px solid black;
 }
 
-
 form textarea{
   cursor: pointer;
   border: none;
@@ -561,9 +568,6 @@ form label{
   font-size: 15px;
   transition: 0.5s ease;
 }
-
-
-
 
 #selctStyles {
   margin-top: 20px;
@@ -639,12 +643,7 @@ div.buttonStyles input:valid + .label-name::after{
     font-size: 7px;
     text-overflow: clip;
   }
-/* 
-  #eventContent{
-    max-width: 640px;
-    min-width: 200px;
-  }  */
- 
+
    #formEvent{
     font-size: 15px;
     min-width: 300px;
@@ -681,16 +680,10 @@ div.buttonStyles input:valid + .label-name::after{
   width: 150%;
   }
 
-
   div.week-day{
       overflow: hidden;
       text-overflow: ellipsis;
       min-height: 30px;
-  }
-  main{
-    margin-top: 5%;
-    min-width: 400px;
-    margin-left: 10px;
   }
 
   #add-event-button{
