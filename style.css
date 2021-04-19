@@ -402,7 +402,7 @@ form{
   z-index: 100;
   height: 100%;
   width: 30%;
-  top: 12.5%;
+  top:0%;
   left: 35%;
   padding: 2% 2% 2% 2%;
   background-color: white;
@@ -498,7 +498,7 @@ form{
 
 .eventTittle-name{
   position: absolute;
-  bottom: 5px;
+  bottom: 0px;
   transition: 0.5s ease;
  
 }
