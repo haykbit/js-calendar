@@ -62,7 +62,7 @@
             <label for="final-date-option">Add end date</label>
         </div>
         <div class='buttonStyles'>
-            <label for="final-date">Final date</label>
+            <label id='finalDateName'for="final-date">Final date</label>
             <input type="datetime-local" name="finalDate" id="final-date" disabled>
 
         </div>
@@ -70,8 +70,8 @@
             <input type="checkbox" name="remindOption" id="remind-option" onchange="habilitarReminder(this)">
             <label for="remind-option">Add Reminder</label>
         </div>
-        <div class='selctStyles'>
-            <label for="time-remind">Went we remind you?</label>
+        <div id='RemindTimeName'class='selctStyles'>
+            <label class='RemindLabel' for="time-remind">Went we remind you?</label><br>
             <select name="timeRemind" id="time-remind" class="habitiation" disabled>
                 <option id="five-minutes" value="5">5 minutes before</option>
                 <option id="ten-minutes" value="10">10 minutes before</option>
@@ -80,7 +80,7 @@
                 <option id="sixty-minutes" value="60">1 hour before</option>
             </select>
         </div>
-
+        <label class='RemindLabel' for="remindText">What you need to remind?</label>
         <textarea id="remindText" name="textarea" rows="10" cols="50" class="habitiation" maxlength="500" disabled></textarea>
 
         <div id='selctStyles'>
@@ -113,14 +113,14 @@
                 <h4>El evento empieza en</h4>
                 <h5 class="titleDataContent" id="dateCurrentEvent"></h5>
                 <div class="titleDataTime" id="timeCurrentEvent">
-                    <h5>15:00</h5>
+                    <h5></h5>
                 </div>
             </div>
             <div id="fiDate">
                 <h4>Fin de evento</h4>
                 <h5 class="titleDataContent" id="endDateCurrentEvent"></h5>
                 <div class="titleDataTime" id="endTimeCurrentEvent">
-                    <h5>16:00</h5>
+                    <h5></h5>
                 </div>
             </div>
         </div>
@@ -130,7 +130,7 @@
             </div>
             <div id="description">
                 <h4>Descripción</h4>
-                <h5 class="titleDataContent">afdasfasad</h5>
+                <h5 class="titleDataContent"></h5>
             </div>
         </div>
         <input id="eliminate-button" type="reset" value="Eliminate" />
