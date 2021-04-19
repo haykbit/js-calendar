@@ -6,7 +6,6 @@ var currentMonth = dateSelected.getMonth();
 document.getElementById("previous-month").addEventListener("click", switchMonth, true);
 document.getElementById("next-month").addEventListener("click", switchMonth, true);
 
-
 // Added listeners to switch the year in the calendar
 document.getElementById("larrow").addEventListener("click", function () {
     dateSelected.setFullYear(dateSelected.getFullYear() - 1);
@@ -37,7 +36,7 @@ function generateCalendar(p_year, p_month) {
     // The next lines insert the day numbers in the grid according to the month and year
     for (var i = 0; i < daysMonth; i++) {
         if (firstDayMonth == 0) {
-            document.getElementsByClassName("grid-day")[i + 6].insertAdjacentHTML("afterbegin", "<div class='numberDayGrid'>" + (i+1) + "</div>");
+            document.getElementsByClassName("grid-day")[i + 6].insertAdjacentHTML("afterbegin", "<div class='numberDayGrid'>" + (i + 1) + "</div>");
             if (i + 1 == dateSelected.getDate() && currentYear == dateSelected.getFullYear() && currentMonth == dateSelected.getMonth()) {
                 var day = document.getElementsByClassName("grid-day")[i + 6];
                 day.style.backgroundColor = "#695eff";
@@ -47,7 +46,7 @@ function generateCalendar(p_year, p_month) {
             }
         }
         else {
-            document.getElementsByClassName("grid-day")[i + firstDayMonth - 1].insertAdjacentHTML("afterbegin", "<div class='numberDayGrid'>" + (i+1) + "</div>");
+            document.getElementsByClassName("grid-day")[i + firstDayMonth - 1].insertAdjacentHTML("afterbegin", "<div class='numberDayGrid'>" + (i + 1) + "</div>");
             if (i + 1 == dateSelected.getDate() && currentYear == dateSelected.getFullYear() && currentMonth == dateSelected.getMonth()) {
                 var day = document.getElementsByClassName("grid-day")[i + firstDayMonth - 1];
                 day.style.backgroundColor = "#695eff";
@@ -76,7 +75,7 @@ function generateCalendar(p_year, p_month) {
     }
     // The text in the year display is updated
     document.getElementById("year-text").innerHTML = p_year;
-    //showNextMonth();
+    blockEmptyCells();
     DataToCalendar();
 };
 
@@ -90,7 +89,6 @@ function generateGridEmpty() {
             document.querySelector("main").insertAdjacentHTML("beforeend", "<div class='grid-day hover-class' onmouseover='generateGridButton(event)' onclick='callTemplateDayEvents(event)'></div>");
         }
     }
-    //showNextMonth();
 };
 
 // This function switches the month according to the month selected
@@ -101,14 +99,12 @@ function switchMonth(event) {
     else {
         dateSelected.setMonth(dateSelected.getMonth() + 1);
     }
-
     generateCalendar(dateSelected.getFullYear(), dateSelected.getMonth());
 };
 
 // This function eliminates the entire grid
 function eliminatePreviousGrid() {
     var mainGrid = document.querySelector("main");
-
     while (mainGrid.firstChild) {
         mainGrid.removeChild(mainGrid.firstChild);
     }
@@ -131,10 +127,10 @@ function DataToCalendar() {
             let eventsInDay = father.getElementsByClassName("event-box").length;
             let eventMax = father.getElementsByClassName("more-event-box")[0];
             if (eventsInDay < 1) {
-                father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2(event)' value='" + i + "'><p>"+ objectTemp.title + "</p></div>");
+                father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2(event)' value='" + i + "'><p onclick='callTemplate2(event)' value='" + i + "'>" + objectTemp.title + "</p></div>");
             }
             else if ((eventsInDay == 1) && (!eventMax)) {
-                father.insertAdjacentHTML("beforeend", "<div class='more-event-box' onclick='callTemplate2(event)'>...</div>");
+                father.insertAdjacentHTML("beforeend", "<div class='more-event-box''>...</div>");
             }
         }
     }
@@ -144,7 +140,7 @@ function generateGridButton(event) {
     let buttonSpecific = document.getElementById("new-event-specific");
     if (buttonSpecific) {
         if ((event.target.getAttribute("class") == "grid-day hover-class") ||
-            (event.target.getAttribute("class") == "grid-day")) { 
+            (event.target.getAttribute("class") == "grid-day")) {
             buttonSpecific.parentNode.removeChild(buttonSpecific);
             event.target.insertAdjacentHTML("afterbegin", "<input type='button' id='new-event-specific' value='+'>");
             newEventActivator(event.target);
@@ -166,23 +162,36 @@ function newEventActivator(elementTarget) {
         callTemplate();
 
         var numberDay = elementTarget.getElementsByClassName("numberDayGrid")[0].innerHTML;
-        var numberMonth = dateSelected.getMonth()+1;
-        if(numberDay<10){numberDay = "0" + numberDay;}
-        if(numberMonth<10){numberMonth = "0" + numberMonth;}
-        var stringDate = dateSelected.getFullYear() + "-" + numberMonth + "-" + numberDay;
+        var numberMonth = dateSelected.getMonth() + 1;
+        if (numberDay < 10) { numberDay = "0" + numberDay; }
+        if (numberMonth < 10) { numberMonth = "0" + numberMonth; }
+
+        if (dateSelected.getHours() < 10) {
+            var formatedTimeHour = "0" + dateSelected.getHours();
+        } else {
+            var formatedTimeHour = dateSelected.getHours();
+        }
+
+        if (dateSelected.getMinutes() < 10) {
+            var formatedTimeMinute = "0" + dateSelected.getMinutes();
+        } else {
+            var formatedTimeMinute = dateSelected.getMinutes();
+        }
+
+        var stringDate = dateSelected.getFullYear() + "-" + numberMonth + "-" + numberDay + "T" + formatedTimeHour + ":" + formatedTimeMinute;
         document.getElementById("initial-date").defaultValue = stringDate;
+        console.log(stringDate);
 
         habilitarReminder(this);
         habilitarDate(this);
     });
 };
 
-function showNextMonth() {    
+function blockEmptyCells() {
     for (let i = 0; i < 42; i++) {
-        if (document.querySelectorAll(".grid-day.hover-class")[i].innerText == ""){
-            document.querySelectorAll(".grid-day.hover-class")[i].style.backgroundColor = "red";
-        }else {
-            document.querySelectorAll(".grid-day.hover-class")[i].style.backgroundColor = "blue";
+        if (document.querySelectorAll(".grid-day")[i].innerText == "") {
+            document.querySelectorAll(".grid-day")[i].setAttribute('onmouseover', '');
+            document.querySelectorAll(".grid-day")[i].setAttribute('onclick', '');
         }
     }
 }

@@ -99,6 +99,14 @@ main{
   margin-left: 35px;
   box-sizing: content-box;
   border: 1px ;
+  min-width: 400px;
+}
+
+.emtpyDay {
+  border: 1px solid rgb(245, 245, 245);
+  border-bottom: 1px;
+  padding: 10px 10px;
+  overflow: auto;
 }
 
 .week-day{
@@ -272,7 +280,6 @@ h4 {
   }
 }
 
-
 #inDate{
   width: 50%;
 }
@@ -399,7 +406,7 @@ form{
   display: flex;
   flex-direction: column;
   z-index: 100;
-  height: 75%;
+  height: 100%;
   width: 30%;
   top: 12.5%;
   left: 35%;
@@ -507,7 +514,7 @@ form{
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(-2deg, rgb(105, 94, 255),  rgb(248, 247, 253) ,  rgb(255, 255, 255) );
+  background-image: linear-gradient(-7deg, rgb(105, 94, 255),  rgb(248, 247, 253) ,  rgb(255, 255, 255) );
   border-bottom: 1px solid rgb(105, 94, 255);
   left: 0%;
   bottom: 0%;
@@ -522,18 +529,44 @@ form{
 
 form select{
   cursor: pointer;
-  max-width: 600px;
-  margin-bottom: 2%;
+  width: 100%;
+  min-height: 50px;
+  margin-bottom: 6%;
+  margin-top: 3%;
+  transition: 0.5s ease;
+  outline:none;
+  background: linear-gradient(5deg,rgba(170, 170, 172, 0.1),rgba(248, 247, 253,0));
+  transition: 1s;
+  border: none;
+  border-bottom: 1px solid black;
 }
 
 form textarea{
   cursor: pointer;
-  max-width: 600px;
+  border: none;
+  border-bottom: 1px solid black;
   resize: none;
+  transition: 0.5s ease;
+  outline:none;
+  height: 10%
 }
 
 form label{
   font-weight: 500;
+}
+
+#finalDateName{
+  color: rgb(161, 161, 161);
+  font-weight: 300;
+  font-size: 15px;
+  transition: 0.5s ease;
+}
+
+.RemindLabel{
+  color: rgb(161, 161, 161);
+  font-weight: 300;
+  font-size: 15px;
+  transition: 0.5s ease;
 }
 
 #selctStyles {
@@ -556,12 +589,16 @@ form label{
 #new-event-specific:hover {
   box-shadow: 0px 0px 0px 2px rgb(255, 70, 70);
 }
+form textarea:focus ,
+form textarea:valid {
+  height: 70%;
+}
 
 div.buttonStyles input:focus + .label-name .eventTittle-name,
 div.buttonStyles input:valid + .label-name .eventTittle-name{
   transform: translateY(-20px);
   color:rgb(105, 94, 255);
-  font-size: 15px;
+  font-size: 10px;
 }
 
 div.buttonStyles input:focus + .label-name::after,
@@ -595,9 +632,8 @@ div.buttonStyles input:valid + .label-name::after{
   text-align: center;
   font-size: 20px;
 }
-           /* MEDIA QUERYS */
 
-  /* MOBILE */
+/* MEDIA QUERYS */
 @media screen and (max-width: 540px) {
   body {
     box-sizing: border-box;
@@ -607,12 +643,7 @@ div.buttonStyles input:valid + .label-name::after{
     font-size: 7px;
     text-overflow: clip;
   }
-/* 
-  #eventContent{
-    max-width: 640px;
-    min-width: 200px;
-  }  */
- 
+
    #formEvent{
     font-size: 15px;
     min-width: 300px;
@@ -649,16 +680,10 @@ div.buttonStyles input:valid + .label-name::after{
   width: 150%;
   }
 
-
   div.week-day{
       overflow: hidden;
       text-overflow: ellipsis;
       min-height: 30px;
-  }
-  main{
-    margin-top: 5%;
-    min-width: 400px;
-    margin-left: 10px;
   }
 
   #add-event-button{
@@ -696,7 +721,6 @@ div.buttonStyles input:valid + .label-name::after{
     text-overflow: ellipsis;
   }
 
-
   #year-display{
       font-size: 20px;
 
@@ -704,10 +728,7 @@ div.buttonStyles input:valid + .label-name::after{
 }
 
 /* tablet screen */
-
 @media screen and (min-width: 540px) and (max-width: 1280px) {
-
-  
   form{
     font-size: small;
     padding: 5px 5px 5px 5px;
@@ -754,14 +775,7 @@ div.buttonStyles input:valid + .label-name::after{
 }
 }
 
-/* big screens */
-
-@media screen and (min-width: 1280px) {
-
-}
-
 @media (orientation: landscape) {
-  
 
 .numberDayGrid{
   cursor: default;
@@ -840,6 +854,7 @@ div.buttonStyles input:valid + .label-name::after{
   background-color: #695eff;
   margin: 30px;
 }
+
 section.reminder{
   position: fixed;
   display: flex;
@@ -855,37 +870,40 @@ div.remindContent{
   min-width: 30%;
   position: relative;
 }
+
 div.reminders{
-  
   display: flex;
   flex-direction: row;
   min-width: 30%;
   min-height: 30px;
-  
   background: linear-gradient(30deg,rgb(74, 64, 250),rgb(255, 255, 255));
   color: white;
-  padding: 10px 20px;
-  border-radius: 20px 0px 0px 20px;
+  padding: 10px 10px;
+  border-radius: 10px 10px 10px 10px;
   animation-name: show;
   animation-duration: 1s;
   animation-timing-function: ease;
   margin-bottom: 10px;
+  margin-top: 20px;
+  max-width: 90%;
 }
+
 div.reminderText{  
-  display: flex;
   flex-direction: column;
   color: rgb(3, 3, 3);
-  padding: 10px 20px;
+  padding: 10px 10px;
   background: linear-gradient(30deg,rgb(74, 64, 250),rgb(255, 255, 255));
   right: 0px;
-  border-radius: 20px 0px 0px 20px;
+  border-radius: 10px 10px 10px 10px;
   height: 100%;
   animation-name: show;
   animation-duration: 1s;
   animation-timing-function: ease;
   margin-bottom: 10px;
-  
+  margin-top: 20px;
+  max-width: 90%;
 }
+
 p.remindParagraf{
   max-width: 100px;
 }
@@ -895,6 +913,7 @@ p.remindRefer{
 p.remindRefer{
   color: white;
 }
+
 button.showRemindText{
   position: absolute;
   margin-left: 70%;
@@ -906,6 +925,7 @@ button.showRemindText{
   color: white;
   outline: none;
 }
+
 button.closeRemindText{
   position: absolute;
   margin-left: 70%;
