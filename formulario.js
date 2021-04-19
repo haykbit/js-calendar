@@ -250,25 +250,23 @@ function closeEvent() {
 //____________________________________________________ esta función añade el evento a guardar en el calendario
 function addEventInCalendar(ID, event) {
     var firstDayMonth = new Date(dateSelected.getFullYear(), dateSelected.getMonth(), 1).getDay();
-    for (var i = 0; i < arrayEvents.length; i++) {
-        var objectTemp = arrayEvents[i];
-        var dateTemp = new Date(objectTemp.idate);
-        if (dateTemp.getMonth() == dateSelected.getMonth()) {
-            let father;
-            if (firstDayMonth == 0) {
-                father = document.getElementsByClassName("grid-day")[5 + dateTemp.getDate()];
-            }
-            else {
-                father = document.getElementsByClassName("grid-day")[firstDayMonth + dateTemp.getDate() - 2];
-            }
-            let eventsInDay = father.getElementsByClassName("event-box").length;
-            let eventMax = father.getElementsByClassName("more-event-box")[0];
-            if (eventsInDay < 1) {
-                father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2(event)' value='" + ID + "'><p onclick='callTemplate2(event)' value='" + ID + "'>" + event.title + "</p></div>");
-            }
-            else if ((eventsInDay == 1) && (!eventMax)) {
-                father.insertAdjacentHTML("beforeend", "<div class='more-event-box'>...</div>");
-            }
+    var dateTemp = new Date(event.idate);
+
+    if (dateTemp.getMonth() == dateSelected.getMonth()) {
+        let father;
+        if (firstDayMonth == 0) {
+            father = document.getElementsByClassName("grid-day")[5 + dateTemp.getDate()];
+        }
+        else {
+            father = document.getElementsByClassName("grid-day")[firstDayMonth + dateTemp.getDate() - 2];
+        }
+        let eventsInDay = father.getElementsByClassName("event-box").length;
+        let eventMax = father.getElementsByClassName("more-event-box")[0];
+        if (eventsInDay < 1) {
+            father.insertAdjacentHTML("beforeend", "<div class='event-box' onclick='callTemplate2(event)' value='" + ID + "'><p  onclick='callTemplate2(event)' value='" + ID + "'>" + event.title + "</p></div>");
+        }
+        else if ((eventsInDay == 1) && (!eventMax)) {
+            father.insertAdjacentHTML("beforeend", "<div class='more-event-box'>...</div>");
         }
     }
 };
