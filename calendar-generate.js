@@ -166,16 +166,16 @@ function newEventActivator(elementTarget) {
         if (numberDay < 10) { numberDay = "0" + numberDay; }
         if (numberMonth < 10) { numberMonth = "0" + numberMonth; }
 
-        if (dateSelected.getHours() < 10) {
-            var formatedTimeHour = "0" + dateSelected.getHours();
+        if (new Date().getHours() < 10) {
+            var formatedTimeHour = "0" + new Date().getHours();
         } else {
-            var formatedTimeHour = dateSelected.getHours();
+            var formatedTimeHour = new Date().getHours();
         }
 
-        if (dateSelected.getMinutes() < 10) {
-            var formatedTimeMinute = "0" + dateSelected.getMinutes();
+        if (new Date().getMinutes() < 10) {
+            var formatedTimeMinute = "0" + new Date().getMinutes();
         } else {
-            var formatedTimeMinute = dateSelected.getMinutes();
+            var formatedTimeMinute = new Date().getMinutes();
         }
 
         var stringDate = dateSelected.getFullYear() + "-" + numberMonth + "-" + numberDay + "T" + formatedTimeHour + ":" + formatedTimeMinute;
