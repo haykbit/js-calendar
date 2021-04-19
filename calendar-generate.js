@@ -110,7 +110,7 @@ function eliminatePreviousGrid() {
     }
 };
 
-// This function generates the events in the corresponding event date
+// This function generate the events in the corresponding event date
 function DataToCalendar() {
     var firstDayMonth = new Date(dateSelected.getFullYear(), dateSelected.getMonth(), 1).getDay();
     for (var i = 0; i < arrayEvents.length; i++) {
